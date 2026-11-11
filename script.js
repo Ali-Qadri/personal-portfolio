@@ -157,8 +157,9 @@
 
     const titles = {
       1: 'Cover & Restaurant ERP Project (Pages 01 – 02)',
-      2: 'Path Finder & Experience (Pages 03 – 04)',
-      3: 'Education & Contact (Pages 05 – 06)'
+      2: 'Path Finder & Workflow (Pages 03 – 04)',
+      3: 'Experience & Education (Pages 05 – 06)',
+      4: 'Contact & Hire Me (Page 07)'
     };
     showToast(titles[spreadNum] || `Viewing Spread ${spreadNum}`);
 
