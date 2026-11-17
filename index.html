@@ -1,671 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ali Qadri — Digital Operations & Technology Professional | Portfolio</title>
-  <meta name="description" content="Open book portfolio of Ali Qadri — digital operations and technology professional with experience in project coordination, web development, and digital product delivery.">
+  <meta name="description" content="Portfolio of Ali Qadri, a digital operations and technology professional.">
+  <title>Ali Qadri - Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #F1F2F4;
+      --muted: #A0A7B4;
+      --quiet: #737C8C;
+      --line: #292F3A;
+      --surface: #11141B;
+      --surface-2: #171B24;
+      --page: #0B0D12;
+      --accent: #9FB8D4;
+      --warm: #D4C3A3;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l15 10-7 2-3 7z' fill='%23D4C3A3' stroke='%230B0D12' stroke-width='1.5'/%3E%3C/svg%3E") 2 2, auto;
+    }
+
+    .portfolio {
+      width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      border: 0;
+      background: var(--surface);
+    }
+
+    .banner-wrap { position: relative; width: 100%; border-bottom: 1px solid var(--line); }
+    .banner { display: block; width: 100%; height: clamp(180px, 25vw, 280px); object-fit: cover; object-position: center 48%; }
+    .banner-profile { position: absolute; bottom: -62px; left: 56px; width: 132px; height: 132px; object-fit: cover; border: 4px solid var(--surface); border-radius: 50%; }
+    .intro { padding: 88px 56px 44px; }
+    .intro-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 36px; }
+    .identity { display: flex; align-items: flex-start; gap: 24px; }
+    .profile-photo { width: 124px; height: 124px; flex: 0 0 124px; object-fit: cover; border: 1px solid var(--line); border-radius: 4px; }
+    .eyebrow { margin: 3px 0 18px; color: var(--quiet); font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { margin-bottom: 10px; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -.07em; line-height: .95; }
+    .role { margin: 0; color: var(--muted); font-size: .95rem; }
+    .top-contact { margin-top: 3px; padding: 8px 13px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); font-size: .78rem; font-weight: 500; text-decoration: none; white-space: nowrap; }
+    .top-contact:hover { border-color: var(--accent); color: var(--accent); }
+    .bio { max-width: 680px; margin: 38px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.75; }
+
+    .tabs { display: flex; gap: 30px; padding: 0 56px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .tab { position: relative; padding: 15px 0 13px; border: 0; background: transparent; color: var(--muted); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 500; }
+    .tab:hover, .tab[aria-selected="true"] { color: var(--ink); }
+    .tab[aria-selected="true"]::after { content: ""; position: absolute; right: 0; bottom: -1px; left: 0; height: 1px; background: var(--accent); }
+
+    .content { padding: 48px 56px 56px; }
+    .panel[hidden] { display: none; }
+    .section-kicker { margin: 0 0 8px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .section-title { margin-bottom: 30px; font-size: 1.35rem; font-weight: 500; letter-spacing: -.035em; }
+    .section-lead { max-width: 570px; margin: -14px 0 28px; color: var(--muted); }
+
+    .skill-grid { border-top: 1px solid var(--line); counter-reset: skill; }
+    .skill { display: grid; grid-template-columns: 42px minmax(160px, .7fr) 1fr; gap: 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); counter-increment: skill; }
+    .skill::before { content: "0" counter(skill); color: var(--quiet); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .7rem; }
+    .skill strong { color: var(--ink); font-size: .94rem; font-weight: 500; }
+    .skill span { color: var(--muted); font-size: .84rem; }
+
+    .timeline { border-top: 1px solid var(--line); }
+    .experience { display: grid; grid-template-columns: minmax(170px, .65fr) 1fr; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .experience h3 { margin-bottom: 5px; font-size: .96rem; font-weight: 500; }
+    .meta { margin: 0; color: var(--accent); font-size: .75rem; line-height: 1.5; }
+    .experience p { margin: 0; color: var(--muted); font-size: .86rem; }
+    .projects { border-top: 1px solid var(--line); }
+    .project { display: grid; grid-template-columns: minmax(220px, .7fr) 1fr; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .project-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--surface-2); border: 1px solid var(--line); }
+    .project h3 { margin-bottom: 7px; font-size: .98rem; font-weight: 500; }
+    .project p { margin: 0 0 12px; color: var(--muted); font-size: .86rem; }
+    .project-link { color: var(--accent); font-size: .78rem; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+    .project-link:hover { color: var(--warm); }
+    .project-access { margin-top: 12px !important; color: var(--quiet) !important; font-size: .76rem !important; }
+    .project-access a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    .details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; border-top: 1px solid var(--line); }
+    .detail { padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .detail-label { display: block; margin-bottom: 7px; color: var(--quiet); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .detail-value { color: var(--ink); font-size: .88rem; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 28px; }
+    .contact { color: var(--ink); font-size: .88rem; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+    .contact:hover { color: var(--accent); }
+    .top-contact, .contact { cursor: pointer; }
+    footer { padding: 0 56px 32px; color: var(--quiet); font-size: .72rem; }
+
+    .portfolio { animation: page-in .55s ease both; }
+    .intro { animation: content-in .5s .05s ease both; }
+    .tabs { animation: content-in .5s .12s ease both; }
+    .panel:not([hidden]) { animation: panel-in .38s ease both; }
+    .top-contact, .contact { transition: color .2s ease, border-color .2s ease, background-color .2s ease; }
+    .tab::after { transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+    .tab[aria-selected="true"]::after { transform: scaleX(1); }
+    .tab:focus-visible, .top-contact:focus-visible, .contact:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    .skill { transition: background-color .2s ease, transform .2s ease; }
+    .skill:hover { background: var(--surface-2); transform: translateX(3px); }
+    .skill:hover strong { color: var(--accent); }
+    @keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes content-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+
+    @media (max-width: 650px) {
+      body { padding: 12px; }
+      .banner-wrap { margin: 0; }
+      .banner { height: 140px; }
+      .banner-profile { bottom: -46px; left: 18px; width: 100px; height: 100px; border-width: 3px; }
+      .intro, .content { padding-right: 22px; padding-left: 22px; }
+      .intro { padding-top: 66px; }
+      .intro-top { flex-direction: column; gap: 22px; }
+      .identity { gap: 17px; }
+      .profile-photo { width: 92px; height: 92px; flex-basis: 92px; }
+      .eyebrow { margin-bottom: 12px; }
+      .bio { margin: 28px 0 0; }
+      .tabs { gap: 22px; overflow-x: auto; padding: 0 22px; }
+      .tab { white-space: nowrap; }
+      .skill { grid-template-columns: 34px 1fr; gap: 12px; }
+      .skill span { grid-column: 2; }
+      .experience { grid-template-columns: 1fr; gap: 7px; }
+      .project { grid-template-columns: 1fr; gap: 16px; }
+      .details { grid-template-columns: 1fr; }
+      footer { padding-right: 22px; padding-left: 22px; }
+    }
+    @media (pointer: coarse) { body { cursor: auto; } }
+  </style>
 </head>
 <body>
-  <!-- Ambient Desk Scene & Studio Lighting -->
-  <div class="ambient-scene">
-    <div class="spotlight"></div>
-    <div class="desk-surface"></div>
-  </div>
-
-  <!-- Sleek Top Header Bar -->
-  <header class="top-bar">
-    <div class="brand-monogram">
-      <span class="crest">AQ</span>
-      <div class="brand-text-group">
-        <span class="brand-name">ALI QADRI</span>
-        <span class="brand-folio">FOLIO // EDITION 2026</span>
-      </div>
+  <main class="portfolio">
+    <div class="banner-wrap">
+      <img class="banner" src="portfolio-banner.png" alt="Developer workspace with design and technology tools">
+      <img class="banner-profile" src="profile.jpg" alt="Ali Qadri">
     </div>
-    
-    <div class="quick-tools">
-      <button class="tool-btn" id="soundToggleBtn" aria-label="Toggle Page Turn Sound" title="Sound Effects">
-        <svg class="icon sound-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
-        </svg>
-        <svg class="icon sound-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
-          <line x1="23" y1="9" x2="17" y2="15"></line>
-          <line x1="17" y1="9" x2="23" y2="15"></line>
-        </svg>
-        <span class="btn-text">Audio</span>
-      </button>
-
-      <button class="tool-btn hire-nav-btn" id="hireMeNavBtn" aria-label="Open Hire Me Contact Card">
-        <span class="pulse-dot"></span>
-        <span class="btn-text">Hire Me</span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Interactive Open Book Stage (Two-Page Spread, Zero Scroll) -->
-  <main class="stage-container">
-    
-    <div class="book-viewport">
-      <!-- Ground Atmospheric Drop Shadows -->
-      <div class="book-shadow" id="bookShadow"></div>
-
-      <!-- Hardcover Open Book Frame -->
-      <div class="open-book-casing" id="bookCasing">
-        
-        <!-- Left & Right Page Spread Container -->
-        <div class="book-spread active-spread" id="spread-1" data-spread="1">
-          
-          <!-- ================= LEFT PAGE: PAGE 1 (BIO / NUMBERS / CTA) ================= -->
-          <article class="page-leaf page-left" id="page-1" data-page="1">
-            <div class="page-inner">
-              <!-- Center Spine Crease Gradient (Right Edge of Left Page) -->
-              <div class="spine-crease left-spine-shadow"></div>
-              
-              <!-- Paper Noise & Corner Ornaments -->
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-left"></div>
-              <div class="corner-ornament bottom-left"></div>
-
-              <!-- Page 1 Header -->
-              <div class="page-header">
-                <div class="vol-stamp">VOL. 2026 // DOSSIER NO. 01</div>
-                <div class="status-indicator">
-                  <span class="status-badge"><span class="badge-dot"></span> AVAILABLE FOR HIRE</span>
-                </div>
-              </div>
-
-              <!-- Hero Identity Section -->
-              <section class="identity-section">
-                <button class="profile-avatar-wrapper" id="profileImageButton" type="button" aria-label="View full profile photo">
-                  <img src="profile.jpg" alt="Ali Qadri - Digital Operations & Technology Professional" class="profile-avatar-img">
-                </button>
-                <h1 class="hero-name">ALI QADRI</h1>
-                <p class="hero-role">Digital Operations &amp; Technology Professional</p>
-                <div class="editorial-rule">
-                  <span>✦</span>
-                </div>
-              </section>
-
-              <!-- Bio Statement -->
-              <section class="bio-section">
-                <p class="bio-text">
-                  <span class="dropcap">D</span>igital operations and technology professional with experience in project coordination, web development, and digital product delivery. Skilled in translating requirements into functional prototypes and web solutions, coordinating development activities, and supporting testing and deployment.
-                </p>
-              </section>
-
-              <!-- Direct Contact Numbers Strip -->
-              <div class="contact-strip">
-                <a href="tel:+923378354539" class="strip-item" title="Call or WhatsApp">
-                  <svg class="strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  <span>+92 337 8354539</span>
-                </a>
-                <span class="strip-divider">•</span>
-                <a href="mailto:designwithsyed@gmail.com" class="strip-item" title="Direct Email">
-                  <svg class="strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                  <span>designwithsyed@gmail.com</span>
-                </a>
-                <span class="strip-divider">•</span>
-                <a href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer" class="strip-item" title="LinkedIn Profile">
-                  <svg class="strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                  <span>in/itsaliqadri</span>
-                </a>
-              </div>
-
-              <!-- Primary Call to Action -->
-              <div class="cta-actions">
-                <button class="cta-primary-btn" id="hireMeBtn">
-                  <span class="btn-shine"></span>
-                  <span class="cta-label">HIRE ME</span>
-                  <span class="cta-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-
-              <!-- Left Page Footer -->
-              <div class="page-footer">
-                <div class="footer-meta">KARACHI, PK • REMOTE WORLDWIDE</div>
-                <div class="page-number">— 01 —</div>
-              </div>
-            </div>
-          </article>
-
-
-          <!-- ================= CENTER SPINE HINGE & BOOKMARK RIBBON ================= -->
-          <div class="book-spine-hinge">
-            <div class="spine-binding-stitch"></div>
-            <!-- Hanging Silk Bookmark Ribbon -->
-            <div class="bookmark-ribbon" id="bookmarkRibbon" title="Bookmark Ribbon - Return to Cover">
-              <span class="ribbon-text">FOLIO</span>
-              <div class="ribbon-tail"></div>
-            </div>
+    <header class="intro">
+      <div class="intro-top">
+        <div class="identity">
+          <div>
+            <p class="eyebrow">Portfolio / 2026</p>
+            <h1>Ali Qadri</h1>
+            <p class="role">Digital Operations &amp; Technology Professional</p>
           </div>
-
-
-          <!-- ================= RIGHT PAGE: PAGE 2 (FEATURED RESTAURANT ERP PROJECT) ================= -->
-          <article class="page-leaf page-right" id="page-2" data-page="2">
-            <div class="page-inner">
-              <div class="spine-crease right-spine-shadow"></div>
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-right"></div>
-              <div class="corner-ornament bottom-right"></div>
-
-              <div class="page-header">
-                <div class="vol-stamp">VOL. 2026 // DOSSIER NO. 02</div>
-                <div class="toc-badge">FEATURED PROJECT</div>
-              </div>
-
-              <section class="chapter-heading-area">
-                <h2 class="chapter-main-title">RESTAURANT ERP DASHBOARD</h2>
-                <p class="chapter-subtitle">A responsive command center for smarter restaurant operations.</p>
-                <div class="editorial-rule"><span>✦</span></div>
-              </section>
-
-              <div class="project-content">
-                <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP dashboard project demo">
-                  <source src="Project%201.mp4" type="video/mp4">
-                  Your browser does not support embedded video.
-                </video>
-                <p class="project-overview">
-                  A restaurant operations dashboard that brings sales, orders, kitchen activity, inventory, reservations, and staff into one clear workspace helping managers make faster, better informed decisions.
-                </p>
-                <a class="project-demo-link" href="https://sprightly-tapioca-374a40.netlify.app/" target="_blank" rel="noopener noreferrer">
-                  Open live demo <span aria-hidden="true">↗</span>
-                </a>
-                <div class="project-features">
-                  <div class="project-feature"><strong>Sales &amp; orders</strong><span>Live metrics and dine-in, takeaway, and delivery status.</span></div>
-                  <div class="project-feature"><strong>Kitchen workflow</strong><span>Preparation priorities and order progress at a glance.</span></div>
-                  <div class="project-feature"><strong>Menu &amp; inventory</strong><span>Menu visibility, stock levels, and reorder thresholds.</span></div>
-                  <div class="project-feature"><strong>Team &amp; shifts</strong><span>Staff schedules, attendance, leave, and shift coverage.</span></div>
-                  <div class="project-feature"><strong>Reservations</strong><span>Bookings, guest counts, tables, and upcoming visits.</span></div>
-                  <div class="project-feature"><strong>Finance &amp; service</strong><span>Expenses, payroll, and customer complaints.</span></div>
-                </div>
-                
-              </div>
-
-              <div class="page-footer">
-                <div class="turn-next-hint" data-action="next">Path Finder ➔</div>
-                <div class="page-number">— 02 —</div>
-              </div>
-
-              <div class="corner-peel" data-action="next" title="Turn to next chapter">
-                <div class="peel-triangle"></div>
-                <div class="peel-label">FLIP ➔</div>
-              </div>
-            </div>
-          </article>
-
-        </div> <!-- /book-spread (Spread 1) -->
-
-
-        <!-- ================= SPREAD 2: PAGES 03 & 04 (PATH FINDER & EXPERIENCE) ================= -->
-        <div class="book-spread" id="spread-2" data-spread="2">
-          <article class="page-leaf page-left" id="page-3" data-page="3">
-            <div class="page-inner">
-              <div class="spine-crease left-spine-shadow"></div>
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-left"></div>
-              <div class="corner-ornament bottom-left"></div>
-
-              <div class="page-header">
-                <div class="vol-stamp">VOL. 2026 // DOSSIER NO. 03</div>
-                <div class="toc-badge">FEATURED PROJECT</div>
-              </div>
-
-              <section class="chapter-heading-area">
-                <h2 class="chapter-main-title">PATH FINDER</h2>
-                <p class="chapter-subtitle">A student-friendly career discovery and exploration app.</p>
-                <div class="editorial-rule"><span>✦</span></div>
-              </section>
-
-              <div class="project-content pathfinder-content">
-                <video class="project-video" controls playsinline preload="metadata" aria-label="Path Finder career discovery app demo">
-                  <source src="Project%202.mp4" type="video/mp4">
-                  Your browser does not support embedded video.
-                </video>
-                <p class="project-overview">
-                  Path Finder is a frontend-only career discovery app for students who are unsure what to study or pursue. It uses a 36-question RIASEC assessment to identify interests and suggest career fields, degrees, and Pakistani universities.
-                </p>
-                <p class="project-overview">
-                  It features a simple, student-friendly design, keyboard and touch controls, progress saving in the browser, and personalized results.
-                </p>
-                <a class="project-demo-link" href="https://lighthearted-conkies-a2ec39.netlify.app/" target="_blank" rel="noopener noreferrer">
-                  Open live demo <span aria-hidden="true">↗</span>
-                </a>
-                <p class="project-disclaimer">
-                  It supports exploration and decision-making, but is not a psychological diagnosis or a guarantee of career fit.
-                </p>
-              </div>
-
-              <div class="page-footer">
-                <div class="turn-prev-hint" data-action="prev">⏮ Restaurant ERP Project</div>
-                <div class="page-footer-label">My Workflow ➔</div>
-                <div class="page-number">— 03 —</div>
-              </div>
-            </div>
-          </article>
-
-          <div class="book-spine-hinge">
-            <div class="spine-binding-stitch"></div>
-          </div>
-
-          <!-- RIGHT PAGE: PAGE 4 (MY WORKFLOW) -->
-          <article class="page-leaf page-right" id="page-4" data-page="4">
-            <div class="page-inner">
-              <div class="spine-crease right-spine-shadow"></div>
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-right"></div>
-              <div class="corner-ornament bottom-right"></div>
-
-              <div class="page-header">
-                <div class="vol-stamp">VOL. 2026 // DOSSIER NO. 04</div>
-                <div class="toc-badge">HOW I WORK</div>
-              </div>
-
-              <section class="chapter-heading-area">
-                <h2 class="chapter-main-title">MY WORKFLOW</h2>
-                <p class="chapter-subtitle">A clear path from the first question to continuous improvement.</p>
-                <div class="editorial-rule"><span>✦</span></div>
-              </section>
-
-              <ol class="workflow-steps" aria-label="Project workflow">
-                <li class="workflow-step">
-                  <span class="workflow-number">01</span>
-                  <div><h3>Understand the problem</h3><p>Clarify users, needs, constraints, and success.</p></div>
-                  <span class="workflow-connector arrow-right" aria-hidden="true"></span>
-                </li>
-                <li class="workflow-step">
-                  <span class="workflow-number">02</span>
-                  <div><h3>Define the solution</h3><p>Set scope, key flows, and success measures.</p></div>
-                  <span class="workflow-connector arrow-down" aria-hidden="true"></span>
-                </li>
-                <li class="workflow-step">
-                  <span class="workflow-number">03</span>
-                  <div><h3>Prepare the AI</h3><p>Provide context, references, and guardrails.</p></div>
-                  <span class="workflow-connector arrow-left" aria-hidden="true"></span>
-                </li>
-                <li class="workflow-step">
-                  <span class="workflow-number">04</span>
-                  <div><h3>Build</h3><p>Build in small, reviewable steps.</p></div>
-                  <span class="workflow-connector arrow-down" aria-hidden="true"></span>
-                </li>
-                <li class="workflow-step">
-                  <span class="workflow-number">05</span>
-                  <div><h3>Test</h3><p>Check flows, edge cases, and accessibility.</p></div>
-                  <span class="workflow-connector arrow-right" aria-hidden="true"></span>
-                </li>
-                <li class="workflow-step">
-                  <span class="workflow-number">06</span>
-                  <div><h3>Deploy</h3><p>Ship the verified build; monitor the release.</p></div>
-                  <span class="workflow-connector arrow-down" aria-hidden="true"></span>
-                </li>
-                <li class="workflow-step">
-                  <span class="workflow-number">07</span>
-                  <div><h3>Improve</h3><p>Learn from feedback and plan what comes next.</p></div>
-                </li>
-              </ol>
-
-              <div class="page-footer">
-                <div class="turn-prev-hint" data-action="prev">⏮ Path Finder</div>
-                <div class="page-footer-label">Professional Experience ➔</div>
-                <div class="page-number">— 04 —</div>
-              </div>
-            </div>
-          </article>
-        </div> <!-- /book-spread (Spread 2) -->
-
-        <!-- ================= SPREAD 3: PAGES 05 & 06 (EXPERIENCE & EDUCATION) ================= -->
-        <div class="book-spread" id="spread-3" data-spread="3">
-
-          <!-- LEFT PAGE: PAGE 5 (PROFESSIONAL EXPERIENCE) -->
-          <article class="page-leaf page-left" id="page-5" data-page="5">
-            <div class="page-inner">
-              <div class="spine-crease left-spine-shadow"></div>
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-left"></div>
-              <div class="corner-ornament bottom-left"></div>
-
-              <div class="page-header">
-                <div class="vol-stamp">VOL. 2026 // DOSSIER NO. 05</div>
-                <div class="status-indicator">
-                  <span class="status-badge"><span class="badge-dot"></span> CAREER HISTORY</span>
-                </div>
-              </div>
-
-              <section class="chapter-heading-area">
-                <h2 class="chapter-main-title">PROFESSIONAL EXPERIENCE</h2>
-                <p class="chapter-subtitle">Project coordination, web development, and digital product delivery.</p>
-                <div class="editorial-rule"><span>✦</span></div>
-              </section>
-
-              <div class="exp-catalog-list">
-                <div class="exp-catalog-item exp-featured">
-                  <div class="exp-item-top">
-                    <span class="exp-item-role">Operations Coordinator — Digital Projects</span>
-                    <span class="exp-item-period">April 2026 – November 2026</span>
-                  </div>
-                  <div class="exp-item-company">Times TX GmbH &nbsp;•&nbsp; Remote</div>
-                  <ul class="exp-item-bullets">
-                    <li>Coordinated software development activities, tracked tasks and deliverables, and maintained project timesheets.</li>
-                    <li>Designed, developed, and deployed the company's official website and multiple client websites using WordPress, Elementor, and custom code.</li>
-                    <li>Built functional prototypes and AI-assisted web applications, contributing to frontend interfaces and backend functionality.</li>
-                    <li>Prepared technical requirements, work orders, project documentation, and reports.</li>
-                    <li>Tested ERP software and website functionality, verified implemented requirements, researched competitors, and supported technical SEO improvements.</li>
-                  </ul>
-                </div>
-                <div class="exp-catalog-item">
-                  <div class="exp-item-top">
-                    <span class="exp-item-role">Web Designer — UI/UX &amp; Product Collaboration</span>
-                    <span class="exp-item-period">Aug 2025 – Dec 2025</span>
-                  </div>
-                  <div class="exp-item-company">nocode.lat &nbsp;•&nbsp; Remote (Part-time)</div>
-                  <ul class="exp-item-bullets">
-                    <li>Designed responsive website interfaces and interactive wireframes in Figma alongside founding leadership and product stakeholders.</li>
-                    <li>Explored modern micro-interactions using Rive; moderated and actively engaged the community Discord server.</li>
-                  </ul>
-                </div>
-                <div class="exp-catalog-item">
-                  <div class="exp-item-top">
-                    <span class="exp-item-role">Social Media Manager &amp; Content Creator</span>
-                    <span class="exp-item-period">Aug 2022 – Jun 2023</span>
-                  </div>
-                  <div class="exp-item-company">EZ-AD &nbsp;•&nbsp; Remote (Part-time)</div>
-                  <ul class="exp-item-bullets">
-                    <li>Authored LinkedIn articles, scheduled campaigns, and maintained cohesive visual and brand consistency across all digital channels.</li>
-                    <li>Produced engaging written and visual content tailored to audience segments, contributing to measurable engagement growth.</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="page-footer">
-                <div class="turn-prev-hint" data-action="prev">⏮ My Workflow</div>
-                <div class="page-footer-label">Education &amp; Credentials ➔</div>
-                <div class="page-number">— 05 —</div>
-              </div>
-            </div>
-          </article>
-
-          <div class="book-spine-hinge">
-            <div class="spine-binding-stitch"></div>
-          </div>
-
-          <!-- RIGHT PAGE: PAGE 6 (EDUCATION & CREDENTIALS) -->
-          <article class="page-leaf page-right" id="page-6" data-page="6">
-            <div class="page-inner">
-              <div class="spine-crease right-spine-shadow"></div>
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-right"></div>
-              <div class="corner-ornament bottom-right"></div>
-
-              <div class="page-header">
-                <div class="vol-stamp">VOL. 2026 // DOSSIER NO. 06</div>
-                <div class="status-indicator">
-                  <span class="status-badge"><span class="badge-dot"></span> ACADEMIC RECORD</span>
-                </div>
-              </div>
-
-              <section class="chapter-heading-area">
-                <h2 class="chapter-main-title">EDUCATION &amp; CREDENTIALS</h2>
-                <p class="chapter-subtitle">Formal computer science foundations, engineering diplomas, and specialized design certifications.</p>
-                <div class="editorial-rule"><span>✦</span></div>
-              </section>
-
-              <div class="edu-catalog-list">
-                <div class="edu-item-box">
-                  <div class="edu-item-title">
-                    <span>BS in Computer Science</span>
-                    <span class="exp-item-period">Expected May 2027</span>
-                  </div>
-                  <div class="edu-item-sub">Iqra University &nbsp;•&nbsp; Karachi, Pakistan</div>
-                  <p class="edu-item-detail">Rigorous coursework in computational systems, algorithms, database architectures, software engineering standards, and modern human-computer interaction.</p>
-                </div>
-
-                <div class="edu-item-box">
-                  <div class="edu-item-title">
-                    <span>Advanced Diploma in Software Engineering</span>
-                    <span class="exp-item-period">Completed Nov 2024</span>
-                  </div>
-                  <div class="edu-item-sub">Aptech Computer Education &nbsp;•&nbsp; Pakistan</div>
-                  <p class="edu-item-detail">Intensive full-stack development program covering web frameworks, enterprise testing pipelines, software project lifecycles, and database engineering.</p>
-                </div>
-
-                <div class="cert-lang-strip">
-                  <div class="cert-card-sub">
-                    <div class="card-mini-title">Certification</div>
-                    <div class="card-mini-val">Figma for UX Design</div>
-                    <div class="edu-item-detail">Interface prototyping &amp; UX hierarchy</div>
-                  </div>
-                  <div class="lang-card-sub">
-                    <div class="card-mini-title">Languages</div>
-                    <div class="card-mini-val">English &amp; Urdu</div>
-                    <div class="edu-item-detail">English (Professional) &nbsp;•&nbsp; Urdu (Native)</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="page-footer">
-                <div class="turn-prev-hint" data-action="prev">⏮ Professional Experience</div>
-                <div class="page-footer-label">Contact &amp; Hire Me ➔</div>
-                <div class="page-number">— 06 —</div>
-              </div>
-            </div>
-          </article>
-        </div> <!-- /book-spread (Spread 3) -->
-
-        <!-- ================= SPREAD 4: PAGE 07 (CONTACT) ================= -->
-        <div class="book-spread" id="spread-4" data-spread="4">
-          <div class="book-endpaper" aria-hidden="true"></div>
-          <div class="book-spine-hinge">
-            <div class="spine-binding-stitch"></div>
-          </div>
-
-          <!-- RIGHT PAGE: PAGE 7 (CONTACT & HIRE ME) -->
-          <article class="page-leaf page-right" id="page-7" data-page="7">
-            <div class="page-inner">
-              <div class="spine-crease right-spine-shadow"></div>
-              <div class="page-grain"></div>
-              <div class="corner-ornament top-right"></div>
-              <div class="corner-ornament bottom-right"></div>
-
-              <div class="page-header">
-                <div class="vol-stamp">ENGAGEMENT DOSSIER // DOSSIER NO. 07</div>
-                <div class="toc-badge">READY TO ENGAGE</div>
-              </div>
-
-              <section class="chapter-heading-area">
-                <h2 class="chapter-main-title">WORK WITH ALI QADRI</h2>
-                <p class="chapter-subtitle">Available for digital operations coordination, full-stack web builds, and technology roles globally.</p>
-                <div class="editorial-rule"><span>✦</span></div>
-              </section>
-
-              <div class="contract-intro-box">
-                <div class="contract-avail-pill">
-                  <span class="badge-dot"></span> AVAILABLE IMMEDIATELY
-                </div>
-                <p class="contract-tagline">
-                  Open to remote engagements worldwide or hybrid roles in Karachi, Pakistan.
-                </p>
-              </div>
-
-              <div class="contact-cards-stack">
-                <a href="mailto:designwithsyed@gmail.com" class="contact-card-link">
-                  <div class="contact-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </div>
-                  <div class="contact-card-data">
-                    <span class="contact-card-type">Direct Email</span>
-                    <span class="contact-card-detail">designwithsyed@gmail.com</span>
-                  </div>
-                  <span class="contact-card-arrow">↗</span>
-                </a>
-
-                <a href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer" class="contact-card-link">
-                  <div class="contact-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                  </div>
-                  <div class="contact-card-data">
-                    <span class="contact-card-type">Phone &amp; WhatsApp</span>
-                    <span class="contact-card-detail">+92 337 8354539</span>
-                  </div>
-                  <span class="contact-card-arrow">↗</span>
-                </a>
-
-                <a href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer" class="contact-card-link">
-                  <div class="contact-card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                      <rect x="2" y="9" width="4" height="12"></rect>
-                      <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                  </div>
-                  <div class="contact-card-data">
-                    <span class="contact-card-type">LinkedIn Network</span>
-                    <span class="contact-card-detail">linkedin.com/in/itsaliqadri</span>
-                  </div>
-                  <span class="contact-card-arrow">↗</span>
-                </a>
-              </div>
-
-              <div class="cta-actions">
-                <button class="cta-primary-btn open-hire-modal-btn">
-                  <span class="btn-shine"></span>
-                  <span class="cta-label">OPEN HIRE ME DOSSIER</span>
-                  <span class="cta-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                      <line x1="7" y1="17" x2="17" y2="7"></line>
-                      <polyline points="7 7 17 7 17 17"></polyline>
-                    </svg>
-                  </span>
-                </button>
-              </div>
-
-              <div class="page-footer">
-                <div class="turn-prev-hint" data-action="prev">⏮ Education &amp; Credentials</div>
-                <div class="page-number">— 07 —</div>
-              </div>
-            </div>
-          </article>
-        </div> <!-- /book-spread (Spread 4) -->
-      </div> <!-- /open-book-casing -->
-    </div> <!-- /book-viewport -->
-
-    <!-- Desktop & Mobile Bottom Reader Controls -->
-    <nav class="reader-controls" aria-label="Book Navigation Controls">
-      <button class="nav-arrow-btn" id="prevControlBtn" aria-label="Previous Spread" disabled>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-        <span class="nav-btn-text">Previous</span>
-      </button>
-
-      <div class="page-indicator-pill">
-        <span class="indicator-label">SPREAD</span>
-        <span class="current-num" id="currentSpread">01 – 02</span>
-        <span class="slash">/</span>
-        <span class="total-num" id="totalSpread">04</span>
+        </div>
+        <a class="top-contact" href="mailto:designwithsyed@gmail.com">Contact me</a>
       </div>
+      <p class="bio">I'm someone who enjoys working across design and technology. I work on websites, explore development solutions, collaborate with teams, and get involved in the details that make digital products work.</p>
+    </header>
 
-      <button class="nav-arrow-btn" id="nextControlBtn" aria-label="Next Spread">
-        <span class="nav-btn-text">Next</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <polyline points="9 18 15 12 9 6"></polyline>
-        </svg>
-      </button>
+    <nav class="tabs" role="tablist" aria-label="Portfolio sections">
+      <button class="tab" id="projects-tab" role="tab" aria-selected="true" aria-controls="projects-panel">Projects</button>
+      <button class="tab" id="skills-tab" role="tab" aria-selected="false" aria-controls="skills-panel" tabindex="-1">Skills</button>
+      <button class="tab" id="experience-tab" role="tab" aria-selected="false" aria-controls="experience-panel" tabindex="-1">Experience</button>
+      <button class="tab" id="education-tab" role="tab" aria-selected="false" aria-controls="education-panel" tabindex="-1">Education</button>
+      <button class="tab" id="contact-tab" role="tab" aria-selected="false" aria-controls="contact-panel" tabindex="-1">Contact</button>
     </nav>
+
+    <section class="content">
+      <div class="panel" id="skills-panel" role="tabpanel" aria-labelledby="skills-tab" hidden>
+        <p class="section-kicker">Capabilities</p>
+        <h2 class="section-title">What I bring</h2>
+        <div class="skill-grid">
+          <div class="skill"><strong>Digital Operations</strong><span>Project coordination, requirements, documentation, and delivery support.</span></div>
+          <div class="skill"><strong>Web Development</strong><span>Responsive websites, functional prototypes, and development solutions.</span></div>
+          <div class="skill"><strong>UI/UX Design</strong><span>Figma wireframes, interface systems, and thoughtful user flows.</span></div>
+          <div class="skill"><strong>Quality &amp; Testing</strong><span>ERP and website testing, requirement checks, and release readiness.</span></div>
+          <div class="skill"><strong>Content &amp; Brand</strong><span>Social content, campaign planning, and consistent digital presence.</span></div>
+          <div class="skill"><strong>Tools</strong><span>WordPress, Elementor, Figma, Rive, HTML, CSS, JavaScript, and AI tools.</span></div>
+        </div>
+      </div>
+
+      <div class="panel" id="projects-panel" role="tabpanel" aria-labelledby="projects-tab">
+        <p class="section-kicker">Selected work</p>
+        <h2 class="section-title">Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP Dashboard project demo"><source src="Project%201.mp4" type="video/mp4"></video>
+            <div><h3>Restaurant ERP System</h3><p>A restaurant operations dashboard bringing sales, orders, kitchen activity, inventory, reservations, and staff into one workspace.</p><a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">erp-system-for-restaurant-business.vercel.app</a><p class="project-access">Want to use it? <a href="mailto:designwithsyed@gmail.com?subject=Restaurant%20ERP%20Access">Contact me first for credentials.</a></p></div>
+          </article>
+          <article class="project">
+            <video class="project-video" controls playsinline preload="metadata" aria-label="Path Finder career discovery app demo"><source src="Project%202.mp4" type="video/mp4"></video>
+            <div><h3>Path Finder</h3><p>A student-friendly career discovery app using a 36-question RIASEC assessment to suggest career fields, degrees, and Pakistani universities.</p><a class="project-link" href="https://lighthearted-conkies-a2ec39.netlify.app/" target="_blank" rel="noopener noreferrer">lighthearted-conkies-a2ec39.netlify.app</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="panel" id="experience-panel" role="tabpanel" aria-labelledby="experience-tab" hidden>
+        <p class="section-kicker">Selected history</p>
+        <h2 class="section-title">Professional experience</h2>
+        <div class="timeline">
+          <article class="experience"><div><h3>Operations Coordinator - Digital Projects</h3><p class="meta">Times TX GmbH / Remote / Apr 2026 - Nov 2026</p></div><p>Coordinated software projects, built and deployed websites, contributed to prototypes, prepared technical documentation, and supported testing and SEO.</p></article>
+          <article class="experience"><div><h3>Web Designer - UI/UX &amp; Product Collaboration</h3><p class="meta">nocode.lat / Remote / Aug 2025 - Dec 2025</p></div><p>Designed responsive interfaces and interactive wireframes in Figma, explored Rive micro-interactions, and supported the product community.</p></article>
+          <article class="experience"><div><h3>Social Media Manager &amp; Content Creator</h3><p class="meta">EZ-AD / Remote / Aug 2022 - Jun 2023</p></div><p>Created written and visual content, scheduled campaigns, and maintained a cohesive brand presence across digital channels.</p></article>
+        </div>
+      </div>
+
+      <div class="panel" id="education-panel" role="tabpanel" aria-labelledby="education-tab" hidden>
+        <p class="section-kicker">Background</p>
+        <h2 class="section-title">Education</h2>
+        <p class="section-lead">Computer science foundations with a practical, product-minded approach to building and improving digital experiences.</p>
+        <div class="details">
+          <div class="detail"><span class="detail-label">Degree</span><span class="detail-value">BS Computer Science<br>Iqra University / Expected 2027</span></div>
+          <div class="detail"><span class="detail-label">Additional training</span><span class="detail-value">Advanced Diploma in Software Engineering<br>Aptech / 2024</span></div>
+          <div class="detail"><span class="detail-label">Location</span><span class="detail-value">Karachi, Pakistan<br>Remote worldwide</span></div>
+          <div class="detail"><span class="detail-label">Languages</span><span class="detail-value">English (professional)<br>Urdu (native)</span></div>
+        </div>
+      </div>
+
+      <div class="panel" id="contact-panel" role="tabpanel" aria-labelledby="contact-tab" hidden>
+        <p class="section-kicker">Open line</p>
+        <h2 class="section-title">Let's work together</h2>
+        <p class="section-lead">Open to digital operations, web development, design collaboration, and technology opportunities.</p>
+        <div class="contact-row"><a class="contact" href="mailto:designwithsyed@gmail.com">Email / designwithsyed@gmail.com</a><a class="contact" href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer">WhatsApp / +92 337 8354539</a><a class="contact" href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer">LinkedIn / itsaliqadri</a></div>
+      </div>
+    </section>
+
+    <footer>Open to digital operations, web development, and technology opportunities.</footer>
   </main>
 
-  <dialog class="profile-image-dialog" id="profileImageDialog" aria-label="Full-size profile photo">
-    <button class="profile-image-close" id="closeProfileImage" type="button" aria-label="Close profile photo">✕</button>
-    <img src="profile.jpg" alt="Ali Qadri - Digital Operations & Technology Professional">
-  </dialog>
+  <script>
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+    const panels = [...document.querySelectorAll('[role="tabpanel"]')];
+    function activateTab(tab) {
+      tabs.forEach((item) => {
+        const active = item === tab;
+        item.setAttribute('aria-selected', active);
+        item.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+    }
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+        tabs[next].focus();
+        activateTab(tabs[next]);
+      });
+    });
 
-  <!-- Interactive "Hire Me" Modal / Dossier Card -->
-  <div class="modal-backdrop" id="hireModal" aria-hidden="true">
-    <div class="modal-card">
-      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close Modal">✕</button>
-      
-      <div class="modal-header">
-        <div class="modal-eyebrow">DIRECT INQUIRY // CONFIDENTIAL</div>
-        <h3 class="modal-title">Work With Ali Qadri</h3>
-        <p class="modal-desc">Available for Digital Operations Coordination, Full-Stack Web Development, and AI-Powered Workflow Engagements.</p>
-      </div>
-
-      <div class="contact-methods">
-        <a href="mailto:designwithsyed@gmail.com?subject=Project%20Inquiry%20-%20Ali%20Qadri" class="contact-box email-box">
-          <div class="method-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div class="method-info">
-            <span class="method-label">Direct Email</span>
-            <span class="method-val">designwithsyed@gmail.com</span>
-          </div>
-          <button class="copy-pill" data-copy="designwithsyed@gmail.com" title="Copy Email">Copy</button>
-        </a>
-
-        <a href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer" class="contact-box phone-box">
-          <div class="method-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
-          </div>
-          <div class="method-info">
-            <span class="method-label">Phone &amp; WhatsApp</span>
-            <span class="method-val">+92 337 8354539</span>
-          </div>
-          <button class="copy-pill" data-copy="+923378354539" title="Copy Number">Copy</button>
-        </a>
-
-        <a href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer" class="contact-box linkedin-box">
-          <div class="method-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-              <rect x="2" y="9" width="4" height="12"></rect>
-              <circle cx="4" cy="4" r="2"></circle>
-            </svg>
-          </div>
-          <div class="method-info">
-            <span class="method-label">LinkedIn Network</span>
-            <span class="method-val">linkedin.com/in/itsaliqadri</span>
-          </div>
-          <span class="link-arrow">↗</span>
-        </a>
-      </div>
-
-      <div class="modal-footer-note">
-        <span>⚡ Typically responds within a few business hours.</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Notification Toast for Copy Feedback -->
-  <div class="toast" id="toast">Copied to clipboard!</div>
-
-  <script src="script.js"></script>
+    let audioContext;
+    function unlockAudio() {
+      if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioContext.state === 'suspended') audioContext.resume();
+    }
+    function playHoverSound() {
+      if (!audioContext || audioContext.state !== 'running') return;
+      const now = audioContext.currentTime;
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(560, now);
+      oscillator.frequency.exponentialRampToValueAtTime(720, now + 0.045);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.018, now + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
+      oscillator.connect(gain).connect(audioContext.destination);
+      oscillator.start(now);
+      oscillator.stop(now + 0.06);
+    }
+    document.addEventListener('pointerdown', unlockAudio, { once: true });
+    document.addEventListener('keydown', unlockAudio, { once: true });
+    document.querySelectorAll('.tab, .top-contact, .contact, .skill').forEach((element) => {
+      element.addEventListener('pointerenter', playHoverSound);
+    });
+  </script>
 </body>
 </html>
