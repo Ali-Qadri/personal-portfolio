@@ -82,6 +82,13 @@
     .meta { margin: 0; color: var(--accent); font-size: .75rem; line-height: 1.5; }
     .experience p { margin: 0; color: var(--muted); font-size: .86rem; }
     .projects { border-top: 1px solid var(--line); }
+    .project-tabs { display: flex; flex-wrap: wrap; gap: 24px; margin-top: -8px; border-bottom: 1px solid var(--line); }
+    .project-tabs .tab { padding: 12px 0 11px; }
+    .project-category-panel { padding-top: 24px; }
+    .project-category-panel[hidden] { display: none; }
+    .project-empty { max-width: 640px; padding: 28px 0 18px; }
+    .project-empty h3 { margin-bottom: 10px; font-size: 1rem; font-weight: 500; }
+    .project-empty p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.7; }
     .project { display: grid; grid-template-columns: minmax(320px, 1.15fr) 1fr; gap: 36px; align-items: start; padding: 28px 0 32px; border-bottom: 1px solid var(--line); }
     .project-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--surface-2); border: 1px solid var(--line); }
     .project-tag { margin: 0 0 8px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
@@ -198,31 +205,42 @@
       <div class="panel" id="projects-panel" role="tabpanel" aria-labelledby="projects-tab">
         <p class="section-kicker">Featured work</p>
         <h2 class="section-title">Projects</h2>
-        <div class="projects">
-          <article class="project">
-            <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP Dashboard project demo">
-              <source src="Projects/Restaurant%20ERP/2026-11-18%2014-54-12.mov" type="video/mp4">
-              <source src="Projects/Restaurant%20ERP/2026-11-18%2014-54-12.mov" type="video/quicktime">
-              Your browser does not support embedded video.
-            </video>
-            <div>
-              <p class="project-tag">Operations &amp; Management Platform</p>
-              <h3>Restaurant ERP System</h3>
-              <p>A centralized restaurant operations dashboard built to replace scattered spreadsheets and disconnected tools with a single workspace for daily service and back-office management.</p>
-              <p>It connects front-of-house coordination, kitchen execution, inventory control, staff scheduling, and financial oversight so restaurant managers can monitor activity in real time and act faster during busy shifts.</p>
-              <div class="project-actions">
-                <a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">erp-system-for-restaurant-business.vercel.app</a>
+        <nav class="project-tabs" role="tablist" aria-label="Projects">
+          <button class="tab" id="erp-business-tab" role="tab" aria-selected="true" aria-controls="erp-business-panel">ERP Business</button>
+          <button class="tab" id="other-projects-tab" role="tab" aria-selected="false" aria-controls="other-projects-panel" tabindex="-1">Other Projects</button>
+        </nav>
+        <div class="project-category-panel" id="erp-business-panel" role="tabpanel" aria-labelledby="erp-business-tab" tabindex="0">
+          <div class="projects">
+            <article class="project">
+              <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP Dashboard project demo">
+                <source src="Projects/Restaurant%20ERP/Video.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+              </video>
+              <div>
+                <p class="project-tag">Operations &amp; Management Platform</p>
+                <h3>Restaurant ERP System</h3>
+                <p>A centralized restaurant operations dashboard built to replace scattered spreadsheets and disconnected tools with a single workspace for daily service and back-office management.</p>
+                <p>It connects front-of-house coordination, kitchen execution, inventory control, staff scheduling, and financial oversight so restaurant managers can monitor activity in real time and act faster during busy shifts.</p>
+                <div class="project-actions">
+                  <a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">erp-system-for-restaurant-business.vercel.app</a>
+                </div>
+                <p class="project-access">Want to use it? <a href="mailto:designwithsyed@gmail.com?subject=Restaurant%20ERP%20Access">Contact me first for credentials.</a></p>
               </div>
-              <p class="project-access">Want to use it? <a href="mailto:designwithsyed@gmail.com?subject=Restaurant%20ERP%20Access">Contact me first for credentials.</a></p>
+            </article>
+            <div class="project-highlights" aria-label="Restaurant ERP key modules">
+              <div class="project-highlight"><span class="project-highlight-title">Sales &amp; Orders</span><span class="project-highlight-desc">Live revenue visibility alongside dine-in, takeaway, and delivery order tracking.</span></div>
+              <div class="project-highlight"><span class="project-highlight-title">Kitchen Workflow</span><span class="project-highlight-desc">Clear preparation queues and order progress updates to keep service moving smoothly.</span></div>
+              <div class="project-highlight"><span class="project-highlight-title">Menu &amp; Inventory</span><span class="project-highlight-desc">Centralized menu management, stock level monitoring, and reorder thresholds.</span></div>
+              <div class="project-highlight"><span class="project-highlight-title">Reservations</span><span class="project-highlight-desc">Table planning, guest counts, and upcoming booking schedules in one view.</span></div>
+              <div class="project-highlight"><span class="project-highlight-title">Team &amp; Shifts</span><span class="project-highlight-desc">Staff rosters, attendance logs, leave tracking, and shift coverage coordination.</span></div>
+              <div class="project-highlight"><span class="project-highlight-title">Finance &amp; Service</span><span class="project-highlight-desc">Expense tracking, payroll records, and customer complaint logging for follow-up.</span></div>
             </div>
-          </article>
-          <div class="project-highlights" aria-label="Restaurant ERP key modules">
-            <div class="project-highlight"><span class="project-highlight-title">Sales &amp; Orders</span><span class="project-highlight-desc">Live revenue visibility alongside dine-in, takeaway, and delivery order tracking.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Kitchen Workflow</span><span class="project-highlight-desc">Clear preparation queues and order progress updates to keep service moving smoothly.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Menu &amp; Inventory</span><span class="project-highlight-desc">Centralized menu management, stock level monitoring, and reorder thresholds.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Reservations</span><span class="project-highlight-desc">Table planning, guest counts, and upcoming booking schedules in one view.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Team &amp; Shifts</span><span class="project-highlight-desc">Staff rosters, attendance logs, leave tracking, and shift coverage coordination.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Finance &amp; Service</span><span class="project-highlight-desc">Expense tracking, payroll records, and customer complaint logging for follow-up.</span></div>
+          </div>
+        </div>
+        <div class="project-category-panel" id="other-projects-panel" role="tabpanel" aria-labelledby="other-projects-tab" tabindex="0" hidden>
+          <div class="project-empty">
+            <h3>More projects coming soon</h3>
+            <p>This section is ready for additional projects. Add each project as its own tab and showcase when it is ready to share.</p>
           </div>
         </div>
       </div>
@@ -261,24 +279,45 @@
   </main>
 
   <script>
-    const tabs = [...document.querySelectorAll('[role="tab"]')];
-    const panels = [...document.querySelectorAll('[role="tabpanel"]')];
-    function activateTab(tab) {
-      tabs.forEach((item) => {
+    const portfolioTabs = [...document.querySelectorAll('.tabs [role="tab"]')];
+    const portfolioPanels = [...document.querySelectorAll('.content > [role="tabpanel"]')];
+    function activatePortfolioTab(tab) {
+      portfolioTabs.forEach((item) => {
         const active = item === tab;
         item.setAttribute('aria-selected', active);
         item.tabIndex = active ? 0 : -1;
       });
-      panels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+      portfolioPanels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
     }
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activateTab(tab));
+    portfolioTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activatePortfolioTab(tab));
       tab.addEventListener('keydown', (event) => {
         if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
         event.preventDefault();
-        const next = event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
-        tabs[next].focus();
-        activateTab(tabs[next]);
+        const next = event.key === 'ArrowRight' ? (index + 1) % portfolioTabs.length : (index - 1 + portfolioTabs.length) % portfolioTabs.length;
+        portfolioTabs[next].focus();
+        activatePortfolioTab(portfolioTabs[next]);
+      });
+    });
+
+    const projectTabs = [...document.querySelectorAll('.project-tabs [role="tab"]')];
+    const projectPanels = [...document.querySelectorAll('.project-category-panel')];
+    function activateProjectTab(tab) {
+      projectTabs.forEach((item) => {
+        const active = item === tab;
+        item.setAttribute('aria-selected', active);
+        item.tabIndex = active ? 0 : -1;
+      });
+      projectPanels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
+    }
+    projectTabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateProjectTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'ArrowRight' ? (index + 1) % projectTabs.length : (index - 1 + projectTabs.length) % projectTabs.length;
+        projectTabs[next].focus();
+        activateProjectTab(projectTabs[next]);
       });
     });
 
