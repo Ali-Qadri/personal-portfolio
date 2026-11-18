@@ -82,14 +82,20 @@
     .meta { margin: 0; color: var(--accent); font-size: .75rem; line-height: 1.5; }
     .experience p { margin: 0; color: var(--muted); font-size: .86rem; }
     .projects { border-top: 1px solid var(--line); }
-    .project { display: grid; grid-template-columns: minmax(220px, .7fr) 1fr; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .project { display: grid; grid-template-columns: minmax(320px, 1.15fr) 1fr; gap: 36px; align-items: start; padding: 28px 0 32px; border-bottom: 1px solid var(--line); }
     .project-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--surface-2); border: 1px solid var(--line); }
-    .project h3 { margin-bottom: 7px; font-size: .98rem; font-weight: 500; }
-    .project p { margin: 0 0 12px; color: var(--muted); font-size: .86rem; }
-    .project-link { color: var(--accent); font-size: .78rem; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
+    .project-tag { margin: 0 0 8px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .project h3 { margin-bottom: 12px; font-size: 1.2rem; font-weight: 600; letter-spacing: -.025em; }
+    .project p { margin: 0 0 14px; color: var(--muted); font-size: .88rem; line-height: 1.7; }
+    .project-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 18px; }
+    .project-link { color: var(--accent); font-size: .8rem; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
     .project-link:hover { color: var(--warm); }
-    .project-access { margin-top: 12px !important; color: var(--quiet) !important; font-size: .76rem !important; }
+    .project-access { margin: 14px 0 0 !important; color: var(--quiet) !important; font-size: .78rem !important; line-height: 1.5 !important; }
     .project-access a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+    .project-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; }
+    .project-highlight { padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .project-highlight-title { display: block; margin-bottom: 6px; color: var(--ink); font-size: .88rem; font-weight: 500; }
+    .project-highlight-desc { color: var(--muted); font-size: .82rem; line-height: 1.6; }
 
     .details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; border-top: 1px solid var(--line); }
     .detail { padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -117,6 +123,11 @@
     @keyframes panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
 
+    @media (max-width: 900px) {
+      .project { grid-template-columns: 1fr; gap: 22px; }
+      .project-highlights { grid-template-columns: repeat(2, 1fr); }
+    }
+
     @media (max-width: 650px) {
       body { padding: 12px; }
       .banner-wrap { margin: 0; }
@@ -135,6 +146,7 @@
       .skill span { grid-column: 2; }
       .experience { grid-template-columns: 1fr; gap: 7px; }
       .project { grid-template-columns: 1fr; gap: 16px; }
+      .project-highlights { grid-template-columns: 1fr; }
       .details { grid-template-columns: 1fr; }
       footer { padding-right: 22px; padding-left: 22px; }
     }
@@ -144,8 +156,8 @@
 <body>
   <main class="portfolio">
     <div class="banner-wrap">
-      <img class="banner" src="portfolio-banner.png" alt="Developer workspace with design and technology tools">
-      <img class="banner-profile" src="profile.jpg" alt="Ali Qadri">
+      <img class="banner" src="Assets/portfolio-banner.png" alt="Developer workspace with design and technology tools">
+      <img class="banner-profile" src="Assets/profile.jpg" alt="Ali Qadri">
     </div>
     <header class="intro">
       <div class="intro-top">
@@ -184,17 +196,34 @@
       </div>
 
       <div class="panel" id="projects-panel" role="tabpanel" aria-labelledby="projects-tab">
-        <p class="section-kicker">Selected work</p>
+        <p class="section-kicker">Featured work</p>
         <h2 class="section-title">Projects</h2>
         <div class="projects">
           <article class="project">
-            <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP Dashboard project demo"><source src="Project%201.mp4" type="video/mp4"></video>
-            <div><h3>Restaurant ERP System</h3><p>A restaurant operations dashboard bringing sales, orders, kitchen activity, inventory, reservations, and staff into one workspace.</p><a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">erp-system-for-restaurant-business.vercel.app</a><p class="project-access">Want to use it? <a href="mailto:designwithsyed@gmail.com?subject=Restaurant%20ERP%20Access">Contact me first for credentials.</a></p></div>
+            <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP Dashboard project demo">
+              <source src="Projects/Restaurant%20ERP/2026-11-18%2014-54-12.mov" type="video/mp4">
+              <source src="Projects/Restaurant%20ERP/2026-11-18%2014-54-12.mov" type="video/quicktime">
+              Your browser does not support embedded video.
+            </video>
+            <div>
+              <p class="project-tag">Operations &amp; Management Platform</p>
+              <h3>Restaurant ERP System</h3>
+              <p>A centralized restaurant operations dashboard built to replace scattered spreadsheets and disconnected tools with a single workspace for daily service and back-office management.</p>
+              <p>It connects front-of-house coordination, kitchen execution, inventory control, staff scheduling, and financial oversight so restaurant managers can monitor activity in real time and act faster during busy shifts.</p>
+              <div class="project-actions">
+                <a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">erp-system-for-restaurant-business.vercel.app</a>
+              </div>
+              <p class="project-access">Want to use it? <a href="mailto:designwithsyed@gmail.com?subject=Restaurant%20ERP%20Access">Contact me first for credentials.</a></p>
+            </div>
           </article>
-          <article class="project">
-            <video class="project-video" controls playsinline preload="metadata" aria-label="Path Finder career discovery app demo"><source src="Project%202.mp4" type="video/mp4"></video>
-            <div><h3>Path Finder</h3><p>A student-friendly career discovery app using a 36-question RIASEC assessment to suggest career fields, degrees, and Pakistani universities.</p><a class="project-link" href="https://lighthearted-conkies-a2ec39.netlify.app/" target="_blank" rel="noopener noreferrer">lighthearted-conkies-a2ec39.netlify.app</a></div>
-          </article>
+          <div class="project-highlights" aria-label="Restaurant ERP key modules">
+            <div class="project-highlight"><span class="project-highlight-title">Sales &amp; Orders</span><span class="project-highlight-desc">Live revenue visibility alongside dine-in, takeaway, and delivery order tracking.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Kitchen Workflow</span><span class="project-highlight-desc">Clear preparation queues and order progress updates to keep service moving smoothly.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Menu &amp; Inventory</span><span class="project-highlight-desc">Centralized menu management, stock level monitoring, and reorder thresholds.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Reservations</span><span class="project-highlight-desc">Table planning, guest counts, and upcoming booking schedules in one view.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Team &amp; Shifts</span><span class="project-highlight-desc">Staff rosters, attendance logs, leave tracking, and shift coverage coordination.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Finance &amp; Service</span><span class="project-highlight-desc">Expense tracking, payroll records, and customer complaint logging for follow-up.</span></div>
+          </div>
         </div>
       </div>
 
