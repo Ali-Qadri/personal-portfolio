@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfolio of Ali Qadri, a digital operations and technology professional.">
-  <title>Ali Qadri - Portfolio</title>
+  <meta name="description" content="Ali Qadri is a product developer and designer who builds useful web products from interface to database to deployment. Portfolio and case studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ali Qadri - Product Developer &amp; Designer">
+  <meta property="og:description" content="I build useful web products end to end. See the Restaurant ERP case study.">
+  <meta name="theme-color" content="#0B0D12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
+  <title>Ali Qadri - Product Developer &amp; Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -50,7 +55,6 @@
     .intro { padding: 88px 56px 44px; }
     .intro-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 36px; }
     .identity { display: flex; align-items: flex-start; gap: 24px; }
-    .profile-photo { width: 124px; height: 124px; flex: 0 0 124px; object-fit: cover; border: 1px solid var(--line); border-radius: 4px; }
     .eyebrow { margin: 3px 0 18px; color: var(--quiet); font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
     h1 { margin-bottom: 10px; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -.07em; line-height: .95; }
@@ -82,13 +86,6 @@
     .meta { margin: 0; color: var(--accent); font-size: .75rem; line-height: 1.5; }
     .experience p { margin: 0; color: var(--muted); font-size: .86rem; }
     .projects { border-top: 1px solid var(--line); }
-    .project-tabs { display: flex; flex-wrap: wrap; gap: 24px; margin-top: -8px; border-bottom: 1px solid var(--line); }
-    .project-tabs .tab { padding: 12px 0 11px; }
-    .project-category-panel { padding-top: 24px; }
-    .project-category-panel[hidden] { display: none; }
-    .project-empty { max-width: 640px; padding: 28px 0 18px; }
-    .project-empty h3 { margin-bottom: 10px; font-size: 1rem; font-weight: 500; }
-    .project-empty p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.7; }
     .project { display: grid; grid-template-columns: minmax(320px, 1.15fr) 1fr; gap: 36px; align-items: start; padding: 28px 0 32px; border-bottom: 1px solid var(--line); }
     .project-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--surface-2); border: 1px solid var(--line); }
     .project-tag { margin: 0 0 8px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
@@ -97,6 +94,10 @@
     .project-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 18px; }
     .project-link { color: var(--accent); font-size: .8rem; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
     .project-link:hover { color: var(--warm); }
+    .project-link.primary { padding: 9px 15px; border: 1px solid var(--accent); border-radius: 3px; color: var(--ink); text-decoration: none; }
+    .project-link.primary:hover { background: var(--accent); color: var(--page); }
+    .project-stack { color: var(--quiet) !important; font-size: .78rem !important; }
+    .project-access code { padding: 1px 6px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 3px; color: var(--ink); font-size: .76rem; }
     .project-access { margin: 14px 0 0 !important; color: var(--quiet) !important; font-size: .78rem !important; line-height: 1.5 !important; }
     .project-access a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
     .project-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; }
@@ -136,7 +137,6 @@
     }
 
     @media (max-width: 650px) {
-      body { padding: 12px; }
       .banner-wrap { margin: 0; }
       .banner { height: 140px; }
       .banner-profile { bottom: -46px; left: 18px; width: 100px; height: 100px; border-width: 3px; }
@@ -144,7 +144,6 @@
       .intro { padding-top: 66px; }
       .intro-top { flex-direction: column; gap: 22px; }
       .identity { gap: 17px; }
-      .profile-photo { width: 92px; height: 92px; flex-basis: 92px; }
       .eyebrow { margin-bottom: 12px; }
       .bio { margin: 28px 0 0; }
       .tabs { gap: 22px; overflow-x: auto; padding: 0 22px; }
@@ -163,7 +162,7 @@
 <body>
   <main class="portfolio">
     <div class="banner-wrap">
-      <img class="banner" src="Assets/portfolio-banner.png" alt="Developer workspace with design and technology tools">
+      <img class="banner" src="Assets/portfolio-banner.webp" alt="Developer workspace with design and technology tools" fetchpriority="high">
       <img class="banner-profile" src="Assets/profile.jpg" alt="Ali Qadri">
     </div>
     <header class="intro">
@@ -172,12 +171,12 @@
           <div>
             <p class="eyebrow">Portfolio / 2026</p>
             <h1>Ali Qadri</h1>
-            <p class="role">Digital Operations &amp; Technology Professional</p>
+            <p class="role">Product Developer &amp; Designer</p>
           </div>
         </div>
         <a class="top-contact" href="mailto:designwithsyed@gmail.com">Contact me</a>
       </div>
-      <p class="bio">I'm someone who enjoys working across design and technology. I work on websites, explore development solutions, collaborate with teams, and get involved in the details that make digital products work.</p>
+      <p class="bio">I build useful web products from start to finish: the interface, the database and login, and the deployment. I use AI tools to move faster and spend my own time on the product decisions and the details that make something work for real users.</p>
     </header>
 
     <nav class="tabs" role="tablist" aria-label="Portfolio sections">
@@ -194,53 +193,44 @@
         <h2 class="section-title">What I bring</h2>
         <div class="skill-grid">
           <div class="skill"><strong>Digital Operations</strong><span>Project coordination, requirements, documentation, and delivery support.</span></div>
-          <div class="skill"><strong>Web Development</strong><span>Responsive websites, functional prototypes, and development solutions.</span></div>
+          <div class="skill"><strong>Product Development</strong><span>Full-stack web apps with Supabase and PostgreSQL, authentication, role-based access, and AI features. See the <a href="Projects/Restaurant%20ERP/case-study.html" style="color:var(--accent)">Restaurant ERP</a>.</span></div>
           <div class="skill"><strong>UI/UX Design</strong><span>Figma wireframes, interface systems, and thoughtful user flows.</span></div>
           <div class="skill"><strong>Quality &amp; Testing</strong><span>ERP and website testing, requirement checks, and release readiness.</span></div>
           <div class="skill"><strong>Content &amp; Brand</strong><span>Social content, campaign planning, and consistent digital presence.</span></div>
-          <div class="skill"><strong>Tools</strong><span>WordPress, Elementor, Figma, Rive, HTML, CSS, JavaScript, and AI tools.</span></div>
+          <div class="skill"><strong>Tools</strong><span>HTML, CSS, JavaScript, Supabase, Vercel, WordPress, Elementor, Figma, Rive, and AI-assisted development.</span></div>
         </div>
       </div>
 
       <div class="panel" id="projects-panel" role="tabpanel" aria-labelledby="projects-tab">
         <p class="section-kicker">Featured work</p>
         <h2 class="section-title">Projects</h2>
-        <nav class="project-tabs" role="tablist" aria-label="Projects">
-          <button class="tab" id="erp-business-tab" role="tab" aria-selected="true" aria-controls="erp-business-panel">ERP Business</button>
-          <button class="tab" id="other-projects-tab" role="tab" aria-selected="false" aria-controls="other-projects-panel" tabindex="-1">Other Projects</button>
-        </nav>
-        <div class="project-category-panel" id="erp-business-panel" role="tabpanel" aria-labelledby="erp-business-tab" tabindex="0">
-          <div class="projects">
-            <article class="project">
-              <video class="project-video" controls playsinline preload="metadata" aria-label="Restaurant ERP Dashboard project demo">
-                <source src="Projects/Restaurant%20ERP/Video.mp4" type="video/mp4">
-                Your browser does not support embedded video.
-              </video>
-              <div>
-                <p class="project-tag">Operations &amp; Management Platform</p>
-                <h3>Restaurant ERP System</h3>
-                <p>A centralized restaurant operations dashboard built to replace scattered spreadsheets and disconnected tools with a single workspace for daily service and back-office management.</p>
-                <p>It connects front-of-house coordination, kitchen execution, inventory control, staff scheduling, and financial oversight so restaurant managers can monitor activity in real time and act faster during busy shifts.</p>
-                <div class="project-actions">
-                  <a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">erp-system-for-restaurant-business.vercel.app</a>
-                </div>
-                <p class="project-access">Want to use it? <a href="mailto:designwithsyed@gmail.com?subject=Restaurant%20ERP%20Access">Contact me first for credentials.</a></p>
+        <div class="projects">
+          <article class="project">
+            <video class="project-video" controls playsinline preload="metadata" poster="Projects/Restaurant%20ERP/overview.webp" aria-label="Restaurant ERP project demo">
+              <source src="Projects/Restaurant%20ERP/Video.mp4" type="video/mp4">
+              Your browser does not support embedded video.
+            </video>
+            <div>
+              <p class="project-tag">Personal project / Restaurant operations</p>
+              <h3>Restaurant ERP System</h3>
+              <p>A restaurant management app that brings orders, menu, inventory, reservations, staff and expenses into one place. Each restaurant gets its own data and logins, with owner, manager and staff roles.</p>
+              <p>I designed and built it myself: the interface in plain HTML, CSS and JavaScript, Supabase for the database and sign-in, and an AI assistant that answers questions about your data and can create orders, reservations and menu items once you confirm.</p>
+              <p class="project-stack">HTML / CSS / JavaScript / Supabase (PostgreSQL, Auth, RLS, Edge Functions) / Gemini API / Vercel</p>
+              <div class="project-actions">
+                <a class="project-link primary" href="Projects/Restaurant%20ERP/case-study.html">Read the case study</a>
+                <a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+                <a class="project-link" href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
               </div>
-            </article>
-            <div class="project-highlights" aria-label="Restaurant ERP key modules">
-              <div class="project-highlight"><span class="project-highlight-title">Sales &amp; Orders</span><span class="project-highlight-desc">Live revenue visibility alongside dine-in, takeaway, and delivery order tracking.</span></div>
-              <div class="project-highlight"><span class="project-highlight-title">Kitchen Workflow</span><span class="project-highlight-desc">Clear preparation queues and order progress updates to keep service moving smoothly.</span></div>
-              <div class="project-highlight"><span class="project-highlight-title">Menu &amp; Inventory</span><span class="project-highlight-desc">Centralized menu management, stock level monitoring, and reorder thresholds.</span></div>
-              <div class="project-highlight"><span class="project-highlight-title">Reservations</span><span class="project-highlight-desc">Table planning, guest counts, and upcoming booking schedules in one view.</span></div>
-              <div class="project-highlight"><span class="project-highlight-title">Team &amp; Shifts</span><span class="project-highlight-desc">Staff rosters, attendance logs, leave tracking, and shift coverage coordination.</span></div>
-              <div class="project-highlight"><span class="project-highlight-title">Finance &amp; Service</span><span class="project-highlight-desc">Expense tracking, payroll records, and customer complaint logging for follow-up.</span></div>
+              <p class="project-access">Try it with the visitor login: <code>test@test.com</code> / <code>test123</code></p>
             </div>
-          </div>
-        </div>
-        <div class="project-category-panel" id="other-projects-panel" role="tabpanel" aria-labelledby="other-projects-tab" tabindex="0" hidden>
-          <div class="project-empty">
-            <h3>More projects coming soon</h3>
-            <p>This section is ready for additional projects. Add each project as its own tab and showcase when it is ready to share.</p>
+          </article>
+          <div class="project-highlights" aria-label="Restaurant ERP key modules">
+            <div class="project-highlight"><span class="project-highlight-title">Orders &amp; Kitchen</span><span class="project-highlight-desc">Dine-in, takeaway and delivery orders, moved through preparing, cooking, ready and completed.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Menu &amp; Inventory</span><span class="project-highlight-desc">Menu items and categories, stock levels with reorder thresholds, and supplier records.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Reservations</span><span class="project-highlight-desc">Bookings linked to dining tables, so guest counts and table use sit in one view.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Team &amp; Shifts</span><span class="project-highlight-desc">Employee records, schedules, timesheets, leave requests and shift cover.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">Accounting &amp; Complaints</span><span class="project-highlight-desc">Expenses, payments and wage records, plus a private register for staff concerns.</span></div>
+            <div class="project-highlight"><span class="project-highlight-title">AI Assistant &amp; Access</span><span class="project-highlight-desc">Ask questions in plain language. Every restaurant sees only its own records, enforced in the database.</span></div>
           </div>
         </div>
       </div>
@@ -249,7 +239,7 @@
         <p class="section-kicker">Selected history</p>
         <h2 class="section-title">Professional experience</h2>
         <div class="timeline">
-          <article class="experience"><div><h3>Operations Coordinator - Digital Projects</h3><p class="meta">Times TX GmbH / Remote / Apr 2026 - Nov 2026</p></div><p>Coordinated software projects, built and deployed websites, contributed to prototypes, prepared technical documentation, and supported testing and SEO.</p></article>
+          <article class="experience"><div><h3>Operations Coordinator - Digital Projects</h3><p class="meta">Times TX GmbH / Remote / Apr 2026 - Oct 2026</p></div><p>Coordinated software projects, built and deployed websites, contributed to prototypes, prepared technical documentation, and supported testing and SEO.</p></article>
           <article class="experience"><div><h3>Web Designer - UI/UX &amp; Product Collaboration</h3><p class="meta">nocode.lat / Remote / Aug 2025 - Dec 2025</p></div><p>Designed responsive interfaces and interactive wireframes in Figma, explored Rive micro-interactions, and supported the product community.</p></article>
           <article class="experience"><div><h3>Social Media Manager &amp; Content Creator</h3><p class="meta">EZ-AD / Remote / Aug 2022 - Jun 2023</p></div><p>Created written and visual content, scheduled campaigns, and maintained a cohesive brand presence across digital channels.</p></article>
         </div>
@@ -270,12 +260,12 @@
       <div class="panel" id="contact-panel" role="tabpanel" aria-labelledby="contact-tab" hidden>
         <p class="section-kicker">Open line</p>
         <h2 class="section-title">Let's work together</h2>
-        <p class="section-lead">Open to digital operations, web development, design collaboration, and technology opportunities.</p>
-        <div class="contact-row"><a class="contact" href="mailto:designwithsyed@gmail.com">Email / designwithsyed@gmail.com</a><a class="contact" href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer">WhatsApp / +92 337 8354539</a><a class="contact" href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer">LinkedIn / itsaliqadri</a></div>
+        <p class="section-lead">Open to product development, web development, design collaboration, and technology opportunities.</p>
+        <div class="contact-row"><a class="contact" href="mailto:designwithsyed@gmail.com">Email / designwithsyed@gmail.com</a><a class="contact" href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer">WhatsApp / +92 337 8354539</a><a class="contact" href="https://github.com/Ali-Qadri" target="_blank" rel="noopener noreferrer">GitHub / Ali-Qadri</a><a class="contact" href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer">LinkedIn / itsaliqadri</a></div>
       </div>
     </section>
 
-    <footer>Open to digital operations, web development, and technology opportunities.</footer>
+    <footer>Ali Qadri / Karachi, Pakistan / Open to product development, web development, and design roles.</footer>
   </main>
 
   <script>
@@ -298,53 +288,6 @@
         portfolioTabs[next].focus();
         activatePortfolioTab(portfolioTabs[next]);
       });
-    });
-
-    const projectTabs = [...document.querySelectorAll('.project-tabs [role="tab"]')];
-    const projectPanels = [...document.querySelectorAll('.project-category-panel')];
-    function activateProjectTab(tab) {
-      projectTabs.forEach((item) => {
-        const active = item === tab;
-        item.setAttribute('aria-selected', active);
-        item.tabIndex = active ? 0 : -1;
-      });
-      projectPanels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
-    }
-    projectTabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activateProjectTab(tab));
-      tab.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-        event.preventDefault();
-        const next = event.key === 'ArrowRight' ? (index + 1) % projectTabs.length : (index - 1 + projectTabs.length) % projectTabs.length;
-        projectTabs[next].focus();
-        activateProjectTab(projectTabs[next]);
-      });
-    });
-
-    let audioContext;
-    function unlockAudio() {
-      if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioContext.state === 'suspended') audioContext.resume();
-    }
-    function playHoverSound() {
-      if (!audioContext || audioContext.state !== 'running') return;
-      const now = audioContext.currentTime;
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(560, now);
-      oscillator.frequency.exponentialRampToValueAtTime(720, now + 0.045);
-      gain.gain.setValueAtTime(0.0001, now);
-      gain.gain.exponentialRampToValueAtTime(0.018, now + 0.008);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.055);
-      oscillator.connect(gain).connect(audioContext.destination);
-      oscillator.start(now);
-      oscillator.stop(now + 0.06);
-    }
-    document.addEventListener('pointerdown', unlockAudio, { once: true });
-    document.addEventListener('keydown', unlockAudio, { once: true });
-    document.querySelectorAll('.tab, .top-contact, .contact, .skill').forEach((element) => {
-      element.addEventListener('pointerenter', playHoverSound);
     });
   </script>
 </body>

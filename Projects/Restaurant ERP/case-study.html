@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: a multi-restaurant management app with role-based access, row level security and an AI assistant. Built by Ali Qadri with Supabase, JavaScript and the Gemini API.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Restaurant ERP System - Case study by Ali Qadri">
+  <meta property="og:description" content="One app for orders, menu, inventory, reservations, staff and expenses, with separate data for each restaurant.">
+  <meta property="og:image" content="overview.webp">
+  <meta name="theme-color" content="#0B0D12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
+  <title>Restaurant ERP System - Case study - Ali Qadri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #F1F2F4;
+      --muted: #A0A7B4;
+      --quiet: #8089A0;
+      --line: #292F3A;
+      --surface: #11141B;
+      --surface-2: #171B24;
+      --page: #0B0D12;
+      --accent: #9FB8D4;
+      --warm: #D4C3A3;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--page); color: var(--ink); font-family: Manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.65; }
+    a { color: var(--accent); text-underline-offset: 4px; text-decoration-color: var(--line); }
+    a:hover { color: var(--warm); }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    h1, h2, h3, p { margin-top: 0; }
+
+    .topbar { display: flex; justify-content: space-between; gap: 16px; padding: 18px 40px; border-bottom: 1px solid var(--line); background: var(--surface); font-size: .82rem; }
+    .topbar a { text-decoration: none; color: var(--muted); }
+    .topbar a:hover { color: var(--ink); }
+    .topbar strong { color: var(--ink); font-weight: 600; }
+
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 28px; }
+    .hero { padding: 64px 0 40px; }
+    .eyebrow { margin-bottom: 14px; color: var(--accent); font-size: .72rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin-bottom: 18px; font-size: clamp(2.2rem, 6vw, 3.6rem); font-weight: 800; letter-spacing: -.05em; line-height: 1; }
+    .lead { max-width: 680px; color: var(--muted); font-size: 1.12rem; line-height: 1.7; }
+    .meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; margin-top: 36px; border-top: 1px solid var(--line); }
+    .meta div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .meta dt { margin-bottom: 4px; color: #8A93A3; font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    .meta dd { margin: 0; font-size: .92rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px 22px; align-items: center; margin-top: 28px; }
+    .btn { display: inline-block; padding: 10px 18px; border: 1px solid var(--accent); border-radius: 3px; color: var(--ink); font-size: .85rem; font-weight: 500; text-decoration: none; }
+    .btn:hover { background: var(--accent); color: var(--page); }
+
+    .demo { margin: 8px 0 0; padding: 20px 22px; border: 1px solid var(--line); border-left: 3px solid var(--warm); background: var(--surface); font-size: .9rem; }
+    .demo strong { display: block; margin-bottom: 6px; font-weight: 600; }
+    .demo p { margin: 0 0 6px; color: var(--muted); }
+    .demo p:last-child { margin: 0; }
+    code { padding: 2px 7px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 3px; color: var(--ink); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .85em; }
+
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 40px 0 0; border: 1px solid var(--line); background: var(--surface); }
+    .stat { padding: 20px 22px; border-right: 1px solid var(--line); }
+    .stat:last-child { border-right: 0; }
+    .stat b { display: block; font-size: 1.9rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; }
+    .stat span { color: var(--muted); font-size: .78rem; }
+
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: var(--surface-2); }
+    figcaption { margin-top: 10px; color: var(--muted); font-size: .8rem; line-height: 1.55; }
+    .shot-main { margin: 48px 0 0; }
+    .shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 24px; margin-top: 28px; }
+
+    section { padding: 52px 0 0; }
+    h2 { margin-bottom: 8px; font-size: 1.55rem; font-weight: 700; letter-spacing: -.035em; line-height: 1.2; }
+    .kicker { margin-bottom: 6px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    section > p, .prose p { max-width: 680px; color: var(--muted); }
+    section p strong { color: var(--ink); font-weight: 600; }
+
+    .rows { margin-top: 22px; border-top: 1px solid var(--line); }
+    .row { display: grid; grid-template-columns: minmax(150px, .5fr) 1fr; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .row h3 { margin: 0; font-size: .95rem; font-weight: 600; }
+    .row p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .diagram { margin: 28px 0 0; padding: 22px; border: 1px solid var(--line); background: var(--surface); }
+    .diagram svg { display: block; width: 100%; height: auto; }
+    .diagram figcaption { margin-top: 14px; }
+    svg text { font-family: Manrope, ui-sans-serif, system-ui, sans-serif; fill: var(--ink); }
+    svg .sub { fill: var(--muted); }
+    svg .box { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.2; }
+    svg .box-a { fill: var(--surface-2); stroke: var(--accent); stroke-width: 1.2; }
+    svg .box-w { fill: var(--surface-2); stroke: var(--warm); stroke-width: 1.2; }
+    svg .line { stroke: var(--accent); stroke-width: 1.4; fill: none; }
+    svg .life { stroke: var(--line); stroke-width: 1.2; stroke-dasharray: 4 5; }
+    svg .halo { stroke: var(--surface); stroke-width: 5; paint-order: stroke; }
+
+    ul.plain { margin: 18px 0 0; padding: 0; list-style: none; max-width: 680px; }
+    ul.plain li { position: relative; padding: 0 0 8px 20px; color: var(--muted); font-size: .92rem; }
+    ul.plain li::before { content: ""; position: absolute; left: 0; top: .75em; width: 8px; height: 1px; background: var(--accent); }
+
+    table { width: 100%; margin-top: 22px; border-collapse: collapse; font-size: .88rem; }
+    th, td { padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: #8A93A3; font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
+    td:first-child { width: 28%; color: var(--ink); font-weight: 500; }
+    td { color: var(--muted); }
+
+    .steps { margin: 22px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); counter-reset: s; }
+    .steps li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); counter-increment: s; color: var(--muted); font-size: .92rem; }
+    .steps li::before { content: "0" counter(s); color: #8A93A3; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .74rem; padding-top: 3px; }
+    .steps b { display: block; color: var(--ink); font-weight: 600; }
+
+    .note { margin-top: 22px; padding: 20px 22px; border: 1px solid var(--line); background: var(--surface); max-width: 680px; }
+    .note p { margin: 0 0 10px; color: var(--muted); font-size: .92rem; }
+    .note p:last-child { margin: 0; }
+
+    footer { margin-top: 72px; padding: 28px 0 48px; border-top: 1px solid var(--line); color: #8A93A3; font-size: .82rem; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; }
+
+    @media (max-width: 760px) {
+      .topbar { padding: 16px 20px; }
+      .wrap { padding: 0 20px; }
+      .hero { padding-top: 40px; }
+      .meta, .shots { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: 0; }
+      .stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .row { grid-template-columns: 1fr; gap: 6px; }
+      .diagram { padding: 14px; overflow-x: auto; }
+      .diagram svg { min-width: 640px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="../../index.html">&larr; <strong>Ali Qadri</strong> / Portfolio</a>
+    <a href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <p class="eyebrow">Case study / Personal project / 2026</p>
+      <h1>Restaurant ERP System</h1>
+      <p class="lead">One app for the daily running of a restaurant: orders, menu, inventory, reservations, staff and expenses. It is built so several restaurants can share the same app without ever seeing each other's data.</p>
+
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Everything: product design, frontend, database, authentication, AI integration and deployment</dd></div>
+        <div><dt>Type</dt><dd>Full-stack web app, built on my own</dd></div>
+        <div><dt>Stack</dt><dd>HTML, CSS, JavaScript, Supabase (PostgreSQL, Auth, Edge Functions), Gemini API, Vercel</dd></div>
+        <div><dt>Status</dt><dd>Working showcase, not production-ready (see limits below)</dd></div>
+      </dl>
+
+      <div class="actions">
+        <a class="btn" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">Open the live demo</a>
+        <a href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">View the code</a>
+      </div>
+
+      <div class="stats" aria-label="Project at a glance">
+        <div class="stat"><b>26</b><span>main database tables</span></div>
+        <div class="stat"><b>4</b><span>access levels, platform admin to staff</span></div>
+        <div class="stat"><b>11</b><span>operations the AI assistant can run</span></div>
+        <div class="stat"><b>121</b><span>demo records across 19 categories</span></div>
+      </div>
+
+      <div class="demo" style="margin-top:28px">
+        <strong>Try it yourself</strong>
+        <p>Sign in to the live demo with <code>test@test.com</code> and <code>test123</code>. It opens the Demo Restaurant as an owner. The data is sample data, and other visitors share the same login, so records may have changed since you last looked.</p>
+        <p>Good places to start: create an order, then press the ERP Assistant button at the bottom right and ask which inventory items are running low.</p>
+      </div>
+
+      <figure class="shot-main">
+        <a href="overview.webp" target="_blank" rel="noopener"><img src="overview.webp" width="1600" height="1052" alt="Restaurant ERP overview dashboard showing today's sales, orders, team on shift, sales overview chart, inventory alerts and live orders"></a>
+        <figcaption>The overview screen. Sales, open orders, who is on shift, low-stock ingredients and live tickets, so a manager can check the state of the restaurant at a glance.</figcaption>
+      </figure>
+    </header>
+
+    <section>
+      <p class="kicker">The problem</p>
+      <h2>Restaurants run on connected information</h2>
+      <p>A restaurant needs to take orders, keep the menu current, manage tables and bookings, watch stock, schedule staff and track money. These jobs depend on each other. An order is only useful if the item is available, and low stock needs someone's attention before the dish runs out.</p>
+      <p>When each job lives in a different tool or spreadsheet, owners spend time looking for answers that should be one click away. I wanted to see what it takes to put all of it in one place, with each person seeing only what their role needs.</p>
+    </section>
+
+    <section>
+      <p class="kicker">What it does</p>
+      <h2>Six areas in one workspace</h2>
+      <div class="rows">
+        <div class="row"><h3>Orders &amp; kitchen</h3><p>Create dine-in, takeaway and delivery orders against a table, then move each ticket through preparing, cooking, ready and completed.</p></div>
+        <div class="row"><h3>Menu &amp; inventory</h3><p>Manage menu categories and items with price and availability. Track stock, reorder thresholds, suppliers and stock movements, and link menu items to the ingredients they use.</p></div>
+        <div class="row"><h3>Tables &amp; reservations</h3><p>Keep a list of dining tables and attach bookings and orders to them.</p></div>
+        <div class="row"><h3>Team &amp; shifts</h3><p>Employee records, shift schedule, clock in and out, timesheets, leave requests and shift cover requests.</p></div>
+        <div class="row"><h3>Accounting &amp; complaints</h3><p>Expenses, payments and wage records, plus a private register where staff concerns can be logged and resolved.</p></div>
+        <div class="row"><h3>Dashboard &amp; reports</h3><p>Summaries calculated from the restaurant's own order records, with best sellers and sales by category.</p></div>
+      </div>
+
+      <div class="shots">
+        <figure>
+          <a href="orders.webp" target="_blank" rel="noopener"><img loading="lazy" src="orders.webp" width="1600" height="913" alt="Orders screen listing tickets by status with start cooking and complete buttons"></a>
+          <figcaption>Orders, filtered by status. Each row shows the table, order type and the next action.</figcaption>
+        </figure>
+        <figure>
+          <a href="employees.webp" target="_blank" rel="noopener"><img loading="lazy" src="employees.webp" width="1600" height="1169" alt="Employees screen with directory, schedule, timesheets, leave requests and shift cover tabs"></a>
+          <figcaption>Employees, with the directory, schedule, timesheets, leave and shift cover on separate tabs.</figcaption>
+        </figure>
+        <figure>
+          <a href="complaints.webp" target="_blank" rel="noopener"><img loading="lazy" src="complaints.webp" width="1600" height="826" alt="Employee complaints register with status and priority filters"></a>
+          <figcaption>A private complaints register with status and priority filters.</figcaption>
+        </figure>
+        <figure>
+          <a href="reports.webp" target="_blank" rel="noopener"><img loading="lazy" src="reports.webp" width="1600" height="826" alt="Reports screen with sales by category and best selling dishes"></a>
+          <figcaption>Reports built from the restaurant's order records. The page labels itself as prototype reporting.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Multi-tenant design</p>
+      <h2>One app, many restaurants, no shared data</h2>
+      <p>Instead of building a separate app for each restaurant, the system runs one app on one database. Every restaurant has a unique ID, and every record, such as an order, an employee or an inventory item, belongs to one restaurant.</p>
+      <p>Filtering in the frontend is not enough to protect that. Anyone can change a request in their browser. So the separation is enforced in the database with <strong>Row Level Security</strong> (RLS), and the app links each signed-in user to their restaurants through membership records.</p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 760 270" role="img" aria-label="Diagram: one application and one Supabase database holding separate data for Demo Restaurant and MrCone">
+          <rect class="box-a" x="230" y="14" width="300" height="46" rx="4"/>
+          <text x="380" y="42" text-anchor="middle" font-size="14" font-weight="600">Restaurant ERP app</text>
+          <path class="line" d="M380 60 V84"/>
+          <rect class="box" x="170" y="84" width="420" height="50" rx="4"/>
+          <text x="380" y="106" text-anchor="middle" font-size="14" font-weight="600">Supabase PostgreSQL</text>
+          <text x="380" y="124" text-anchor="middle" font-size="11.5" class="sub">Row Level Security checks every read and write</text>
+          <path class="line" d="M300 134 V162 M460 134 V162"/>
+          <rect class="box-w" x="100" y="162" width="260" height="92" rx="4"/>
+          <text x="230" y="186" text-anchor="middle" font-size="13" font-weight="600">Demo Restaurant</text>
+          <text x="230" y="208" text-anchor="middle" font-size="12" class="sub">its orders</text>
+          <text x="230" y="226" text-anchor="middle" font-size="12" class="sub">its employees</text>
+          <text x="230" y="244" text-anchor="middle" font-size="12" class="sub">its inventory</text>
+          <rect class="box-w" x="400" y="162" width="260" height="92" rx="4"/>
+          <text x="530" y="186" text-anchor="middle" font-size="13" font-weight="600">MrCone</text>
+          <text x="530" y="208" text-anchor="middle" font-size="12" class="sub">its orders</text>
+          <text x="530" y="226" text-anchor="middle" font-size="12" class="sub">its employees</text>
+          <text x="530" y="244" text-anchor="middle" font-size="12" class="sub">its inventory</text>
+        </svg>
+        <figcaption>Two restaurants share the same app and database. Demo Restaurant can never read MrCone's employees, orders or stock, and the other way round.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="kicker">Access control</p>
+      <h2>Who can see what</h2>
+      <p>Sign-in is handled by Supabase Auth. After login the app loads the user's active restaurant membership and role, then shows only the navigation that role needs. There are four levels:</p>
+      <ul class="plain">
+        <li><strong>Platform admin</strong> manages the restaurants on the platform. This is a separate record and not a normal restaurant role.</li>
+        <li><strong>Owner</strong> has full access to their restaurant's data and settings.</li>
+        <li><strong>Manager</strong> runs day-to-day work: employees, orders, reservations and menu.</li>
+        <li><strong>Staff</strong> has a shared restaurant login with limited access to the screens used during service.</li>
+      </ul>
+      <p style="margin-top:18px">Hiding a button is only the first layer. The same rules are repeated in the database policies, so a staff user who tries to call the data directly still gets refused.</p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 760 190" role="img" aria-label="Diagram: login, membership check, role, then database policy check before data is returned">
+          <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9FB8D4"/></marker></defs>
+          <rect class="box" x="8" y="20" width="118" height="54" rx="4"/>
+          <text x="67" y="44" text-anchor="middle" font-size="12.5" font-weight="600">User logs in</text>
+          <text x="67" y="61" text-anchor="middle" font-size="11" class="sub">Supabase Auth</text>
+          <rect class="box" x="164" y="20" width="118" height="54" rx="4"/>
+          <text x="223" y="44" text-anchor="middle" font-size="12.5" font-weight="600">Membership</text>
+          <text x="223" y="61" text-anchor="middle" font-size="11" class="sub">active or denied</text>
+          <rect class="box" x="320" y="20" width="118" height="54" rx="4"/>
+          <text x="379" y="44" text-anchor="middle" font-size="12.5" font-weight="600">Role</text>
+          <text x="379" y="61" text-anchor="middle" font-size="10.5" class="sub">owner, manager, staff</text>
+          <rect class="box" x="476" y="20" width="118" height="54" rx="4"/>
+          <text x="535" y="44" text-anchor="middle" font-size="12.5" font-weight="600">Navigation</text>
+          <text x="535" y="61" text-anchor="middle" font-size="10.5" class="sub">permitted pages only</text>
+          <rect class="box-a" x="632" y="20" width="120" height="54" rx="4"/>
+          <text x="692" y="44" text-anchor="middle" font-size="12.5" font-weight="600">Data request</text>
+          <text x="692" y="61" text-anchor="middle" font-size="10.5" class="sub">with restaurant ID</text>
+          <path class="line" d="M126 47 H162" marker-end="url(#ar)"/>
+          <path class="line" d="M282 47 H318" marker-end="url(#ar)"/>
+          <path class="line" d="M438 47 H474" marker-end="url(#ar)"/>
+          <path class="line" d="M594 47 H630" marker-end="url(#ar)"/>
+          <path class="line" d="M692 74 V108"/>
+          <rect class="box-w" x="520" y="108" width="232" height="56" rx="4"/>
+          <text x="636" y="132" text-anchor="middle" font-size="12.5" font-weight="600">RLS policy check in PostgreSQL</text>
+          <text x="636" y="150" text-anchor="middle" font-size="11" class="sub">allowed: return records / not allowed: reject</text>
+        </svg>
+        <figcaption>The route from login to data. The frontend decides what to show, and the database has the final say on what is returned.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="kicker">AI assistant</p>
+      <h2>Ask questions, with limits</h2>
+      <p>I wanted to see how an AI assistant could work inside a business app without becoming a risk. Users can ask in plain language, for example how many employees are registered, what is on the menu, which items are unavailable, what today's orders are, what stock is low, what the monthly expenses are, or what reservations exist.</p>
+      <p>The assistant can also <strong>create menu items, reservations and orders</strong>, but only after showing the action and getting a confirmation from the user.</p>
+
+      <figure class="diagram">
+        <svg viewBox="0 0 760 390" role="img" aria-label="Sequence diagram of the AI assistant: question, membership check, Gemini tool request, database query as the signed-in user, result and answer">
+          <defs><marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9FB8D4"/></marker></defs>
+          <rect class="box" x="30" y="10" width="120" height="36" rx="4"/><text x="90" y="33" text-anchor="middle" font-size="12.5" font-weight="600">You (browser)</text>
+          <rect class="box-a" x="200" y="10" width="140" height="36" rx="4"/><text x="270" y="33" text-anchor="middle" font-size="12.5" font-weight="600">Edge Function</text>
+          <rect class="box" x="390" y="10" width="120" height="36" rx="4"/><text x="450" y="33" text-anchor="middle" font-size="12.5" font-weight="600">PostgreSQL</text>
+          <rect class="box" x="570" y="10" width="120" height="36" rx="4"/><text x="630" y="33" text-anchor="middle" font-size="12.5" font-weight="600">Gemini</text>
+          <path class="life" d="M90 46 V380 M270 46 V380 M450 46 V380 M630 46 V380"/>
+
+          <path class="line" d="M90 92 H268" marker-end="url(#ar2)"/>
+          <text class="halo" x="180" y="84" text-anchor="middle" font-size="11.5">1 Question + sign-in token</text>
+          <path class="line" d="M270 132 H448" marker-end="url(#ar2)"/>
+          <text class="halo" x="360" y="124" text-anchor="middle" font-size="11.5">2 Check user and membership</text>
+          <path class="line" d="M270 172 H628" marker-end="url(#ar2)"/>
+          <text class="halo" x="450" y="164" text-anchor="middle" font-size="11.5">3 Question + the list of allowed tools</text>
+          <path class="line" d="M630 212 H272" marker-end="url(#ar2)"/>
+          <text class="halo" x="450" y="204" text-anchor="middle" font-size="11.5">4 Gemini asks for one tool</text>
+          <path class="line" d="M270 252 H448" marker-end="url(#ar2)"/>
+          <text class="halo" x="360" y="244" text-anchor="middle" font-size="11.5">5 Run it as the signed-in user</text>
+          <path class="line" d="M270 292 H628" marker-end="url(#ar2)"/>
+          <text class="halo" x="450" y="284" text-anchor="middle" font-size="11.5">6 Tool result, Gemini writes the reply</text>
+          <path class="line" d="M270 332 H92" marker-end="url(#ar2)"/>
+          <text class="halo" x="180" y="324" text-anchor="middle" font-size="11.5">7 Answer shown in chat</text>
+          <rect class="box-w" x="360" y="344" width="392" height="34" rx="4"/>
+          <text x="556" y="365" text-anchor="middle" font-size="11.5">Write actions stop before step 5 and ask you to confirm</text>
+        </svg>
+        <figcaption>The browser never talks to Gemini directly. The Edge Function holds the API key, checks who is asking, and runs only the tools the app defines.</figcaption>
+      </figure>
+
+      <ul class="plain">
+        <li>It has <strong>no free access to the database</strong> and cannot run arbitrary SQL. It can only call the eleven operations I defined.</li>
+        <li>Each operation runs with the <strong>signed-in user's permissions</strong>, so row level security applies to the assistant too.</li>
+        <li>The Gemini API key is kept as a <strong>server-side secret</strong> and never reaches the browser.</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="kicker">Stack</p>
+      <h2>What I used and why</h2>
+      <table>
+        <thead><tr><th>Part</th><th>Why I chose it</th></tr></thead>
+        <tbody>
+          <tr><td>HTML, CSS, JavaScript</td><td>No framework on purpose. I wanted to understand how the interface, data loading and Supabase requests fit together before adding a layer on top.</td></tr>
+          <tr><td>Supabase</td><td>Database, login and server functions in one service, so I could spend my time on the product and the data design instead of building a backend from scratch.</td></tr>
+          <tr><td>PostgreSQL</td><td>The data is highly connected: an order has items, a reservation has a table, an employee has shifts and leave. A relational database with constraints suits that.</td></tr>
+          <tr><td>Row Level Security</td><td>Keeps each restaurant's records private at the database, not just in the interface.</td></tr>
+          <tr><td>Edge Functions</td><td>A server-side place for the AI integration, so secrets and permission checks stay off the browser.</td></tr>
+          <tr><td>Gemini API</td><td>Understands the question and decides which defined tool to call. Function calling connects the model to real app actions.</td></tr>
+          <tr><td>Vercel</td><td>Simple frontend hosting with deploys from the repository. The backend stays on Supabase.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="kicker">Process</p>
+      <h2>How I built it</h2>
+      <ol class="steps">
+        <li><div><b>Mapped the modules</b>Listed what a restaurant does each day and split it into modules: orders, menu, reservations, inventory, employees and finance.</div></li>
+        <li><div><b>Designed the interface</b>Built the layout, navigation, dashboard, forms, tables and modals, aiming to keep a large app easy to move around.</div></li>
+        <li><div><b>Designed the database</b>Created separate related tables, for example orders and order items, or employees, shifts and time entries, connected by IDs.</div></li>
+        <li><div><b>Connected the app to real data</b>Several screens started on local demo data. I rewrote the loading and saving to use Supabase and mapped database records to what the existing screens expected.</div></li>
+        <li><div><b>Added login, roles and RLS</b>Linked users to restaurant memberships and wrote the policies that protect each restaurant's data.</div></li>
+        <li><div><b>Seeded demo data</b>Wrote a script that fills the Demo Restaurant with realistic records. It uses fixed IDs, so running it again does not create duplicates.</div></li>
+        <li><div><b>Added the AI assistant, then tested and deployed</b>Built the Edge Function and its tools, tested the roles and the separation between restaurants, and deployed the frontend on Vercel.</div></li>
+      </ol>
+    </section>
+
+    <section>
+      <p class="kicker">Hard parts</p>
+      <h2>What took the most work</h2>
+      <div class="rows">
+        <div class="row"><h3>Separating restaurants</h3><p>Adding a restaurant ID to the interface was the easy part. Making the database refuse access across restaurants meant memberships and policies, and testing them with different users.</p></div>
+        <div class="row"><h3>Roles in two places</h3><p>Permissions had to match in the navigation and in the database policies. If they drift apart, either users see broken screens or the data is exposed.</p></div>
+        <div class="row"><h3>Moving screens to real data</h3><p>Existing pages expected one shape of data and the database stored another. I wrote a mapping layer so I could keep the interface behaviour while changing where the data came from.</p></div>
+        <div class="row"><h3>Giving the AI limited power</h3><p>Calling an API is simple. Deciding which tools to expose, checking the user's access for each one, and adding a confirmation step before any write took design work.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Limits</p>
+      <h2>What this is, and what it isn't yet</h2>
+      <div class="note">
+        <p>This is a working showcase and a learning project. It demonstrates the structure, the database design, multi-restaurant access, role permissions and the AI features.</p>
+        <p>Not every module has full create, edit and delete workflows yet. Some are complete, some are partial, and some mainly display data. The reports page works from order records and labels itself as prototype reporting, with no payment provider or accounting system connected. The assistant supports a fixed set of operations and cannot do everything the app can.</p>
+        <p>Before real restaurants used it, it would need more testing, a security review and operational work such as backups and monitoring.</p>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">Takeaways</p>
+      <h2>What I learned</h2>
+      <p>Building this showed me how much of a real product sits under the screens: the shape of the data, who is allowed to see it, and how the pieces connect. I came away with practical experience in relational design, authentication, row level security, multi-tenant data access, server-side functions and connecting an AI model to application actions in a controlled way.</p>
+      <p>Next steps would be finishing the partial workflows, adding automated tests and doing a proper security review.</p>
+      <div class="actions">
+        <a class="btn" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">Open the live demo</a>
+        <a href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">View the code</a>
+        <a href="../../index.html">Back to portfolio</a>
+      </div>
+      <figure style="margin-top:40px">
+        <a href="login.webp" target="_blank" rel="noopener"><img loading="lazy" src="login.webp" width="1600" height="826" alt="Restaurant ERP sign-in screen"></a>
+        <figcaption>The sign-in screen. Access is managed through Supabase Auth.</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Ali Qadri / Product Developer &amp; Designer</span>
+      <a href="mailto:designwithsyed@gmail.com">designwithsyed@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>
