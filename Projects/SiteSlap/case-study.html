@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: SiteSlap, a web app that audits any website in a real browser and writes a funny, honest roast with practical fixes. Built by Ali Qadri.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="SiteSlap - Case study by Ali Qadri">
+  <meta property="og:description" content="Drop in a URL, get a scored audit and an honest roast of what's wrong, with a fix for each issue.">
+  <meta property="og:image" content="home.webp">
+  <meta name="theme-color" content="#0B0D12">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
+  <title>SiteSlap - Case study - Ali Qadri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../case-study.css">
+  <style>
+    .quote { margin: 0 0 14px; padding: 18px 22px; border: 1px solid var(--line); border-left: 3px solid var(--warm); background: var(--surface); color: var(--ink); font-size: 1rem; line-height: 1.6; max-width: 680px; }
+    .quote small { display: block; margin-top: 8px; color: var(--muted); font-size: .76rem; }
+    video.demo-video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--surface-2); }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="../../index.html">&larr; <strong>Ali Qadri</strong> / Portfolio</a>
+    <a href="../Restaurant%20ERP/case-study.html">Next: Restaurant ERP &rarr;</a>
+  </div>
+
+  <main class="wrap">
+    <header class="hero">
+      <p class="eyebrow">Case study / Side project / 2026</p>
+      <h1>SiteSlap</h1>
+      <p class="lead">Drop in a website address and SiteSlap opens it in a real browser, runs about fifty checks, scores it, and then roasts it. The jokes are the hook. The evidence and the fixes are the point.</p>
+
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Idea, interface design, development and AI integration</dd></div>
+        <div><dt>Type</dt><dd>Web app, side project</dd></div>
+        <div><dt>Stack</dt><dd>React, Chakra UI, Node.js, Express, Lighthouse, pa11y, Cheerio</dd></div>
+        <div><dt>Status</dt><dd>Working project, free to use with no login</dd></div>
+      </dl>
+
+      <div class="stats" aria-label="Project at a glance">
+        <div class="stat"><b>~50</b><span>checks per audit</span></div>
+        <div class="stat"><b>5</b><span>score categories: design, SEO, content, tech, mobile</span></div>
+        <div class="stat"><b>4</b><span>roast tones, friendly to savage</span></div>
+        <div class="stat"><b>0</b><span>sign-ups needed to use it</span></div>
+      </div>
+
+      <figure class="shot-main">
+        <video class="demo-video" controls playsinline preload="metadata" poster="poster.webp" aria-label="SiteSlap demo: entering a URL, watching the audit run, and reading the results">
+          <source src="Video%20of%20Project.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+        <figcaption>A full run in about a minute: enter a URL, watch the audit steps, then read the score, the roast and the issue list.</figcaption>
+      </figure>
+    </header>
+
+    <section>
+      <p class="kicker">The problem</p>
+      <h2>Most site owners can't see what's wrong</h2>
+      <p>Many websites lose people for the same reasons: poor design, slow loading, broken links and confusing navigation. Visitors get frustrated and leave, and the owner loses sales or enquiries without knowing why.</p>
+      <p>Most owners don't know these problems exist, or don't know how to find and fix them. The tools that do find them tend to produce long, dry lists that are easy to ignore.</p>
+    </section>
+
+    <section>
+      <p class="kicker">The idea</p>
+      <h2>An audit people actually want to read</h2>
+      <p>SiteSlap is a web app that "roasts" websites. You enter a URL, it audits the site, and it writes honest, funny feedback about what's wrong and how to fix it. It checks things like:</p>
+      <ul class="plain">
+        <li>Slow page load times and heavy pages</li>
+        <li>Non-responsive design and how the site behaves on a phone</li>
+        <li>Accessibility problems, such as low contrast and unlabeled form fields</li>
+        <li>Broken links and images</li>
+        <li>Poor SEO</li>
+        <li>Confusing navigation and UI</li>
+        <li>Spelling and grammar mistakes</li>
+        <li>Dated aesthetics</li>
+      </ul>
+      <p style="margin-top:22px">The roast sounds like this:</p>
+      <blockquote class="quote">"Oof, your site loaded slower than dial-up in the 90s! Users are bouncing faster than a kid on a sugar high. Consider optimizing those chonky images, minifying that spaghetti code, and caching like your life depends on it."</blockquote>
+      <blockquote class="quote">"Your navigation is more tangled than wired earbuds shoved in a pocket. Simplify that menu before your users rage-quit in search of a less confounding corner of the internet."</blockquote>
+      <p>Every joke comes with a practical tip, so the owner leaves knowing what to change.</p>
+
+      <div class="shots">
+        <figure>
+          <a href="home.webp" target="_blank" rel="noopener"><img loading="lazy" src="home.webp" width="1600" height="900" alt="SiteSlap home page with the headline Drop your website. Get absolutely slapped, a URL field and four tone options"></a>
+          <figcaption>The home page: one field, one button, and a choice of tone (friendly, sarcastic, savage or professional).</figcaption>
+        </figure>
+        <figure>
+          <a href="progress.webp" target="_blank" rel="noopener"><img loading="lazy" src="progress.webp" width="1600" height="900" alt="Audit in progress showing a checklist of steps with the first four completed"></a>
+          <figcaption>While the audit runs, the app shows each step as it happens, with a rotating line of banter.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <p class="kicker">The result</p>
+      <h2>A report you can act on</h2>
+      <p>The report starts with an overall score and a one-line verdict, then breaks the site down by category. Below that, every issue is listed by severity, and each one explains why it matters, shows the evidence found on the page, and gives a specific fix.</p>
+
+      <div class="rows">
+        <div class="row"><h3>Overall score and scorecard</h3><p>A score out of 100, counts of critical, high, medium and low issues, and a score for each category such as design, SEO and mobile.</p></div>
+        <div class="row"><h3>The roast</h3><p>A short written summary in the tone you picked, which leads with the most important thing to fix first and also says what the site does well.</p></div>
+        <div class="row"><h3>Issues with evidence</h3><p>Each issue shows what was measured, for example how many text elements fail the contrast standard and the exact colour pairs, followed by "the fix" with a copy button.</p></div>
+        <div class="row"><h3>Share and repeat</h3><p>Copy the roast, copy a link to the report, or analyze another website.</p></div>
+      </div>
+
+      <div class="shots">
+        <figure>
+          <a href="results.webp" target="_blank" rel="noopener"><img loading="lazy" src="results.webp" width="1600" height="900" alt="Report header with a score of 70 out of 100, the verdict Solid Slap, and issue counts by severity"></a>
+          <figcaption>The report header: overall score, verdict and issue counts, followed by the category scorecard.</figcaption>
+        </figure>
+        <figure>
+          <a href="roast.webp" target="_blank" rel="noopener"><img loading="lazy" src="roast.webp" width="1600" height="900" alt="The written roast in the friendly tone, summarizing 47 checks and the first thing to fix"></a>
+          <figcaption>The roast, written in the friendly tone. It names what to tackle first and what is already working.</figcaption>
+        </figure>
+      </div>
+      <figure style="margin-top:28px">
+        <a href="issue.webp" target="_blank" rel="noopener"><img loading="lazy" src="issue.webp" width="1600" height="900" alt="An expanded issue showing why it is a problem, measured evidence and a suggested fix"></a>
+        <figcaption>One issue opened up: why it's a problem, the evidence measured on the page, and the fix.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="kicker">How it works</p>
+      <h2>Measure first, joke second</h2>
+      <p>The key design choice was to keep the facts and the jokes separate. <strong>The scores come from measured checks, not from the AI.</strong> The AI only writes the roast from those findings. When something can't be measured, the report says so by marking the issue as a potential problem instead of a verified one.</p>
+      <ol class="steps">
+        <li><div><b>Check the address is safe to visit</b>Only public web addresses are accepted.</div></li>
+        <li><div><b>Fetch and read the page</b>The HTML is downloaded and read for text, images and links.</div></li>
+        <li><div><b>Open it in a real browser</b>The site is loaded on a desktop screen and then squeezed to a phone width, so layout, speed and mobile problems are measured on a rendered page.</div></li>
+        <li><div><b>Run the checks</b>Design, SEO, content, technical quality and mobile checks produce scored findings with evidence.</div></li>
+        <li><div><b>Write the roast</b>The findings go to the AI with the tone you picked. If no AI key is configured, the app falls back to built-in roast templates, and the findings and scores stay real.</div></li>
+        <li><div><b>Save a shareable report</b>The result gets its own link, so it can be sent to a client or a teammate.</div></li>
+      </ol>
+    </section>
+
+    <section>
+      <p class="kicker">Stack</p>
+      <h2>What I used</h2>
+      <table>
+        <thead><tr><th>Part</th><th>Tools</th></tr></thead>
+        <tbody>
+          <tr><td>Front end</td><td>React and Chakra UI</td></tr>
+          <tr><td>Back end</td><td>Node.js and Express</td></tr>
+          <tr><td>Performance and accessibility audits</td><td>Lighthouse and pa11y</td></tr>
+          <tr><td>Link checking</td><td>Cheerio</td></tr>
+          <tr><td>Roast writing</td><td>An AI language model, with built-in templates as a fallback</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="kicker">Outcome</p>
+      <h2>What happened when people used it</h2>
+      <p>SiteSlap gives site owners an interactive way to find what is hurting their site's performance and user experience. A funny roast is easier to read, and to share, than a dry list of problems.</p>
+      <p>I tested it on my own projects and shared it with other developers. Many were surprised by real issues they had missed, and they liked that each one came with something specific to do about it.</p>
+      <div class="note">
+        <p>It shows how AI can be used in a light-hearted but practical way. It is a side project that shows my skills in web development, AI integration and building an entertaining user experience.</p>
+      </div>
+      <div class="actions">
+        <a class="btn" href="../../index.html">Back to portfolio</a>
+        <a href="../Restaurant%20ERP/case-study.html">Read the Restaurant ERP case study</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>Ali Qadri / Product Developer &amp; Designer</span>
+      <a href="mailto:designwithsyed@gmail.com">designwithsyed@gmail.com</a>
+    </div>
+  </footer>
+</body>
+</html>
