@@ -3,336 +3,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ali Qadri is a product developer and designer who builds useful web products from interface to database to deployment. Portfolio and case studies.">
+  <meta name="description" content="Ali Qadri is a product developer and designer in the JavaScript ecosystem who builds web products from interface to database to deployment. Portfolio and case studies.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Ali Qadri - Product Developer &amp; Designer">
-  <meta property="og:description" content="I build useful web products end to end. See the Restaurant ERP case study.">
-  <meta name="theme-color" content="#0B0D12">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
-  <title>Ali Qadri - Product Developer &amp; Designer</title>
+  <meta property="og:title" content="Ali Qadri, Product Developer and Designer">
+  <meta property="og:description" content="I build web products, then improve them. See the PrepRoom, Restaurant ERP and SiteSlap case studies.">
+  <meta property="og:image" content="Projects/PrepRoom/room.webp">
+  <meta name="theme-color" content="#F8F9FA">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23F8F9FA'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='800' text-anchor='middle' fill='%232A2C30'%3EAQ%3C/text%3E%3C/svg%3E">
+  <title>Ali Qadri, Product Developer and Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      color-scheme: dark;
-      --ink: #F1F2F4;
-      --muted: #A0A7B4;
-      --quiet: #737C8C;
-      --line: #292F3A;
-      --surface: #11141B;
-      --surface-2: #171B24;
-      --page: #0B0D12;
-      --accent: #9FB8D4;
-      --warm: #D4C3A3;
-    }
-
-    * { box-sizing: border-box; }
-    html { min-height: 100%; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      padding: 0;
-      background: var(--page);
-      color: var(--ink);
-      font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: 15px;
-      line-height: 1.5;
-      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M4 2l15 10-7 2-3 7z' fill='%23D4C3A3' stroke='%230B0D12' stroke-width='1.5'/%3E%3C/svg%3E") 2 2, auto;
-    }
-
-    .portfolio {
-      width: 100%;
-      min-height: 100vh;
-      margin: 0;
-      border: 0;
-      background: var(--surface);
-    }
-
-    .banner-wrap { position: relative; width: 100%; border-bottom: 1px solid var(--line); }
-    .banner { display: block; width: 100%; height: clamp(180px, 25vw, 280px); object-fit: cover; object-position: center 48%; }
-    .banner-profile { position: absolute; bottom: -62px; left: 56px; width: 132px; height: 132px; object-fit: cover; border: 4px solid var(--surface); border-radius: 50%; }
-    .intro { padding: 88px 56px 44px; }
-    .intro-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 36px; }
-    .identity { display: flex; align-items: flex-start; gap: 24px; }
-    .eyebrow { margin: 3px 0 18px; color: var(--quiet); font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 { margin-bottom: 10px; font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -.07em; line-height: .95; }
-    .role { margin: 0; color: var(--muted); font-size: .95rem; }
-    .top-contact { margin-top: 3px; padding: 8px 13px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); font-size: .78rem; font-weight: 500; text-decoration: none; white-space: nowrap; }
-    .top-contact:hover { border-color: var(--accent); color: var(--accent); }
-    .bio { max-width: 680px; margin: 38px 0 0; color: var(--muted); font-size: 1rem; line-height: 1.75; }
-
-    .tabs { display: flex; gap: 30px; padding: 0 56px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .tab { position: relative; padding: 15px 0 13px; border: 0; background: transparent; color: var(--muted); cursor: pointer; font: inherit; font-size: .82rem; font-weight: 500; }
-    .tab:hover, .tab[aria-selected="true"] { color: var(--ink); }
-    .tab[aria-selected="true"]::after { content: ""; position: absolute; right: 0; bottom: -1px; left: 0; height: 1px; background: var(--accent); }
-
-    .content { padding: 48px 56px 56px; }
-    .panel[hidden] { display: none; }
-    .section-kicker { margin: 0 0 8px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
-    .section-title { margin-bottom: 30px; font-size: 1.35rem; font-weight: 500; letter-spacing: -.035em; }
-    .section-lead { max-width: 570px; margin: -14px 0 28px; color: var(--muted); }
-
-    .skill-grid { border-top: 1px solid var(--line); counter-reset: skill; }
-    .skill { display: grid; grid-template-columns: 42px minmax(160px, .7fr) 1fr; gap: 18px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); counter-increment: skill; }
-    .skill::before { content: "0" counter(skill); color: var(--quiet); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .7rem; }
-    .skill strong { color: var(--ink); font-size: .94rem; font-weight: 500; }
-    .skill span { color: var(--muted); font-size: .84rem; }
-
-    .timeline { border-top: 1px solid var(--line); }
-    .experience { display: grid; grid-template-columns: minmax(170px, .65fr) 1fr; gap: 28px; padding: 22px 0; border-bottom: 1px solid var(--line); }
-    .experience h3 { margin-bottom: 5px; font-size: .96rem; font-weight: 500; }
-    .meta { margin: 0; color: var(--accent); font-size: .75rem; line-height: 1.5; }
-    .experience p { margin: 0; color: var(--muted); font-size: .86rem; }
-    .projects { border-top: 1px solid var(--line); }
-    .project { display: grid; grid-template-columns: minmax(320px, 1.15fr) 1fr; gap: 36px; align-items: start; padding: 28px 0 32px; border-bottom: 1px solid var(--line); }
-    .project-video { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--surface-2); border: 1px solid var(--line); }
-    .project-tag { margin: 0 0 8px; color: var(--accent); font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
-    .project h3 { margin-bottom: 12px; font-size: 1.2rem; font-weight: 600; letter-spacing: -.025em; }
-    .project p { margin: 0 0 14px; color: var(--muted); font-size: .88rem; line-height: 1.7; }
-    .project-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 18px; }
-    .project-link { color: var(--accent); font-size: .8rem; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
-    .project-link:hover { color: var(--warm); }
-    .project-link.primary { padding: 9px 15px; border: 1px solid var(--accent); border-radius: 3px; color: var(--ink); text-decoration: none; }
-    .project-link.primary:hover { background: var(--accent); color: var(--page); }
-    .project-stack { color: var(--quiet) !important; font-size: .78rem !important; }
-    .project-access code { padding: 1px 6px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 3px; color: var(--ink); font-size: .76rem; }
-    .project-access { margin: 14px 0 0 !important; color: var(--quiet) !important; font-size: .78rem !important; line-height: 1.5 !important; }
-    .project-access a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
-    .project-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 32px; }
-    .project-highlight { padding: 20px 0; border-bottom: 1px solid var(--line); }
-    .project-highlight-title { display: block; margin-bottom: 6px; color: var(--ink); font-size: .88rem; font-weight: 500; }
-    .project-highlight-desc { color: var(--muted); font-size: .82rem; line-height: 1.6; }
-
-    .details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; border-top: 1px solid var(--line); }
-    .detail { padding: 20px 0; border-bottom: 1px solid var(--line); }
-    .detail-label { display: block; margin-bottom: 7px; color: var(--quiet); font-size: .68rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
-    .detail-value { color: var(--ink); font-size: .88rem; }
-    .contact-row { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 28px; }
-    .contact { color: var(--ink); font-size: .88rem; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
-    .contact:hover { color: var(--accent); }
-    .top-contact, .contact { cursor: pointer; }
-    footer { padding: 0 56px 32px; color: var(--quiet); font-size: .72rem; }
-
-    .portfolio { animation: page-in .55s ease both; }
-    .intro { animation: content-in .5s .05s ease both; }
-    .tabs { animation: content-in .5s .12s ease both; }
-    .panel:not([hidden]) { animation: panel-in .38s ease both; }
-    .top-contact, .contact { transition: color .2s ease, border-color .2s ease, background-color .2s ease; }
-    .tab::after { transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
-    .tab[aria-selected="true"]::after { transform: scaleX(1); }
-    .tab:focus-visible, .top-contact:focus-visible, .contact:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-    .skill { transition: background-color .2s ease, transform .2s ease; }
-    .skill:hover { background: var(--surface-2); transform: translateX(3px); }
-    .skill:hover strong { color: var(--accent); }
-    @keyframes page-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes content-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes panel-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
-
-    @media (max-width: 900px) {
-      .project { grid-template-columns: 1fr; gap: 22px; }
-      .project-highlights { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 650px) {
-      .banner-wrap { margin: 0; }
-      .banner { height: 140px; }
-      .banner-profile { bottom: -46px; left: 18px; width: 100px; height: 100px; border-width: 3px; }
-      .intro, .content { padding-right: 22px; padding-left: 22px; }
-      .intro { padding-top: 66px; }
-      .intro-top { flex-direction: column; gap: 22px; }
-      .identity { gap: 17px; }
-      .eyebrow { margin-bottom: 12px; }
-      .bio { margin: 28px 0 0; }
-      .tabs { gap: 22px; overflow-x: auto; padding: 0 22px; }
-      .tab { white-space: nowrap; }
-      .skill { grid-template-columns: 34px 1fr; gap: 12px; }
-      .skill span { grid-column: 2; }
-      .experience { grid-template-columns: 1fr; gap: 7px; }
-      .project { grid-template-columns: 1fr; gap: 16px; }
-      .project-highlights { grid-template-columns: 1fr; }
-      .details { grid-template-columns: 1fr; }
-      footer { padding-right: 22px; padding-left: 22px; }
-    }
-    @media (pointer: coarse) { body { cursor: auto; } }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="Projects/PrepRoom/room.webp" fetchpriority="high">
+  <link rel="stylesheet" href="Assets/css/site.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <main class="portfolio">
-    <div class="banner-wrap">
-      <img class="banner" src="Assets/portfolio-banner.webp" alt="Developer workspace with design and technology tools" fetchpriority="high">
-      <img class="banner-profile" src="Assets/profile.jpg" alt="Ali Qadri">
+  <a class="skip" href="#work">Skip to the work</a>
+
+  <header class="nav" data-nav>
+    <div class="container nav__row">
+      <a class="nav__mark" href="#top" aria-label="Ali Qadri, back to top">Ali Qadri</a>
+      <nav class="nav__links" aria-label="Sections">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#stack">Stack</a>
+        <a href="#experience">Experience</a>
+      </nav>
+      <p class="nav__status">Available for work now</p>
+      <a class="btn btn--small" href="mailto:designwithsyed@gmail.com">Email me</a>
     </div>
-    <header class="intro">
-      <div class="intro-top">
-        <div class="identity">
-          <div>
-            <p class="eyebrow">Portfolio / 2026</p>
-            <h1>Ali Qadri</h1>
-            <p class="role">Product Developer &amp; Designer</p>
+  </header>
+
+  <main id="top">
+    <!-- Hero: the claim on top, PrepRoom playing under it; on scroll the film grows to the full measure -->
+    <section class="hero" data-hero>
+      <div class="container hero__grid">
+        <h1 class="hero__head" data-split>I build web products, then improve&nbsp;them.</h1>
+        <div class="hero__aside" data-hero-fade>
+          <p class="hero__lede">Product developer and designer working across the JavaScript ecosystem, from Karachi.</p>
+          <div class="hero__actions">
+            <a class="btn" href="mailto:designwithsyed@gmail.com">Email me</a>
+            <a class="btn btn--ghost" href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer">Message on WhatsApp</a>
           </div>
         </div>
-        <a class="top-contact" href="mailto:designwithsyed@gmail.com">Contact me</a>
-      </div>
-      <p class="bio">I build useful web products from start to finish: the interface, the database and login, and the deployment. I use AI tools to move faster and spend my own time on the product decisions and the details that make something work for real users.</p>
-    </header>
-
-    <nav class="tabs" role="tablist" aria-label="Portfolio sections">
-      <button class="tab" id="projects-tab" role="tab" aria-selected="true" aria-controls="projects-panel">Projects</button>
-      <button class="tab" id="skills-tab" role="tab" aria-selected="false" aria-controls="skills-panel" tabindex="-1">Skills</button>
-      <button class="tab" id="experience-tab" role="tab" aria-selected="false" aria-controls="experience-panel" tabindex="-1">Experience</button>
-      <button class="tab" id="education-tab" role="tab" aria-selected="false" aria-controls="education-panel" tabindex="-1">Education</button>
-      <button class="tab" id="contact-tab" role="tab" aria-selected="false" aria-controls="contact-panel" tabindex="-1">Contact</button>
-    </nav>
-
-    <section class="content">
-      <div class="panel" id="skills-panel" role="tabpanel" aria-labelledby="skills-tab" hidden>
-        <p class="section-kicker">Capabilities</p>
-        <h2 class="section-title">What I bring</h2>
-        <div class="skill-grid">
-          <div class="skill"><strong>Digital Operations</strong><span>Project coordination, requirements, documentation, and delivery support.</span></div>
-          <div class="skill"><strong>Product Development</strong><span>Full-stack web apps with Supabase and PostgreSQL, authentication, role-based access, and AI features. See the <a href="Projects/Restaurant%20ERP/case-study.html" style="color:var(--accent)">Restaurant ERP</a>.</span></div>
-          <div class="skill"><strong>UI/UX Design</strong><span>Figma wireframes, interface systems, and thoughtful user flows.</span></div>
-          <div class="skill"><strong>Quality &amp; Testing</strong><span>ERP and website testing, requirement checks, and release readiness.</span></div>
-          <div class="skill"><strong>Content &amp; Brand</strong><span>Social content, campaign planning, and consistent digital presence.</span></div>
-          <div class="skill"><strong>Tools</strong><span>HTML, CSS, JavaScript, Supabase, Vercel, WordPress, Elementor, Figma, Rive, and AI-assisted development.</span></div>
-        </div>
-      </div>
-
-      <div class="panel" id="projects-panel" role="tabpanel" aria-labelledby="projects-tab">
-        <p class="section-kicker">Featured work</p>
-        <h2 class="section-title">Projects</h2>
-        <div class="projects">
-          <article class="project">
-            <video class="project-video" controls playsinline preload="metadata" poster="Projects/Restaurant%20ERP/overview.webp" aria-label="Restaurant ERP project demo">
-              <source src="Projects/Restaurant%20ERP/Video.mp4" type="video/mp4">
-              Your browser does not support embedded video.
+        <figure class="hero__media" data-hero-media data-cursor="Watch">
+          <div class="frame">
+            <video class="frame__video" muted loop playsinline preload="none" poster="Projects/PrepRoom/room.webp" width="1900" height="990" data-lazy-video aria-label="PrepRoom demo: a study room with its shared focus timer, chat, goals and voice">
+              <source data-src="Projects/PrepRoom/PrepRoom.mp4" type="video/mp4">
             </video>
-            <div>
-              <p class="project-tag">Personal project / Restaurant operations</p>
-              <h3>Restaurant ERP System</h3>
-              <p>A restaurant management app that brings orders, menu, inventory, reservations, staff and expenses into one place. Each restaurant gets its own data and logins, with owner, manager and staff roles.</p>
-              <p>I designed and built it myself: the interface in plain HTML, CSS and JavaScript, Supabase for the database and sign-in, and an AI assistant that answers questions about your data and can create orders, reservations and menu items once you confirm.</p>
-              <p class="project-stack">HTML / CSS / JavaScript / Supabase (PostgreSQL, Auth, RLS, Edge Functions) / Gemini API / Vercel</p>
-              <div class="project-actions">
-                <a class="project-link primary" href="Projects/Restaurant%20ERP/case-study.html">Read the case study</a>
-                <a class="project-link" href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
-                <a class="project-link" href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
-              </div>
-              <p class="project-access">Try it with the visitor login: <code>test@test.com</code> / <code>test123</code></p>
-            </div>
-          </article>
-          <div class="project-highlights" aria-label="Restaurant ERP key modules">
-            <div class="project-highlight"><span class="project-highlight-title">Orders &amp; Kitchen</span><span class="project-highlight-desc">Dine-in, takeaway and delivery orders, moved through preparing, cooking, ready and completed.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Menu &amp; Inventory</span><span class="project-highlight-desc">Menu items and categories, stock levels with reorder thresholds, and supplier records.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Reservations</span><span class="project-highlight-desc">Bookings linked to dining tables, so guest counts and table use sit in one view.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Team &amp; Shifts</span><span class="project-highlight-desc">Employee records, schedules, timesheets, leave requests and shift cover.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Accounting &amp; Complaints</span><span class="project-highlight-desc">Expenses, payments and wage records, plus a private register for staff concerns.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">AI Assistant &amp; Access</span><span class="project-highlight-desc">Ask questions in plain language. Every restaurant sees only its own records, enforced in the database.</span></div>
           </div>
-          <article class="project">
-            <video class="project-video" controls playsinline preload="none" poster="Projects/SiteSlap/poster.webp" aria-label="SiteSlap project demo">
-              <source src="Projects/SiteSlap/Video%20of%20Project.mp4" type="video/mp4">
-              Your browser does not support embedded video.
-            </video>
-            <div>
-              <p class="project-tag">Side project / AI web app</p>
-              <h3>SiteSlap</h3>
-              <p>A web app that audits any website in a real browser, scores it, and writes an honest, funny roast of what's wrong. Every issue comes with the evidence found on the page and a practical fix.</p>
-              <p>It checks speed, mobile layout, accessibility, broken links, SEO, navigation and content, then lets you pick a tone from friendly to savage. The scores come from measured checks, and the AI only writes the roast.</p>
-              <p class="project-stack">React / Chakra UI / Node.js / Express / Lighthouse / pa11y / Cheerio / AI roast writing</p>
-              <div class="project-actions">
-                
-                <a class="project-link primary" href="Projects/SiteSlap/case-study.html">Read the case study</a>
-                <a class="project-link" href="https://silver-dango-362883.netlify.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
-              </div>
-            </div>
-          </article>
-          <div class="project-highlights" aria-label="SiteSlap key features">
-            <div class="project-highlight"><span class="project-highlight-title">Real-browser audit</span><span class="project-highlight-desc">Loads the site on desktop and phone widths and runs about fifty checks.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Evidence and fixes</span><span class="project-highlight-desc">Each issue shows what was measured, why it matters and how to fix it.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Four roast tones</span><span class="project-highlight-desc">Friendly, sarcastic, savage or professional, with a shareable report link.</span></div>
-          </div>
-          <article class="project">
-            <video class="project-video" controls playsinline preload="none" poster="Projects/PrepRoom/room.webp" aria-label="PrepRoom project demo">
-              <source src="Projects/PrepRoom/PrepRoom.mp4" type="video/mp4">
-              Your browser does not support embedded video.
-            </video>
-            <div>
-              <p class="project-tag">Side project / Real-time web app</p>
-              <h3>PrepRoom</h3>
-              <p>A virtual study room where students focus together. Join a room, start a shared focus timer, and study alongside others with goals, chat, a lofi player and optional voice, all in one calm interface.</p>
-              <p>I took it from a product question, can body-doubling work as its own tool, through research, a muted design system and a real-time architecture where every sensitive action is checked on the server.</p>
-              <p class="project-stack">Next.js 15 / TypeScript / Supabase (PostgreSQL, Auth, RLS, Realtime) / LiveKit / Tailwind CSS / Framer Motion / Radix UI / Recharts</p>
-              <div class="project-actions">
-                <a class="project-link primary" href="Projects/PrepRoom/case-study.html">Read the case study</a>
-              </div>
-            </div>
-          </article>
-          <div class="project-highlights" aria-label="PrepRoom key features">
-            <div class="project-highlight"><span class="project-highlight-title">Shared focus timer</span><span class="project-highlight-desc">Pomodoro-style timer synced live across the room, so everyone sees who's focusing.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Live presence and goals</span><span class="project-highlight-desc">See who's studying, on break or in voice, and tick off session goals together.</span></div>
-            <div class="project-highlight"><span class="project-highlight-title">Calm by design</span><span class="project-highlight-desc">Eight muted colour roles, one typeface, and quiet motion in dark and light themes.</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel" id="experience-panel" role="tabpanel" aria-labelledby="experience-tab" hidden>
-        <p class="section-kicker">Selected history</p>
-        <h2 class="section-title">Professional experience</h2>
-        <div class="timeline">
-          <article class="experience"><div><h3>Operations Coordinator - Digital Projects</h3><p class="meta">Times TX GmbH / Remote / Apr 2026 - Oct 2026</p></div><p>Coordinated software projects, built and deployed websites, contributed to prototypes, prepared technical documentation, and supported testing and SEO.</p></article>
-          <article class="experience"><div><h3>Web Designer - UI/UX &amp; Product Collaboration</h3><p class="meta">nocode.lat / Remote / Aug 2025 - Dec 2025</p></div><p>Designed responsive interfaces and interactive wireframes in Figma, explored Rive micro-interactions, and supported the product community.</p></article>
-          <article class="experience"><div><h3>Social Media Manager &amp; Content Creator</h3><p class="meta">EZ-AD / Remote / Aug 2022 - Jun 2023</p></div><p>Created written and visual content, scheduled campaigns, and maintained a cohesive brand presence across digital channels.</p></article>
-        </div>
-      </div>
-
-      <div class="panel" id="education-panel" role="tabpanel" aria-labelledby="education-tab" hidden>
-        <p class="section-kicker">Background</p>
-        <h2 class="section-title">Education</h2>
-        <p class="section-lead">Computer science foundations with a practical, product-minded approach to building and improving digital experiences.</p>
-        <div class="details">
-          <div class="detail"><span class="detail-label">Degree</span><span class="detail-value">BS Computer Science<br>Iqra University / Expected 2027</span></div>
-          <div class="detail"><span class="detail-label">Additional training</span><span class="detail-value">Advanced Diploma in Software Engineering<br>Aptech / 2024</span></div>
-          <div class="detail"><span class="detail-label">Location</span><span class="detail-value">Karachi, Pakistan<br>Remote worldwide</span></div>
-          <div class="detail"><span class="detail-label">Languages</span><span class="detail-value">English (professional)<br>Urdu (native)</span></div>
-        </div>
-      </div>
-
-      <div class="panel" id="contact-panel" role="tabpanel" aria-labelledby="contact-tab" hidden>
-        <p class="section-kicker">Open line</p>
-        <h2 class="section-title">Let's work together</h2>
-        <p class="section-lead">Open to product development, web development, design collaboration, and technology opportunities.</p>
-        <div class="contact-row"><a class="contact" href="mailto:designwithsyed@gmail.com">Email / designwithsyed@gmail.com</a><a class="contact" href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer">WhatsApp / +92 337 8354539</a><a class="contact" href="https://github.com/Ali-Qadri" target="_blank" rel="noopener noreferrer">GitHub / Ali-Qadri</a><a class="contact" href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer">LinkedIn / itsaliqadri</a></div>
+          <figcaption class="hero__caption" data-hero-fade>PrepRoom, a shared study room for students. My best work so far.</figcaption>
+        </figure>
       </div>
     </section>
 
-    <footer>Ali Qadri / Karachi, Pakistan / Open to product development, web development, and design roles.</footer>
+    <!-- Featured case: PrepRoom -->
+    <section class="feature" id="work" aria-labelledby="preproom-title">
+      <div class="container">
+        <div class="feature__top">
+          <h2 class="feature__title" id="preproom-title" data-reveal>PrepRoom</h2>
+          <div class="feature__intro" data-reveal>
+            <p class="lead">A virtual study room where students focus together: one shared timer, goals, chat, a lofi player and optional voice.</p>
+            <a class="btn" href="Projects/PrepRoom/case-study.html" data-cursor="Read">Read the PrepRoom case study</a>
+          </div>
+        </div>
+
+        <dl class="facts" data-reveal>
+          <div><dt>My role</dt><dd>Idea, research, design system, architecture and build</dd></div>
+          <div><dt>Built with</dt><dd>Next.js 15, TypeScript, Supabase Realtime, LiveKit</dd></div>
+          <div><dt>Why it matters</dt><dd>Every sensitive action is checked on the server</dd></div>
+        </dl>
+
+        <div class="feature__shots">
+          <figure class="shot shot--wide" data-reveal-img>
+            <img loading="lazy" src="Projects/PrepRoom/progress.webp" width="1919" height="984" alt="PrepRoom progress page with total focus time, a 30-day focus chart and a weekly pattern chart">
+            <figcaption>Progress: thirty days of focus and the shape of a study week.</figcaption>
+          </figure>
+          <figure class="shot shot--tall" data-reveal-img>
+            <img loading="lazy" src="Projects/PrepRoom/onboarding.webp" width="677" height="756" alt="PrepRoom onboarding step asking about study style: Night Owl, Early Bird, Sprint Runner or Marathon Pacer">
+            <figcaption>Onboarding asks how each student likes to study.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- More work: an index with a preview that follows the pointer -->
+    <section class="index" aria-labelledby="index-title">
+      <div class="container">
+        <h2 class="section-head" id="index-title" data-reveal>Two more I built end to end</h2>
+        <ol class="index__list" data-index>
+          <li class="index__row" data-preview="Projects/Restaurant%20ERP/overview.webp" data-reveal>
+            <div class="index__name">
+              <h3><a href="Projects/Restaurant%20ERP/case-study.html" data-cursor="Read">Restaurant ERP</a></h3>
+              <img class="index__thumb" loading="lazy" src="Projects/Restaurant%20ERP/overview.webp" width="1600" height="1052" alt="Restaurant ERP overview dashboard">
+            </div>
+            <p class="index__what">Orders, menu, stock, bookings, staff and expenses in one app, with an AI assistant that acts only after you confirm. Each restaurant sees only its own data.</p>
+            <p class="index__stack">JavaScript, Supabase, Postgres row level security, Gemini, Vercel</p>
+            <div class="index__links">
+              <a href="Projects/Restaurant%20ERP/case-study.html">Case study</a>
+              <a href="https://erp-system-for-restaurant-business.vercel.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+              <a href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">Source</a>
+              <button class="linkbtn" type="button" data-play="Projects/Restaurant%20ERP/Video.mp4" data-poster="Projects/Restaurant%20ERP/overview.webp" data-title="Restaurant ERP demo">Play the demo</button>
+              <p class="index__note">Visitor login: <code>test@test.com</code> and <code>test123</code></p>
+            </div>
+          </li>
+          <li class="index__row" data-preview="Projects/SiteSlap/poster.webp" data-reveal>
+            <div class="index__name">
+              <h3><a href="Projects/SiteSlap/case-study.html" data-cursor="Read">SiteSlap</a></h3>
+              <img class="index__thumb" loading="lazy" src="Projects/SiteSlap/poster.webp" width="1600" height="900" alt="SiteSlap results page with a site score and a roast">
+            </div>
+            <p class="index__what">Audits any website in a real browser, scores it from measured checks, then writes an honest roast with a fix for every issue.</p>
+            <p class="index__stack">React, Node.js, Express, Lighthouse, pa11y</p>
+            <div class="index__links">
+              <a href="Projects/SiteSlap/case-study.html">Case study</a>
+              <a href="https://silver-dango-362883.netlify.app/" target="_blank" rel="noopener noreferrer">Live demo</a>
+              <button class="linkbtn" type="button" data-play="Projects/SiteSlap/Video%20of%20Project.mp4" data-poster="Projects/SiteSlap/poster.webp" data-title="SiteSlap demo">Play the demo</button>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <div class="preview" data-preview-float aria-hidden="true"><img alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" width="480" height="300"></div>
+    </section>
+
+    <!-- About: a statement that resolves word by word, then the person -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <h2 class="visually-hidden" id="about-title">About Ali</h2>
+        <p class="statement" data-scrub>I love building products and then improving them as far as they will go. Right now I am learning to work with Claude well.</p>
+
+        <div class="about__grid">
+          <figure class="about__photo" data-reveal-img>
+            <img loading="lazy" src="Assets/profile.jpg" width="300" height="400" alt="Portrait of Ali Qadri">
+          </figure>
+          <dl class="about__facts" data-reveal>
+            <div><dt>Based in</dt><dd>Karachi, Pakistan, working remotely</dd></div>
+            <div><dt>Open to</dt><dd>Full-time roles and freelance products</dd></div>
+            <div><dt>Off the clock</dt><dd>Football, chess and a game of cards</dd></div>
+            <div><dt>Reading about</dt><dd>Geography and history</dd></div>
+            <div><dt>Speaks</dt><dd>English and Urdu</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stack: the JavaScript ecosystem as four layers -->
+    <section class="stack" id="stack" aria-labelledby="stack-title">
+      <div class="container">
+        <h2 class="section-head" id="stack-title" data-reveal>From interface to&nbsp;deploy</h2>
+        <div class="stack__grid" data-reveal>
+          <div class="stack__col">
+            <h3>Interface</h3>
+            <ul><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Tailwind CSS</li><li>Framer Motion</li></ul>
+          </div>
+          <div class="stack__col">
+            <h3>Data and auth</h3>
+            <ul><li>Supabase</li><li>PostgreSQL</li><li>Row level security</li><li>Realtime</li><li>Node.js</li><li>Express</li></ul>
+          </div>
+          <div class="stack__col">
+            <h3>Ship and test</h3>
+            <ul><li>Vercel</li><li>Netlify</li><li>GitHub</li><li>Lighthouse</li><li>QA and SEO</li></ul>
+          </div>
+          <div class="stack__col">
+            <h3>Design</h3>
+            <ul><li>Figma</li><li>Rive</li><li>Design systems</li><li>Prototyping</li><li>Claude and Cursor</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience: the one number the user gave, beside the record -->
+    <section class="record" id="experience" aria-labelledby="record-title">
+      <div class="container record__grid">
+        <div class="record__figure" data-reveal>
+          <p class="giant num">20+</p>
+          <p class="record__caption">clients so far, across web builds, design and content work.</p>
+        </div>
+        <div class="record__body">
+          <h2 class="section-head" id="record-title" data-reveal>Where I have worked</h2>
+          <table class="ledger" data-reveal>
+            <caption class="visually-hidden">Work history</caption>
+            <thead><tr><th scope="col">Role</th><th scope="col">Where</th><th scope="col" class="num">When</th></tr></thead>
+            <tbody>
+              <tr><td>Operations coordinator, digital projects and web development</td><td>Times TX GmbH</td><td class="num">Apr to Nov 2026</td></tr>
+              <tr><td>Web designer, UI/UX and product</td><td>nocode.lat</td><td class="num">Aug to Dec 2025</td></tr>
+              <tr><td>Social media manager and content creator</td><td>EZ-AD</td><td class="num">2022 to 2023</td></tr>
+            </tbody>
+          </table>
+          <table class="ledger ledger--quiet" data-reveal>
+            <caption class="visually-hidden">Education</caption>
+            <thead><tr><th scope="col">Study</th><th scope="col">Where</th><th scope="col" class="num">When</th></tr></thead>
+            <tbody>
+              <tr><td>BS Computer Science</td><td>Iqra University</td><td class="num">May 2027</td></tr>
+              <tr><td>Advanced Diploma in Software Engineering</td><td>Aptech</td><td class="num">Nov 2024</td></tr>
+              <tr><td>Figma for UX Design</td><td>Certification</td><td class="num"></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact: the address itself is the headline -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 class="contact__head" id="contact-title" data-reveal>Have a product to build?</h2>
+        <a class="contact__mail" href="mailto:designwithsyed@gmail.com" data-cursor="Write" data-reveal>designwithsyed@gmail.com</a>
+        <ul class="contact__links" data-reveal>
+          <li><a href="https://wa.me/923378354539" target="_blank" rel="noopener noreferrer">WhatsApp</a><span>+92 337 8354539</span></li>
+          <li><a href="https://linkedin.com/in/itsaliqadri/" target="_blank" rel="noopener noreferrer">LinkedIn</a><span>itsaliqadri</span></li>
+          <li><a href="https://github.com/Ali-Qadri" target="_blank" rel="noopener noreferrer">GitHub</a><span>Ali-Qadri</span></li>
+        </ul>
+      </div>
+    </section>
   </main>
 
-  <script>
-    const portfolioTabs = [...document.querySelectorAll('.tabs [role="tab"]')];
-    const portfolioPanels = [...document.querySelectorAll('.content > [role="tabpanel"]')];
-    function activatePortfolioTab(tab) {
-      portfolioTabs.forEach((item) => {
-        const active = item === tab;
-        item.setAttribute('aria-selected', active);
-        item.tabIndex = active ? 0 : -1;
-      });
-      portfolioPanels.forEach((panel) => { panel.hidden = panel.id !== tab.getAttribute('aria-controls'); });
-    }
-    portfolioTabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => activatePortfolioTab(tab));
-      tab.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
-        event.preventDefault();
-        const next = event.key === 'ArrowRight' ? (index + 1) % portfolioTabs.length : (index - 1 + portfolioTabs.length) % portfolioTabs.length;
-        portfolioTabs[next].focus();
-        activatePortfolioTab(portfolioTabs[next]);
-      });
-    });
-  </script>
+  <footer class="foot">
+    <div class="container foot__row">
+      <p class="foot__mark">Ali Qadri</p>
+      <p>Product developer and designer, Karachi</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <dialog class="player" data-player aria-label="Project demo">
+    <div class="player__bar">
+      <p class="player__title" data-player-title>Demo</p>
+      <button class="linkbtn" type="button" data-player-close>Close</button>
+    </div>
+    <video class="player__video" controls muted playsinline preload="none" poster="Projects/PrepRoom/room.webp" data-player-video></video>
+  </dialog>
+
+  <div class="cursor" aria-hidden="true" data-cursor-el><span class="cursor__label" data-cursor-label></span></div>
+
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="Assets/js/site.js"></script>
 </body>
 </html>

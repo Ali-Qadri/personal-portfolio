@@ -8,25 +8,35 @@
   <meta property="og:title" content="Restaurant ERP System - Case study by Ali Qadri">
   <meta property="og:description" content="One app for orders, menu, inventory, reservations, staff and expenses, with separate data for each restaurant.">
   <meta property="og:image" content="overview.webp">
-  <meta name="theme-color" content="#0B0D12">
+  <meta name="theme-color" content="#F8F9FA">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
   <title>Restaurant ERP System - Case study - Ali Qadri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../case-study.css">
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <div class="topbar">
-    <a href="../../index.html">&larr; <strong>Ali Qadri</strong> / Portfolio</a>
-    <a href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
-  </div>
+  <a class="skip" href="#content">Skip to the case study</a>
+  <header class="nav" data-nav>
+    <div class="container nav__row">
+      <a class="nav__mark" href="../../index.html">Ali Qadri</a>
+      <nav class="nav__links" aria-label="Portfolio">
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#experience">Experience</a>
+      </nav>
+      <a class="nav__next" href="https://github.com/Ali-Qadri/ERP-System-For-Restaurant-Business" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+      <a class="btn btn--small" href="mailto:designwithsyed@gmail.com">Email me</a>
+    </div>
+  </header>
 
-  <main class="wrap">
+  <main class="wrap" id="content">
     <header class="hero">
-      <p class="eyebrow">Case study / Personal project / 2026</p>
       <h1>Restaurant ERP System</h1>
-      <p class="lead">One app for the daily running of a restaurant: orders, menu, inventory, reservations, staff and expenses. It is built so several restaurants can share the same app without ever seeing each other's data.</p>
+      <p class="byline">Case study, personal project, <time>2026</time></p>
+      <p class="lead">One app for the daily running of a restaurant: orders, menu, inventory, reservations, staff and expenses. It is built so several restaurants can share the same app without ever seeing each other’s data.</p>
 
       <dl class="meta">
         <div><dt>My role</dt><dd>Everything: product design, frontend, database, authentication, AI integration and deployment</dd></div>
@@ -47,7 +57,7 @@
         <div class="stat"><b>121</b><span>demo records across 19 categories</span></div>
       </div>
 
-      <div class="demo" style="margin-top:28px">
+      <div class="demo">
         <strong>Try it yourself</strong>
         <p>Sign in to the live demo with <code>test@test.com</code> and <code>test123</code>. It opens the Demo Restaurant as an owner. The data is sample data, and other visitors share the same login, so records may have changed since you last looked.</p>
         <p>Good places to start: create an order, then press the ERP Assistant button at the bottom right and ask which inventory items are running low.</p>
@@ -60,14 +70,14 @@
     </header>
 
     <section>
-      <p class="kicker">The problem</p>
+      <p class="side">The problem</p>
       <h2>Restaurants run on connected information</h2>
-      <p>A restaurant needs to take orders, keep the menu current, manage tables and bookings, watch stock, schedule staff and track money. These jobs depend on each other. An order is only useful if the item is available, and low stock needs someone's attention before the dish runs out.</p>
+      <p>A restaurant needs to take orders, keep the menu current, manage tables and bookings, watch stock, schedule staff and track money. These jobs depend on each other. An order is only useful if the item is available, and low stock needs someone’s attention before the dish runs out.</p>
       <p>When each job lives in a different tool or spreadsheet, owners spend time looking for answers that should be one click away. I wanted to see what it takes to put all of it in one place, with each person seeing only what their role needs.</p>
     </section>
 
     <section>
-      <p class="kicker">What it does</p>
+      <p class="side">What it does</p>
       <h2>Six areas in one workspace</h2>
       <div class="rows">
         <div class="row"><h3>Orders &amp; kitchen</h3><p>Create dine-in, takeaway and delivery orders against a table, then move each ticket through preparing, cooking, ready and completed.</p></div>
@@ -75,7 +85,7 @@
         <div class="row"><h3>Tables &amp; reservations</h3><p>Keep a list of dining tables and attach bookings and orders to them.</p></div>
         <div class="row"><h3>Team &amp; shifts</h3><p>Employee records, shift schedule, clock in and out, timesheets, leave requests and shift cover requests.</p></div>
         <div class="row"><h3>Accounting &amp; complaints</h3><p>Expenses, payments and wage records, plus a private register where staff concerns can be logged and resolved.</p></div>
-        <div class="row"><h3>Dashboard &amp; reports</h3><p>Summaries calculated from the restaurant's own order records, with best sellers and sales by category.</p></div>
+        <div class="row"><h3>Dashboard &amp; reports</h3><p>Summaries calculated from the restaurant’s own order records, with best sellers and sales by category.</p></div>
       </div>
 
       <div class="shots">
@@ -93,13 +103,13 @@
         </figure>
         <figure>
           <a href="reports.webp" target="_blank" rel="noopener"><img loading="lazy" src="reports.webp" width="1600" height="826" alt="Reports screen with sales by category and best selling dishes"></a>
-          <figcaption>Reports built from the restaurant's order records. The page labels itself as prototype reporting.</figcaption>
+          <figcaption>Reports built from the restaurant’s order records. The page labels itself as prototype reporting.</figcaption>
         </figure>
       </div>
     </section>
 
     <section>
-      <p class="kicker">Multi-tenant design</p>
+      <p class="side">Multi-tenant design</p>
       <h2>One app, many restaurants, no shared data</h2>
       <p>Instead of building a separate app for each restaurant, the system runs one app on one database. Every restaurant has a unique ID, and every record, such as an order, an employee or an inventory item, belongs to one restaurant.</p>
       <p>Filtering in the frontend is not enough to protect that. Anyone can change a request in their browser. So the separation is enforced in the database with <strong>Row Level Security</strong> (RLS), and the app links each signed-in user to their restaurants through membership records.</p>
@@ -124,21 +134,21 @@
           <text x="530" y="226" text-anchor="middle" font-size="12" class="sub">its employees</text>
           <text x="530" y="244" text-anchor="middle" font-size="12" class="sub">its inventory</text>
         </svg>
-        <figcaption>Two restaurants share the same app and database. Demo Restaurant can never read MrCone's employees, orders or stock, and the other way round.</figcaption>
+        <figcaption>Two restaurants share the same app and database. Demo Restaurant can never read MrCone’s employees, orders or stock, and the other way round.</figcaption>
       </figure>
     </section>
 
     <section>
-      <p class="kicker">Access control</p>
+      <p class="side">Access control</p>
       <h2>Who can see what</h2>
-      <p>Sign-in is handled by Supabase Auth. After login the app loads the user's active restaurant membership and role, then shows only the navigation that role needs. There are four levels:</p>
+      <p>Sign-in is handled by Supabase Auth. After login the app loads the user’s active restaurant membership and role, then shows only the navigation that role needs. There are four levels:</p>
       <ul class="plain">
         <li><strong>Platform admin</strong> manages the restaurants on the platform. This is a separate record and not a normal restaurant role.</li>
-        <li><strong>Owner</strong> has full access to their restaurant's data and settings.</li>
+        <li><strong>Owner</strong> has full access to their restaurant’s data and settings.</li>
         <li><strong>Manager</strong> runs day-to-day work: employees, orders, reservations and menu.</li>
         <li><strong>Staff</strong> has a shared restaurant login with limited access to the screens used during service.</li>
       </ul>
-      <p style="margin-top:18px">Hiding a button is only the first layer. The same rules are repeated in the database policies, so a staff user who tries to call the data directly still gets refused.</p>
+      <p>Hiding a button is only the first layer. The same rules are repeated in the database policies, so a staff user who tries to call the data directly still gets refused.</p>
 
       <figure class="diagram">
         <svg viewBox="0 0 760 190" role="img" aria-label="Diagram: login, membership check, role, then database policy check before data is returned">
@@ -172,9 +182,9 @@
     </section>
 
     <section>
-      <p class="kicker">AI assistant</p>
+      <p class="side">AI assistant</p>
       <h2>Ask questions, with limits</h2>
-      <p>I wanted to see how an AI assistant could work inside a business app without becoming a risk. Users can ask in plain language, for example how many employees are registered, what is on the menu, which items are unavailable, what today's orders are, what stock is low, what the monthly expenses are, or what reservations exist.</p>
+      <p>I wanted to see how an AI assistant could work inside a business app without becoming a risk. Users can ask in plain language, for example how many employees are registered, what is on the menu, which items are unavailable, what today’s orders are, what stock is low, what the monthly expenses are, or what reservations exist.</p>
       <p>The assistant can also <strong>create menu items, reservations and orders</strong>, but only after showing the action and getting a confirmation from the user.</p>
 
       <figure class="diagram">
@@ -208,13 +218,13 @@
 
       <ul class="plain">
         <li>It has <strong>no free access to the database</strong> and cannot run arbitrary SQL. It can only call the eleven operations I defined.</li>
-        <li>Each operation runs with the <strong>signed-in user's permissions</strong>, so row level security applies to the assistant too.</li>
+        <li>Each operation runs with the <strong>signed-in user’s permissions</strong>, so row level security applies to the assistant too.</li>
         <li>The Gemini API key is kept as a <strong>server-side secret</strong> and never reaches the browser.</li>
       </ul>
     </section>
 
     <section>
-      <p class="kicker">Stack</p>
+      <p class="side">Stack</p>
       <h2>What I used and why</h2>
       <table>
         <thead><tr><th>Part</th><th>Why I chose it</th></tr></thead>
@@ -222,7 +232,7 @@
           <tr><td>HTML, CSS, JavaScript</td><td>No framework on purpose. I wanted to understand how the interface, data loading and Supabase requests fit together before adding a layer on top.</td></tr>
           <tr><td>Supabase</td><td>Database, login and server functions in one service, so I could spend my time on the product and the data design instead of building a backend from scratch.</td></tr>
           <tr><td>PostgreSQL</td><td>The data is highly connected: an order has items, a reservation has a table, an employee has shifts and leave. A relational database with constraints suits that.</td></tr>
-          <tr><td>Row Level Security</td><td>Keeps each restaurant's records private at the database, not just in the interface.</td></tr>
+          <tr><td>Row Level Security</td><td>Keeps each restaurant’s records private at the database, not just in the interface.</td></tr>
           <tr><td>Edge Functions</td><td>A server-side place for the AI integration, so secrets and permission checks stay off the browser.</td></tr>
           <tr><td>Gemini API</td><td>Understands the question and decides which defined tool to call. Function calling connects the model to real app actions.</td></tr>
           <tr><td>Vercel</td><td>Simple frontend hosting with deploys from the repository. The backend stays on Supabase.</td></tr>
@@ -231,33 +241,33 @@
     </section>
 
     <section>
-      <p class="kicker">Process</p>
+      <p class="side">Process</p>
       <h2>How I built it</h2>
       <ol class="steps">
         <li><div><b>Mapped the modules</b>Listed what a restaurant does each day and split it into modules: orders, menu, reservations, inventory, employees and finance.</div></li>
         <li><div><b>Designed the interface</b>Built the layout, navigation, dashboard, forms, tables and modals, aiming to keep a large app easy to move around.</div></li>
         <li><div><b>Designed the database</b>Created separate related tables, for example orders and order items, or employees, shifts and time entries, connected by IDs.</div></li>
         <li><div><b>Connected the app to real data</b>Several screens started on local demo data. I rewrote the loading and saving to use Supabase and mapped database records to what the existing screens expected.</div></li>
-        <li><div><b>Added login, roles and RLS</b>Linked users to restaurant memberships and wrote the policies that protect each restaurant's data.</div></li>
+        <li><div><b>Added login, roles and RLS</b>Linked users to restaurant memberships and wrote the policies that protect each restaurant’s data.</div></li>
         <li><div><b>Seeded demo data</b>Wrote a script that fills the Demo Restaurant with realistic records. It uses fixed IDs, so running it again does not create duplicates.</div></li>
         <li><div><b>Added the AI assistant, then tested and deployed</b>Built the Edge Function and its tools, tested the roles and the separation between restaurants, and deployed the frontend on Vercel.</div></li>
       </ol>
     </section>
 
     <section>
-      <p class="kicker">Hard parts</p>
+      <p class="side">Hard parts</p>
       <h2>What took the most work</h2>
       <div class="rows">
         <div class="row"><h3>Separating restaurants</h3><p>Adding a restaurant ID to the interface was the easy part. Making the database refuse access across restaurants meant memberships and policies, and testing them with different users.</p></div>
         <div class="row"><h3>Roles in two places</h3><p>Permissions had to match in the navigation and in the database policies. If they drift apart, either users see broken screens or the data is exposed.</p></div>
         <div class="row"><h3>Moving screens to real data</h3><p>Existing pages expected one shape of data and the database stored another. I wrote a mapping layer so I could keep the interface behaviour while changing where the data came from.</p></div>
-        <div class="row"><h3>Giving the AI limited power</h3><p>Calling an API is simple. Deciding which tools to expose, checking the user's access for each one, and adding a confirmation step before any write took design work.</p></div>
+        <div class="row"><h3>Giving the AI limited power</h3><p>Calling an API is simple. Deciding which tools to expose, checking the user’s access for each one, and adding a confirmation step before any write took design work.</p></div>
       </div>
     </section>
 
     <section>
-      <p class="kicker">Limits</p>
-      <h2>What this is, and what it isn't yet</h2>
+      <p class="side">Limits</p>
+      <h2>What this is, and what it isn’t yet</h2>
       <div class="note">
         <p>This is a working showcase and a learning project. It demonstrates the structure, the database design, multi-restaurant access, role permissions and the AI features.</p>
         <p>Not every module has full create, edit and delete workflows yet. Some are complete, some are partial, and some mainly display data. The reports page works from order records and labels itself as prototype reporting, with no payment provider or accounting system connected. The assistant supports a fixed set of operations and cannot do everything the app can.</p>
@@ -266,7 +276,7 @@
     </section>
 
     <section>
-      <p class="kicker">Takeaways</p>
+      <p class="side">Takeaways</p>
       <h2>What I learned</h2>
       <p>Building this showed me how much of a real product sits under the screens: the shape of the data, who is allowed to see it, and how the pieces connect. I came away with practical experience in relational design, authentication, row level security, multi-tenant data access, server-side functions and connecting an AI model to application actions in a controlled way.</p>
       <p>Next steps would be finishing the partial workflows, adding automated tests and doing a proper security review.</p>
@@ -276,18 +286,22 @@
         <a href="../../index.html">Back to portfolio</a>
         <a href="../SiteSlap/case-study.html">Next: SiteSlap case study</a>
       </div>
-      <figure style="margin-top:40px">
+      <figure>
         <a href="login.webp" target="_blank" rel="noopener"><img loading="lazy" src="login.webp" width="1600" height="826" alt="Restaurant ERP sign-in screen"></a>
         <figcaption>The sign-in screen. Access is managed through Supabase Auth.</figcaption>
       </figure>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span>Ali Qadri / Product Developer &amp; Designer</span>
+  <footer class="foot">
+    <div class="container foot__row">
+      <p class="foot__mark">Ali Qadri</p>
+      <p>Product developer and designer, Karachi</p>
       <a href="mailto:designwithsyed@gmail.com">designwithsyed@gmail.com</a>
     </div>
   </footer>
+  <div class="cursor" aria-hidden="true" data-cursor-el><span class="cursor__label" data-cursor-label></span></div>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="../../Assets/js/site.js"></script>
 </body>
 </html>

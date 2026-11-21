@@ -8,42 +8,34 @@
   <meta property="og:title" content="PrepRoom - Case study by Ali Qadri">
   <meta property="og:description" content="A calm, shared study room: join, start a timer, and focus alongside other students.">
   <meta property="og:image" content="room.webp">
-  <meta name="theme-color" content="#0B0D12">
+  <meta name="theme-color" content="#F8F9FA">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
   <title>PrepRoom - Case study - Ali Qadri</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../case-study.css">
-  <style>
-    video.demo-video { display: block; width: 100%; aspect-ratio: 16 / 9; border: 1px solid var(--line); background: var(--surface-2); }
-    .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 22px; border: 1px solid var(--line); background: var(--surface); }
-    .swatch { padding: 14px 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .8rem; }
-    .swatch:nth-child(4n) { border-right: 0; }
-    .swatch:nth-last-child(-n+4) { border-bottom: 0; }
-    .swatch i { display: block; width: 22px; height: 22px; margin-bottom: 10px; border-radius: 50%; }
-    .swatch b { display: block; color: var(--ink); font-weight: 600; }
-    .swatch span { color: var(--muted); font-size: .76rem; }
-    .shot-narrow { max-width: 460px; }
-    @media (max-width: 760px) {
-      .swatches { grid-template-columns: repeat(2, 1fr); }
-      .swatch:nth-child(4n) { border-right: 1px solid var(--line); }
-      .swatch:nth-child(2n) { border-right: 0; }
-      .swatch:nth-last-child(-n+4) { border-bottom: 1px solid var(--line); }
-      .swatch:nth-last-child(-n+2) { border-bottom: 0; }
-    }
-  </style>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-  <div class="topbar">
-    <a href="../../index.html">&larr; <strong>Ali Qadri</strong> / Portfolio</a>
-    <a href="../Restaurant%20ERP/case-study.html">Next: Restaurant ERP &rarr;</a>
-  </div>
+  <a class="skip" href="#content">Skip to the case study</a>
+  <header class="nav" data-nav>
+    <div class="container nav__row">
+      <a class="nav__mark" href="../../index.html">Ali Qadri</a>
+      <nav class="nav__links" aria-label="Portfolio">
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#experience">Experience</a>
+      </nav>
+      <a class="nav__next" href="../Restaurant%20ERP/case-study.html">Next: Restaurant ERP</a>
+      <a class="btn btn--small" href="mailto:designwithsyed@gmail.com">Email me</a>
+    </div>
+  </header>
 
-  <main class="wrap">
+  <main class="wrap" id="content">
     <header class="hero">
-      <p class="eyebrow">Case study / Side project / 2026</p>
       <h1>PrepRoom</h1>
+      <p class="byline">Case study, side project, <time>2026</time></p>
       <p class="lead">A virtual study room where students focus together. Join a room, start a focus timer, and study alongside other people, with goals, chat and optional voice in one calm, minimal interface that stays out of the way.</p>
 
       <dl class="meta">
@@ -70,22 +62,22 @@
     </header>
 
     <section>
-      <p class="kicker">The question</p>
+      <p class="side">The question</p>
       <h2>Could body-doubling work as its own product?</h2>
       <p>PrepRoom started from one product question: what would it take to make body-doubling work as a standalone tool, instead of a feature bolted onto a video call or a chat app? I took it from that question through research, design, architecture and engineering to a fully working product.</p>
     </section>
 
     <section>
-      <p class="kicker">The problem</p>
+      <p class="side">The problem</p>
       <h2>Studying alone is isolating</h2>
       <p>Students lose motivation without social accountability. Existing tools tend to cover either task management (Notion, Todoist) or social interaction (Discord, FaceTime), but rarely both in a way that actually helps you sit down and focus.</p>
-      <p>Body-doubling, simply working alongside someone else, is one of the most effective productivity techniques, especially for students who struggle with focus. Coordinating it over Discord calls or Zoom rooms is clunky, because those tools weren't designed for it. Nothing combined a focused study space with real-time presence, structured timers, goal tracking and optional voice in one place that feels calm rather than overwhelming.</p>
+      <p>Body-doubling, simply working alongside someone else, is one of the most effective productivity techniques, especially for students who struggle with focus. Coordinating it over Discord calls or Zoom rooms is clunky, because those tools weren’t designed for it. Nothing combined a focused study space with real-time presence, structured timers, goal tracking and optional voice in one place that feels calm rather than overwhelming.</p>
     </section>
 
     <section>
-      <p class="kicker">The solution</p>
+      <p class="side">The solution</p>
       <h2>A shared room with nothing to set up</h2>
-      <p>PrepRoom gives students a shared virtual room where they can see who's online, what everyone is working on and how long they've been focusing, without setting up a call or joining a server.</p>
+      <p>PrepRoom gives students a shared virtual room where they can see who’s online, what everyone is working on and how long they’ve been focusing, without setting up a call or joining a server.</p>
       <p>The core loop is simple: <strong>create or join a room, start a focus timer, and study.</strong> Everything else layers on top: goals for accountability, real-time chat for quick questions, a lofi player for ambience, and voice for rooms that want it. The interface is deliberately sparse. There are no notifications competing for attention and no feed to scroll. Just a timer, your peers and the work.</p>
 
       <div class="shots">
@@ -95,31 +87,31 @@
         </figure>
         <figure>
           <a href="home.webp" target="_blank" rel="noopener"><img loading="lazy" src="home.webp" width="1920" height="985" alt="Home screen showing focus time this week, session count, active goals, rooms to continue and rooms to discover"></a>
-          <figcaption>Home: this week's focus time, active goals, rooms to rejoin and new rooms to discover.</figcaption>
+          <figcaption>Home: this week’s focus time, active goals, rooms to rejoin and new rooms to discover.</figcaption>
         </figure>
       </div>
     </section>
 
     <section>
-      <p class="kicker">Key features</p>
+      <p class="side">Key features</p>
       <h2>Everything a study session needs, nothing more</h2>
 
       <div class="rows">
         <div class="row"><h3>Focus timer</h3><p>A Pomodoro-style timer with configurable focus and break lengths. Its state syncs in real time across the room, so everyone sees who is focusing and who is on a break. A circular ring animates the countdown, slate blue for focus and warm sand for breaks.</p></div>
-        <div class="row"><h3>Real-time presence</h3><p>Every room shows who's online, their status (studying, on break, in voice, away) and how long they've been in the session. Updates are pushed through Supabase Realtime, so the member list stays current without polling.</p></div>
-        <div class="row"><h3>Room goals</h3><p>Students set goals for the session, such as "Finish Chapter 5" or "Review lecture notes", and tick them off as they go. A light sense of progress, shared with the group.</p></div>
+        <div class="row"><h3>Real-time presence</h3><p>Every room shows who’s online, their status (studying, on break, in voice, away) and how long they’ve been in the session. Updates are pushed through Supabase Realtime, so the member list stays current without polling.</p></div>
+        <div class="row"><h3>Room goals</h3><p>Students set goals for the session, such as “Finish Chapter 5” or “Review lecture notes”, and tick them off as they go. A light sense of progress, shared with the group.</p></div>
         <div class="row"><h3>Chat and image sharing</h3><p>Real-time text chat in each room, with images sent through Supabase Storage. Messages appear instantly for everyone connected.</p></div>
         <div class="row"><h3>Voice chat</h3><p>Optional per-room voice powered by LiveKit. Members join with one click, the current speaker is highlighted, and mute and leave controls are always within reach.</p></div>
         <div class="row"><h3>Lofi music player</h3><p>A built-in ambient player with curated lofi tracks, styled in muted lavender to set it apart, with play, pause, skip and volume.</p></div>
         <div class="row"><h3>Todo list</h3><p>A personal task panel in the sidebar. Add tasks, reorder them by drag and drop, and check them off. Warm bronze keeps it visually separate from room goals.</p></div>
-        <div class="row"><h3>Room administration</h3><p>Room creators can manage and remove members, switch a room between public and private, and change its settings. The server rejects admin actions from anyone else; the button isn't simply hidden.</p></div>
+        <div class="row"><h3>Room administration</h3><p>Room creators can manage and remove members, switch a room between public and private, and change its settings. The server rejects admin actions from anyone else; the button isn’t simply hidden.</p></div>
         <div class="row"><h3>Onboarding</h3><p>A step-by-step introduction for new users covering display name, avatar, study preferences, goals and a room tour, with smooth Framer Motion transitions between steps.</p></div>
         <div class="row"><h3>Dashboard and analytics</h3><p>A personal view of focus time, session history, goal completion and study streaks, with charts built in Recharts from data in Supabase.</p></div>
       </div>
 
-      <figure style="margin-top:28px">
+      <figure>
         <a href="room.webp" target="_blank" rel="noopener"><img loading="lazy" src="room.webp" width="1900" height="990" alt="A study room with a focus timer at 49:49, pause, break and end buttons, a lofi radio player, the online member list and the voice tab with a Join Voice button"></a>
-        <figcaption>Inside a room: the shared focus timer, the lofi player and who's online on the left; chat, goals, people and voice on the right.</figcaption>
+        <figcaption>Inside a room: the shared focus timer, the lofi player and who’s online on the left; chat, goals, people and voice on the right.</figcaption>
       </figure>
       <div class="shots">
         <figure>
@@ -131,14 +123,14 @@
           <figcaption>Progress: daily focus over the last 30 days and the average for each day of the week.</figcaption>
         </figure>
       </div>
-      <figure class="shot-narrow" style="margin-top:28px">
+      <figure class="shot-narrow">
         <a href="onboarding.webp" target="_blank" rel="noopener"><img loading="lazy" src="onboarding.webp" width="677" height="756" alt="Onboarding step asking What's your study style, with options Night Owl, Early Bird, Sprint Runner and Marathon Pacer"></a>
         <figcaption>An onboarding step that asks about study style, so rooms and suggestions can fit how each student works.</figcaption>
       </figure>
     </section>
 
     <section>
-      <p class="kicker">How it's built</p>
+      <p class="side">How it’s built</p>
       <h2>Server-checked by default</h2>
       <p><strong>Every sensitive action is validated on the server.</strong> Sending messages, controlling timers, changing roles and joining private rooms all go through Row Level Security policies and API route checks. The front end never relies on hidden buttons for security.</p>
       <table>
@@ -154,59 +146,59 @@
     </section>
 
     <section>
-      <p class="kicker">Design system</p>
+      <p class="side">Design system</p>
       <h2>Minimal, a little playful, and calm</h2>
-      <p>PrepRoom's visual identity sits between minimal and playful. It's calm enough for long study sessions but warm enough to feel like a shared space rather than a clinical tool.</p>
+      <p>PrepRoom’s visual identity sits between minimal and playful. It’s calm enough for long study sessions but warm enough to feel like a shared space rather than a clinical tool.</p>
       <p>The palette uses muted, desaturated tones instead of the usual high-saturation UI colours. Eight semantic roles each map to a feature, and every one has a muted tint for subtle backgrounds. The whole system supports dark and light themes through CSS custom properties.</p>
 
       <div class="swatches" aria-label="PrepRoom colour roles">
-        <div class="swatch"><i style="background:#5E8C88"></i><b>Muted teal</b><span>Core accent and actions</span></div>
-        <div class="swatch"><i style="background:#6E80A0"></i><b>Dusty slate blue</b><span>Focus mode</span></div>
-        <div class="swatch"><i style="background:#C9AE86"></i><b>Warm sand</b><span>Breaks</span></div>
-        <div class="swatch"><i style="background:#8AA585"></i><b>Sage green</b><span>Online and live</span></div>
-        <div class="swatch"><i style="background:#B57C84"></i><b>Dusty rose</b><span>Destructive actions</span></div>
-        <div class="swatch"><i style="background:#9A8DB8"></i><b>Muted lavender</b><span>Lofi player</span></div>
-        <div class="swatch"><i style="background:#5F9E84"></i><b>Muted emerald</b><span>Goals and progress</span></div>
-        <div class="swatch"><i style="background:#A8865E"></i><b>Warm bronze</b><span>Todo list</span></div>
+        <div class="swatch"><i class="swatch--teal"></i><b>Muted teal</b><span>Core accent and actions</span></div>
+        <div class="swatch"><i class="swatch--slate"></i><b>Dusty slate blue</b><span>Focus mode</span></div>
+        <div class="swatch"><i class="swatch--sand"></i><b>Warm sand</b><span>Breaks</span></div>
+        <div class="swatch"><i class="swatch--sage"></i><b>Sage green</b><span>Online and live</span></div>
+        <div class="swatch"><i class="swatch--rose"></i><b>Dusty rose</b><span>Destructive actions</span></div>
+        <div class="swatch"><i class="swatch--lavender"></i><b>Muted lavender</b><span>Lofi player</span></div>
+        <div class="swatch"><i class="swatch--emerald"></i><b>Muted emerald</b><span>Goals and progress</span></div>
+        <div class="swatch"><i class="swatch--bronze"></i><b>Warm bronze</b><span>Todo list</span></div>
       </div>
 
-      <div class="rows" style="margin-top:28px">
+      <div class="rows">
         <div class="row"><h3>Typography</h3><p>Manrope is the only typeface: a geometric sans-serif with rounded terminals that feels friendly without losing readability. The scale runs from 11px captions to 36px display headings, with line-height and letter-spacing tokens at each level.</p></div>
         <div class="row"><h3>Surfaces</h3><p>The dark theme layers a near-black base (#111113) with slightly lighter sidebar and surface layers, and raised cards for modals and dropdowns. The light theme mirrors this with warm off-whites and paper tones rather than pure white.</p></div>
         <div class="row"><h3>Radius and spacing</h3><p>Generous radii, 4px to 8px on components and fully round for avatars and pills, keep things approachable. A four-point spacing scale keeps layouts consistent without being rigid.</p></div>
         <div class="row"><h3>Motion</h3><p>Transitions are short (150 to 200ms) with ease-out curves. Sidebar icons have subtle hover animations, panels slide in and out, and the timer ring moves smoothly between states. Nothing bounces or overshoots, so motion supports the calm.</p></div>
       </div>
 
-      <figure style="margin-top:28px">
+      <figure>
         <a href="profile.webp" target="_blank" rel="noopener"><img loading="lazy" src="profile.webp" width="1920" height="800" alt="Profile page in the light theme with username, school and bio fields and a grid of robot avatar options across several avatar styles"></a>
         <figcaption>The profile page in the light theme: warm paper tones, muted teal actions, and a choice of avatar styles for a bit of personality.</figcaption>
       </figure>
     </section>
 
     <section>
-      <p class="kicker">Product decisions</p>
+      <p class="side">Product decisions</p>
       <h2>The choices that shaped it</h2>
       <div class="rows">
-        <div class="row"><h3>Row Level Security without silent failures</h3><p>Supabase's RLS is powerful but unforgiving: a table with RLS on and no matching policy silently drops inserts and updates. No error, the data just doesn't appear. Fixing this meant writing explicit policies for every operation (select, insert, update, delete) on every table, and understanding exactly which user context each policy receives.</p></div>
-        <div class="row"><h3>Timer sync without drift</h3><p>Instead of syncing the timer's current value, I store its start time and duration on the server and let each client work out the time remaining locally. Status changes (focus, break, idle) are broadcast through Realtime subscriptions.</p></div>
-        <div class="row"><h3>Trust as a product requirement</h3><p>A study room where a non-admin can kick someone, or where messages leak between rooms, isn't a room anyone trusts. It was tempting to hide the Kick button and call it done. Instead every admin action is checked by RLS policies and the server. If students are going to study in a shared space, it has to be safe by default, not just safe-looking.</p></div>
-        <div class="row"><h3>Visual identity as product language</h3><p>The first version used Tailwind's default palette, and every element competed for attention. For a product whose whole value is calm focus, that worked against itself. Moving to a muted, semantic colour system across 12 component files was a product correction, not a polish pass. The palette teaches the interface before the user reads a word.</p></div>
-        <div class="row"><h3>Voice that degrades gracefully</h3><p>Voice is optional. If LiveKit isn't configured, the app shows a notice instead of breaking, and if microphone permission is denied, the interface adapts. Voice is a progressive enhancement, not a core dependency.</p></div>
+        <div class="row"><h3>Row Level Security without silent failures</h3><p>Supabase’s RLS is powerful but unforgiving: a table with RLS on and no matching policy silently drops inserts and updates. No error, the data just doesn’t appear. Fixing this meant writing explicit policies for every operation (select, insert, update, delete) on every table, and understanding exactly which user context each policy receives.</p></div>
+        <div class="row"><h3>Timer sync without drift</h3><p>Instead of syncing the timer’s current value, I store its start time and duration on the server and let each client work out the time remaining locally. Status changes (focus, break, idle) are broadcast through Realtime subscriptions.</p></div>
+        <div class="row"><h3>Trust as a product requirement</h3><p>A study room where a non-admin can kick someone, or where messages leak between rooms, isn’t a room anyone trusts. It was tempting to hide the Kick button and call it done. Instead every admin action is checked by RLS policies and the server. If students are going to study in a shared space, it has to be safe by default, not just safe-looking.</p></div>
+        <div class="row"><h3>Visual identity as product language</h3><p>The first version used Tailwind’s default palette, and every element competed for attention. For a product whose whole value is calm focus, that worked against itself. Moving to a muted, semantic colour system across 12 component files was a product correction, not a polish pass. The palette teaches the interface before the user reads a word.</p></div>
+        <div class="row"><h3>Voice that degrades gracefully</h3><p>Voice is optional. If LiveKit isn’t configured, the app shows a notice instead of breaking, and if microphone permission is denied, the interface adapts. Voice is a progressive enhancement, not a core dependency.</p></div>
       </div>
     </section>
 
     <section>
-      <p class="kicker">Outcome</p>
+      <p class="side">Outcome</p>
       <h2>What I learned</h2>
       <p>PrepRoom began as a hypothesis, that body-doubling works better as a purpose-built product than as a workaround inside general tools, and ended as a fully working app that supports it. Every feature is there because a real student need called for it, not because a framework made it easy to add.</p>
       <ol class="steps">
         <li><div><b>Product decisions compound</b>Choosing real-time presence over polling was a product bet that seeing others study live would drive accountability better than a list of recent sessions. That bet shaped the whole architecture.</div></li>
         <li><div><b>Saying no is harder than saying yes</b>DMs, friend lists, study groups and gamification all sounded good on paper. Keeping the scope to what helps someone sit down and focus meant cutting them so the core experience stayed clear.</div></li>
-        <li><div><b>Design is product work</b>The muted palette, calm motion and sparse layout aren't surface choices. A study app that feels like a notification-heavy productivity tool would undermine its own purpose. The design system encodes the product's point of view: calm focus over engagement metrics.</div></li>
-        <li><div><b>Progressive enhancement is a product strategy</b>Voice and image sharing are valuable, but a student who just wants to focus shouldn't need a microphone or a file picker to start. Join, start the timer, study: that loop works with nothing configured.</div></li>
+        <li><div><b>Design is product work</b>The muted palette, calm motion and sparse layout aren’t surface choices. A study app that feels like a notification-heavy productivity tool would undermine its own purpose. The design system encodes the product’s point of view: calm focus over engagement metrics.</div></li>
+        <li><div><b>Progressive enhancement is a product strategy</b>Voice and image sharing are valuable, but a student who just wants to focus shouldn’t need a microphone or a file picker to start. Join, start the timer, study: that loop works with nothing configured.</div></li>
       </ol>
       <div class="note">
-        <p><strong>What's next:</strong> two-factor authentication (API routes written, settings screen in progress), public room discovery and invite links, mobile refinements, and deployment to Vercel with a production Supabase instance.</p>
+        <p><strong>What’s next:</strong> two-factor authentication (API routes written, settings screen in progress), public room discovery and invite links, mobile refinements, and deployment to Vercel with a production Supabase instance.</p>
       </div>
       <div class="actions">
         <a class="btn" href="../../index.html">Back to portfolio</a>
@@ -215,11 +207,15 @@
     </section>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span>Ali Qadri / Product Developer &amp; Designer</span>
+  <footer class="foot">
+    <div class="container foot__row">
+      <p class="foot__mark">Ali Qadri</p>
+      <p>Product developer and designer, Karachi</p>
       <a href="mailto:designwithsyed@gmail.com">designwithsyed@gmail.com</a>
     </div>
   </footer>
+  <div class="cursor" aria-hidden="true" data-cursor-el><span class="cursor__label" data-cursor-label></span></div>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="../../Assets/js/site.js"></script>
 </body>
 </html>
