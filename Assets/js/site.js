@@ -255,6 +255,24 @@
       return () => tl.kill();
     });
 
+    // 3. The process steps run sideways while the section holds still.
+    mm.add('(min-width: 64.01rem) and (min-height: 700px)', () => {
+      const flow = document.querySelector('[data-flow]');
+      if (!flow) return;
+      const track = flow.querySelector('[data-flow-track]');
+      const bar = flow.querySelector('[data-flow-bar]');
+      flow.classList.add('is-horizontal');
+      const distance = () => Math.max(0, track.scrollWidth - track.parentElement.clientWidth);
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: flow, start: 'top top', end: () => `+=${distance()}`, pin: true, scrub: 0.5, invalidateOnRefresh: true },
+        defaults: { ease: 'none' },
+      });
+      tl.fromTo(track, { x: 0 }, { x: () => -distance() }, 0)
+        .fromTo(bar, { scaleX: 0 }, { scaleX: 1 }, 0);
+      ScrollTrigger.refresh();
+      return () => { tl.kill(); flow.classList.remove('is-horizontal'); gsap.set(track, { clearProps: 'transform' }); };
+    });
+
     // 2. The statement resolves word by word as it crosses the screen.
     const statement = document.querySelector('[data-scrub]');
     if (statement) {

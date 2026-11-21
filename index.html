@@ -27,7 +27,7 @@
       <nav class="nav__links" aria-label="Sections">
         <a href="#work">Work</a>
         <a href="#about">About</a>
-        <a href="#stack">Stack</a>
+        <a href="#process">Process</a>
         <a href="#experience">Experience</a>
       </nav>
       <p class="nav__status">Available for work now</p>
@@ -147,28 +147,83 @@
       </div>
     </section>
 
-    <!-- Stack: the JavaScript ecosystem as four layers -->
-    <section class="stack" id="stack" aria-labelledby="stack-title">
+    <!-- Process: seven steps, scrolled sideways on wide screens -->
+    <section class="flow" id="process" aria-labelledby="flow-title" data-flow>
       <div class="container">
-        <h2 class="section-head" id="stack-title" data-reveal>From interface to&nbsp;deploy</h2>
-        <div class="stack__grid" data-reveal>
-          <div class="stack__col">
-            <h3>Interface</h3>
-            <ul><li>JavaScript</li><li>TypeScript</li><li>React</li><li>Next.js</li><li>Tailwind CSS</li><li>Framer Motion</li></ul>
-          </div>
-          <div class="stack__col">
-            <h3>Data and auth</h3>
-            <ul><li>Supabase</li><li>PostgreSQL</li><li>Row level security</li><li>Realtime</li><li>Node.js</li><li>Express</li></ul>
-          </div>
-          <div class="stack__col">
-            <h3>Ship and test</h3>
-            <ul><li>Vercel</li><li>Netlify</li><li>GitHub</li><li>Lighthouse</li><li>QA and SEO</li></ul>
-          </div>
-          <div class="stack__col">
-            <h3>Design</h3>
-            <ul><li>Figma</li><li>Rive</li><li>Design systems</li><li>Prototyping</li><li>Claude and Cursor</li></ul>
-          </div>
+        <div class="flow__head">
+          <h2 class="section-head" id="flow-title" data-reveal>From a doc to a deploy</h2>
+          <p class="flow__intro" data-reveal>How every product I make gets built, in seven steps that loop.</p>
         </div>
+        <div class="flow__progress" aria-hidden="true"><span data-flow-bar></span></div>
+        <div class="flow__viewport">
+          <ol class="flow__track" data-flow-track>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">01</p>
+              <h3>Write it down</h3>
+              <p class="flow__line">The problem, who it is for and what done looks like, before any design.</p>
+              <div class="flow__artifact flow__doc" aria-hidden="true">
+                <span class="doc__title">Brief</span>
+                <span>Problem</span><span>Who it is for</span><span>Requirements</span><span>Out of scope</span>
+              </div>
+            </li>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">02</p>
+              <h3>Turn it into Markdown</h3>
+              <p class="flow__line">One .md file holds the goals, rules and decisions. My AI tools read it too.</p>
+              <pre class="flow__artifact flow__code" aria-label="Example project Markdown file"><code><span class="md-h"># PrepRoom</span>
+<span class="md-h">## Goal</span>
+Students focus together
+in one shared room.
+
+<span class="md-h">## Rules</span>
+- Check every sensitive
+  action on the server
+- One typeface, calm motion</code></pre>
+            </li>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">03</p>
+              <h3>Design the system</h3>
+              <p class="flow__line">Wireframes and prototypes in Figma, then a small design system to build from.</p>
+              <div class="flow__artifact flow__design" aria-hidden="true">
+                <span class="spec__aa">Aa</span>
+                <span class="spec__swatches"><i></i><i></i><i></i><i></i></span>
+                <span class="spec__note">Type, colour roles, spacing</span>
+              </div>
+            </li>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">04</p>
+              <h3>Build in slices</h3>
+              <p class="flow__line">One feature at a time, from the interface down to the database.</p>
+              <ul class="flow__artifact flow__list" aria-label="Example build slices">
+                <li class="is-done">Sign in and roles</li><li class="is-done">Rooms</li><li class="is-done">Shared timer</li><li>Chat</li>
+              </ul>
+            </li>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">05</p>
+              <h3>Test against the doc</h3>
+              <p class="flow__line">Every requirement checked by hand, plus speed, accessibility and SEO.</p>
+              <ul class="flow__artifact flow__list" aria-label="Example test checklist">
+                <li class="is-done">Requirements met</li><li class="is-done">Works on a phone</li><li class="is-done">Lighthouse run</li><li class="is-done">No broken links</li>
+              </ul>
+            </li>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">06</p>
+              <h3>Ship it</h3>
+              <p class="flow__line">Deployed on Vercel, Netlify or Cloudflare, so real people can use it.</p>
+              <div class="flow__artifact flow__ship" aria-hidden="true">
+                <span class="ship__state">Live</span>
+                <span>Deployed from main</span>
+              </div>
+            </li>
+            <li class="flow__step">
+              <p class="flow__num" aria-hidden="true">07</p>
+              <h3>Improve it, then go again</h3>
+              <p class="flow__line">Use it, see what breaks, and take what I learn back to step one.</p>
+              <a class="flow__artifact flow__back" href="#process">Back to 01</a>
+            </li>
+          </ol>
+        </div>
+        <p class="flow__tools" data-reveal>Tools along the way: JavaScript, TypeScript, React, Next.js, PostgreSQL, Node.js, Express, Figma, Vercel, Netlify, Cloudflare.</p>
       </div>
     </section>
 
