@@ -196,6 +196,31 @@ a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
 .player[open] { animation: player-in var(--dur-long) var(--ease-out); }
 @keyframes player-in { from { opacity: 0; transform: translateY(12px); } }
 
+
+/* ---------- Email menu ---------- */
+.mailmenu {
+  position: fixed; z-index: var(--z-modal); min-width: 260px; padding: var(--space-xs);
+  background: var(--color-paper); border: 1px solid var(--color-rule-strong); border-radius: var(--radius-card);
+  box-shadow: var(--shadow-menu);
+  display: grid; gap: var(--space-3xs);
+}
+.mailmenu[hidden] { display: none; }
+.mailmenu__addr { padding: var(--space-xs) var(--space-sm); font-size: var(--text-sm); color: var(--color-muted); border-bottom: 1px solid var(--color-rule); margin-bottom: var(--space-2xs); user-select: all; }
+.mailmenu__item {
+  display: flex; align-items: center; min-height: 44px; padding: 0 var(--space-sm); border: 0; border-radius: var(--space-2xs);
+  background: transparent; color: var(--color-ink); font-size: var(--text-sm); font-weight: 600; text-align: left; text-decoration: none; cursor: pointer;
+  transition: background-color var(--dur-micro) var(--ease-out);
+}
+.mailmenu__item:hover { background: var(--color-paper-3); }
+.mailmenu__item:active { background: var(--color-rule); }
+.mailmenu__item:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; transition: none; }
+.mailmenu__item:disabled { opacity: 0.5; cursor: not-allowed; }
+.mailmenu__status { padding: 0 var(--space-sm); font-size: var(--text-sm); color: var(--color-ink-2); }
+.mailmenu__status:empty { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .mailmenu:not([hidden]) { animation: fade-up var(--dur-short) var(--ease-out); }
+}
+
 /* ---------- Cursor (fine pointers only, made by JS) ---------- */
 .cursor { display: none; }
 .has-cursor .cursor {

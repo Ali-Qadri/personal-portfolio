@@ -103,6 +103,96 @@
   });
   }
 
+
+  /* ---------- Email menu: mailto alone fails without a desktop mail app ---------- */
+  const mailLinks = document.querySelectorAll('a[href^="mailto:"]');
+  if (mailLinks.length) {
+    const menu = document.createElement('div');
+    menu.className = 'mailmenu';
+    menu.hidden = true;
+    menu.setAttribute('role', 'menu');
+    menu.innerHTML = `
+      <p class="mailmenu__addr" data-mail-addr></p>
+      <button type="button" role="menuitem" class="mailmenu__item" data-mail-copy>Copy address</button>
+      <a role="menuitem" class="mailmenu__item" data-mail-gmail target="_blank" rel="noopener noreferrer">Open in Gmail</a>
+      <a role="menuitem" class="mailmenu__item" data-mail-app>Open mail app</a>
+      <p class="mailmenu__status" role="status" aria-live="polite" data-mail-status></p>`;
+    document.body.appendChild(menu);
+    const addrEl = menu.querySelector('[data-mail-addr]');
+    const copyBtn = menu.querySelector('[data-mail-copy]');
+    const gmail = menu.querySelector('[data-mail-gmail]');
+    const app = menu.querySelector('[data-mail-app]');
+    const status = menu.querySelector('[data-mail-status]');
+    let opener = null;
+
+    const close = (refocus) => {
+      if (menu.hidden) return;
+      menu.hidden = true;
+      if (opener) opener.setAttribute('aria-expanded', 'false');
+      if (refocus && opener) opener.focus();
+      opener = null;
+    };
+    const open = (link) => {
+      const address = decodeURIComponent(link.getAttribute('href').slice(7).split('?')[0]);
+      addrEl.textContent = address;
+      status.textContent = '';
+      gmail.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(address)}`;
+      app.href = `mailto:${address}`;
+      menu.hidden = false;
+      const r = link.getBoundingClientRect();
+      const w = menu.offsetWidth;
+      const left = Math.min(Math.max(16, r.left), window.innerWidth - w - 16);
+      const below = r.bottom + 8 + menu.offsetHeight < window.innerHeight;
+      menu.style.left = `${left}px`;
+      menu.style.top = below ? `${r.bottom + 8}px` : `${Math.max(16, r.top - menu.offsetHeight - 8)}px`;
+      opener = link;
+      link.setAttribute('aria-expanded', 'true');
+      copyBtn.focus({ preventScroll: true });
+    };
+
+    mailLinks.forEach((link) => {
+      link.setAttribute('aria-haspopup', 'menu');
+      link.setAttribute('aria-expanded', 'false');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (opener === link) { close(false); return; }
+        close(false);
+        open(link);
+      });
+    });
+    copyBtn.addEventListener('click', async () => {
+      const text = addrEl.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = 'Copied to your clipboard.';
+      } catch (err) {
+        const range = document.createRange();
+        range.selectNodeContents(addrEl);
+        const sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        status.textContent = 'Press Ctrl+C to copy.';
+      }
+    });
+    [gmail, app].forEach((a) => a.addEventListener('click', () => setTimeout(() => close(false), 0)));
+    document.addEventListener('pointerdown', (e) => {
+      if (!menu.hidden && !menu.contains(e.target) && e.target.closest('a[href^="mailto:"]') !== opener) close(false);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (menu.hidden) return;
+      if (e.key === 'Escape') { close(true); return; }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const items = [...menu.querySelectorAll('[role="menuitem"]')];
+        const i = items.indexOf(document.activeElement);
+        items[(i + (e.key === 'ArrowDown' ? 1 : -1) + items.length) % items.length].focus();
+      }
+    });
+    menu.addEventListener('focusout', (e) => { if (!menu.contains(e.relatedTarget) && e.relatedTarget !== opener) close(false); });
+    window.addEventListener('scroll', () => close(false), { passive: true });
+    window.addEventListener('resize', () => close(false));
+  }
+
   if (reduce) return;
 
   /* ---------- Smooth scroll ---------- */

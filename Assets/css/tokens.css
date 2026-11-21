@@ -18,6 +18,6 @@
   --color-accent: oklch(21% 0.006 260); --color-accent-ink: oklch(98.6% 0.002 260); --color-focus: oklch(46% 0.19 262);
   --color-scrim: oklch(21% 0.006 260 / 0.82);
   --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif; --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-body);
-  --radius-card: 6px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
+  --radius-card: 6px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none; --shadow-menu: 0 8px 24px oklch(21% 0.006 260 / 0.08);
   --tracking-display: -0.045em;
 }
