@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Case study: ilmlink, a short career discovery quiz for students in Pakistan, based on Holland’s theory and tested with 690 Pakistani undergraduates. Built with Node.js at Times TX by Ali Qadri.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ilmlink - Case study by Ali Qadri">
+  <meta property="og:description" content="A three-minute quiz that shows Pakistani students how they like to work, and which career directions fit, before they pick a degree.">
+  <meta property="og:image" content="home.webp">
+  <meta name="theme-color" content="#F8F9FA">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311141B'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%239FB8D4'%3EAQ%3C/text%3E%3C/svg%3E">
+  <title>ilmlink - Case study - Ali Qadri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../case-study.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip" href="#content">Skip to the case study</a>
+  <header class="nav" data-nav>
+    <div class="container nav__row">
+      <a class="nav__mark" href="../../index.html">Ali Qadri</a>
+      <nav class="nav__links" aria-label="Portfolio">
+        <a href="../../index.html#work">Work</a>
+        <a href="../../index.html#about">About</a>
+        <a href="../../index.html#experience">Experience</a>
+      </nav>
+      <a class="nav__next" href="../PrepRoom/case-study.html">Next: PrepRoom</a>
+      <a class="btn btn--small" href="mailto:designwithsyed@gmail.com">Email me</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="content">
+    <header class="hero">
+      <h1>ilmlink</h1>
+      <p class="byline">Case study, client work at Times TX for Times Consultant</p>
+      <p class="lead">ilmlink is a short career quiz for students in Pakistan. In about three minutes it shows a student how they like to work and which directions suit them, before anyone hands them a degree to study. I built it at Times TX, on Node.js, from the quiz itself to the admin panel the team uses to run it.</p>
+
+      <dl class="meta">
+        <div><dt>My role</dt><dd>Developer at Times TX: quiz, results, student accounts, community and admin area</dd></div>
+        <div><dt>Client</dt><dd>Times Consultant, an education consultancy working with students since 2004</dd></div>
+        <div><dt>Stack</dt><dd>Node.js ecosystem</dd></div>
+        <div><dt>Status</dt><dd>Live at <a href="https://ilmlink.com/" target="_blank" rel="noopener noreferrer">ilmlink.com</a></dd></div>
+      </dl>
+
+      <div class="stats" aria-label="Project at a glance">
+        <div class="stat"><b>36</b><span>questions in four short sections</span></div>
+        <div class="stat"><b>~3 min</b><span>to finish the quiz</span></div>
+        <div class="stat"><b>690</b><span>Pakistani undergraduates in the study behind it</span></div>
+        <div class="stat"><b>.910</b><span>overall reliability (Cronbach’s alpha)</span></div>
+      </div>
+
+      <figure class="shot-main">
+        <a href="home.webp" target="_blank" rel="noopener"><img src="home.webp" width="1906" height="816" alt="ilmlink home page with the headline Tired of everyone telling you what to be?, a Take the Career Quiz button and an illustration of two students looking down a winding path"></a>
+        <figcaption>The home page opens with the question most students here have heard too often, and one button: take the quiz.</figcaption>
+      </figure>
+    </header>
+
+    <section>
+      <p class="side">The problem</p>
+      <h2>Plenty of advice, no way to tell what fits</h2>
+      <p>Picking a career in Pakistan often feels like a family group chat. Everyone has an opinion, and the same few paths keep coming up: medicine, engineering, accountancy. Very few people ask the student what they actually enjoy.</p>
+      <p>Times Consultant has guided Pakistani students on what to study and where for years. The missing piece came before that. Students had no starting point. Their interests stayed vague, they guessed at their strengths, and big decisions got made under pressure or put off.</p>
+      <p>The brief was a tool that shows a student a pattern in their own interests. It had to make sense in a few minutes, and it had to be careful enough that a student, or a parent, could trust it.</p>
+    </section>
+
+    <section>
+      <p class="side">The idea</p>
+      <h2>A compass, not a job title</h2>
+      <p>ilmlink is built on Holland’s Theory of Career Choice. It sorts interests into six types:</p>
+      <ul class="plain">
+        <li><b>Realistic</b>, the Doers</li>
+        <li><b>Investigative</b>, the Thinkers</li>
+        <li><b>Artistic</b>, the Creators</li>
+        <li><b>Social</b>, the Helpers</li>
+        <li><b>Enterprising</b>, the Persuaders</li>
+        <li><b>Conventional</b>, the Organizers</li>
+      </ul>
+      <p>A student’s strongest three types make a three-letter code, such as SIA or IRC. The code points in a direction. It doesn’t lock anyone into a single job, and the product never promises “the one right career.”</p>
+      <p>The quiz follows the structure of the Self-Directed Search: activities you like, things you’re good at, jobs that appeal to you, and how you rate yourself. ilmlink is inspired by that structure. It isn’t the official SDS, and it doesn’t replace a certified career counsellor. The site says so plainly.</p>
+
+      <figure>
+        <a href="illustration.webp" target="_blank" rel="noopener"><img loading="lazy" src="illustration.webp" width="1536" height="1024" alt="Illustration of a Pakistani student holding books, with paths branching up to icons for technology, medicine, art, communication and teaching"></a>
+        <figcaption>One of the illustrations made for the site. Each page has its own.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="side">The research</p>
+      <h2>Tested with Pakistani students first</h2>
+      <p>Before ilmlink went to students, Times Consultant ran a psychometric study. The English Self-Directed Search was given to 690 undergraduates aged 18 to 26 in seven cities: Lahore, Karachi, Islamabad, Rawalpindi, Faisalabad, Multan and Peshawar.</p>
+      <p>The results held up. Every section cleared the 0.70 bar researchers use for reliability, and overall consistency was .910. The answers grouped into five factors that still map onto Holland’s types, and those five factors explained 63.4% of how students answered.</p>
+
+      <table>
+        <thead><tr><th>Measure</th><th>Result</th><th>What counts as good</th></tr></thead>
+        <tbody>
+          <tr><td>Cronbach’s alpha, overall</td><td>.910</td><td>Above .70</td></tr>
+          <tr><td>Activities / Skills / Jobs</td><td>.891 / .892 / .880</td><td>Above .70</td></tr>
+          <tr><td>Self-estimates 1 / 2</td><td>.831 / .853</td><td>Above .70</td></tr>
+          <tr><td>CFI (model fit)</td><td>.907</td><td>Over .90</td></tr>
+          <tr><td>RMSEA</td><td>.035</td><td>Lower is better</td></tr>
+          <tr><td>χ²/df</td><td>1.430</td><td>Under 3.0</td></tr>
+        </tbody>
+      </table>
+
+      <p>I built the “Our study” page so students and parents can read these numbers on the site. Each figure sits next to a short line on what it means, and the full paper has its own page for anyone who wants the detail.</p>
+
+      <figure>
+        <a href="study.webp" target="_blank" rel="noopener"><img loading="lazy" src="study.webp" width="1440" height="900" alt="Our study page with cards for 690 students, 7 cities, alpha .910 and CFI .907, a bar chart of Cronbach's alpha by section, and a ring showing 63.4% variance explained"></a>
+        <figcaption>The study page. Headline numbers up top, then reliability by section and the five-factor structure, each with a plain-language note.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="side">The quiz</p>
+      <h2>Start first, sign up later</h2>
+      <p>The most important flow decision was when to ask for an account. Asking up front would lose students before they had seen a single question. So nobody needs an account to start. A student takes the full quiz, and their answers stay on their own device. The account comes in at the end, as the step that opens the results, and the saved answers are attached to it once they sign in.</p>
+      <p>Before the first question, a short intro sets expectations: four short sections, about three minutes, no wrong answers, go with your first instinct, and a free account at the end to see the result. Students know what they are agreeing to before they begin.</p>
+
+      <div class="shots">
+        <figure>
+          <a href="quiz-intro.webp" target="_blank" rel="noopener"><img loading="lazy" src="quiz-intro.webp" width="1440" height="900" alt="Quiz intro screen titled Let's discover what fits you, with cards for No wrong answers, Go with your gut and Free account unlocks results"></a>
+          <figcaption>The quiz intro. The header drops the full menu and keeps only an Exit link, so the quiz has the student’s full attention.</figcaption>
+        </figure>
+        <figure>
+          <a href="sitemap.webp" target="_blank" rel="noopener"><img loading="lazy" src="sitemap.webp" width="2000" height="1527" alt="ilmlink sitemap in three columns: public pages, student pages and admin pages"></a>
+          <figcaption>The sitemap: public pages, a signed-in student area and a separate admin area. The main path runs Home, Quiz, Sign up, Results, then Scholarships or Community.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <p class="side">The result</p>
+      <h2>What a student gets at the end</h2>
+      <div class="rows">
+        <div class="row"><h3>A three-letter code</h3><p>The student’s strongest three Holland types, in order.</p></div>
+        <div class="row"><h3>Scores across all six types</h3><p>So they can see how close the runners-up were, not only the winners.</p></div>
+        <div class="row"><h3>A plain-language profile</h3><p>A short description, in everyday language, of how they like to work.</p></div>
+        <div class="row"><h3>Career directions</h3><p>Fields that match the pattern, as places to start looking.</p></div>
+      </div>
+      <p>Results are saved to the student’s account. From the dashboard they can come back to any past assessment, open it again, and update their profile and settings.</p>
+    </section>
+
+    <section>
+      <p class="side">What I built</p>
+      <h2>Three areas in one app</h2>
+      <p>The quiz is the front door, but most of the build sits around it. I worked through the app in three parts, matching the sitemap.</p>
+      <ol class="steps">
+        <li><div><b>Public site</b>Home, About, How it works, Our study and the full paper, Scholarships, Community, Contact and Feedback, guides on the SDS and on studying in Pakistan, and the legal pages. Sign-up, login, password reset, a welcome screen and email verification also live here.</div></li>
+        <li><div><b>Student area</b>A dashboard with the student’s profile, account settings, and a list of saved assessments, each with its own detail page. Signed-in students can also post, vote and comment in the community.</div></li>
+        <li><div><b>Admin area</b>A separate panel for the Times Consultant team. It covers students (list, add and individual records), community moderation, contact messages, assessments, analytics and feedback.</div></li>
+      </ol>
+      <p>The community works like a set of small forums. Each topic has its own space, every member has a profile page, and posts collect votes and comments. Anyone can read it without an account, which lets a curious student look around before committing. Posting needs a free account.</p>
+      <p>The contact form asks the student to pick a topic first: quiz and results, account and login, community, partnerships, scholarships and courses, product feedback, something broken, or something else. The topic sends the note to the right person, and a student writing about results is asked to include their three-letter code, so the team can answer without a back-and-forth.</p>
+
+      <figure>
+        <a href="contact.webp" target="_blank" rel="noopener"><img loading="lazy" src="contact.webp" width="1440" height="900" alt="Contact page titled Say hello, with a Write to us form, topic chips such as Quiz and results and Something's broken, and a note that the team replies within a couple of working days"></a>
+        <figcaption>The contact page. Picking a topic routes the message to the right person on the team.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <p class="side">Stack</p>
+      <h2>What I used</h2>
+      <table>
+        <thead><tr><th>Part</th><th>Tools</th></tr></thead>
+        <tbody>
+          <tr><td>Application</td><td>Node.js ecosystem</td></tr>
+          <tr><td>Routing</td><td>Dynamic routes for assessments, community posts, communities, user profiles and admin student records</td></tr>
+          <tr><td>Accounts</td><td>Sign-up, login, password reset and email verification</td></tr>
+          <tr><td>Illustrations</td><td>Custom artwork for each page</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <p class="side">Outcome</p>
+      <h2>A starting point students can trust</h2>
+      <p>ilmlink is live at <a href="https://ilmlink.com/" target="_blank" rel="noopener noreferrer">ilmlink.com</a>. A student in Karachi or Peshawar can take a free three-minute quiz, get a three-letter code with a profile they can read, and leave with a few directions to look into. If they want more, scholarships and a student community are one step away.</p>
+      <p>For the Times Consultant team, the admin area keeps students, assessments, messages, community posts and feedback in one place.</p>
+      <div class="actions">
+        <a class="btn" href="../../index.html">Back to portfolio</a>
+        <a href="../PrepRoom/case-study.html">Read the PrepRoom case study</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="container foot__row">
+      <p class="foot__mark">Ali Qadri</p>
+      <p>Product developer and designer, Karachi</p>
+      <a href="mailto:designwithsyed@gmail.com">designwithsyed@gmail.com</a>
+    </div>
+  </footer>
+  <div class="cursor" aria-hidden="true" data-cursor-el><span class="cursor__label" data-cursor-label></span></div>
+  <script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="../../Assets/js/site.js"></script>
+</body>
+</html>
