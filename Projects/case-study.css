@@ -15,15 +15,17 @@
 
 
 /* PrepRoom's own colour roles, shown as content in its design-system section */
-:root { --swatch-teal: #5E8C88; --swatch-slate: #6E80A0; --swatch-sand: #C9AE86; --swatch-sage: #8AA585; --swatch-rose: #B57C84; --swatch-lavender: #9A8DB8; --swatch-emerald: #5F9E84; --swatch-bronze: #A8865E; }
-.swatch--teal { background: var(--swatch-teal); }
-.swatch--slate { background: var(--swatch-slate); }
-.swatch--sand { background: var(--swatch-sand); }
-.swatch--sage { background: var(--swatch-sage); }
-.swatch--rose { background: var(--swatch-rose); }
+/* Sampled from the app's screenshots; light swatches get a hairline so they read on the page */
+:root { --swatch-paper: #F3F1EC; --swatch-card: #FFFEFB; --swatch-ink: #1B1B1D; --swatch-lavender: #E3DCFA; --swatch-peach: #FAD9C6; --swatch-mint: #D5EDDC; --swatch-butter: #F5E9B0; --swatch-pink: #F7D9DF; }
+.swatch i { outline: 1px solid var(--color-rule); outline-offset: -1px; }
+.swatch--paper { background: var(--swatch-paper); }
+.swatch--card { background: var(--swatch-card); }
+.swatch--ink { background: var(--swatch-ink); }
 .swatch--lavender { background: var(--swatch-lavender); }
-.swatch--emerald { background: var(--swatch-emerald); }
-.swatch--bronze { background: var(--swatch-bronze); }
+.swatch--peach { background: var(--swatch-peach); }
+.swatch--mint { background: var(--swatch-mint); }
+.swatch--butter { background: var(--swatch-butter); }
+.swatch--pink { background: var(--swatch-pink); }
 
 /* ---------- Layout: a 12-column sheet, names in the margin ---------- */
 .wrap { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); padding-top: calc(var(--nav-height) + var(--space-2xl)); }
